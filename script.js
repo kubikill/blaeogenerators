@@ -199,7 +199,7 @@ window.onload=function(){
     }
     else {
       barCode = "border-left: 10px solid " + vBarColor1;
-      barTwoCode = '<div style="border-left: 10px solid ' + vBarColor2 + '; margin-left: -6px; min-height: 68px;">';
+      barTwoCode = '<div style="border-left: 10px solid ' + vBarColor2 + '; margin-left: -6px; min-height: 69px;">';
       barThreeCode = '<div style="margin-left: 10px;">';
       barFourCode = "</div>";
     }
