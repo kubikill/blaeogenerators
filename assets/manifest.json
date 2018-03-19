@@ -1,0 +1,20 @@
+{
+    "name": "BLAEO Generators",
+    "short_name": "BLAEOGens",
+    "icons": [
+        {
+            "src": "/assets/android-chrome-192x192.png?v=xQzj8j3wqR",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/android-chrome-256x256.png?v=xQzj8j3wqR",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#566391",
+    "background_color": "#566391",
+    "start_url": "https://kubikill.github.io/blaeogenerators/",
+    "display": "standalone"
+}

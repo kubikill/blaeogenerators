@@ -1,30 +1,421 @@
-﻿<!DOCTYPE HTML>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="https://fonts.googleapis.com/css?family=Arimo|Oswald" media="all" rel="stylesheet">
-<title>BLAEO Colored Bar Generator</title>
-<script src="script.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Arimo|Oswald" media="all" rel="stylesheet">
+	<title>BLAEO Generators</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="bargenerator.js"></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+	<link rel="manifest" href="./assets/manifest.json">
+	<link rel="mask-icon" href="./assets/safari-pinned-tab.svg" color="#1a1a1a">
+	<link rel="shortcut icon" href="./assets/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="BLAEO Generators">
+	<meta name="application-name" content="BLAEO Generators">
+	<meta name="msapplication-TileColor" content="#2d89ef">
+	<meta name="msapplication-config" content="./assets/browserconfig.xml?v=xQzj8j3wqR">
+	<meta name="theme-color" content="#566391">
+	<style>
+		.legendfix {
+			width: auto;
+			border-bottom: none;
+			padding: 0 6px;
+		}
+
+		fieldset {
+			display: flex;
+		}
+
+		.nav-link.active {
+			color: #fff !important;
+		}
+
+		.navbar-nav .nav-link {
+			padding-left: .5rem;
+			padding-right: .5rem;
+		}
+
+		.container {
+			margin-top: 1em;
+		}
+
+		.navbar {
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			border-bottom-color: #E7E7E7;
+		}
+
+		body {
+			background-color: #f5f8fa;
+		}
+
+		label {
+			margin-top: 4px;
+		}
+
+		.firstinputs {
+			margin-top: 0px;
+		}
+
+		input {
+			margin-bottom: 2px;
+		}
+
+		.btn {
+			border-radius: .25rem !important;
+			margin-right: 10px;
+			width: 60px;
+		}
+
+		.arrow::before {
+			border-right-color: #28A745 !important;
+		}
+
+		.nav-pills .nav-link.active,
+		.nav-pills .show>.nav-link {
+			background-color: #566391;
+		}
+
+		a.nav-link {
+			color: #566391;
+		}
+
+		.btn-outline-primary:not(:disabled):not(.disabled).active,
+		.btn-outline-primary:not(:disabled):not(.disabled):active,
+		.show>.btn-outline-primary.dropdown-toggle {
+			background-color: #566391;
+		}
+
+		.btn-outline-primary {
+			border-color: #566391 !important;
+			color: #566391;
+		}
+
+		.btn-outline-primary:hover {
+			background-color: #566391;
+		}
+
+		#settings.collapse.show {
+			display: flex;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="./assets/gamebox.css">
 </head>
+
 <body>
-<h1>BLAEO Colored Bar Generator v1.0 by kubikill</h1>
-<p>Game title: <input type="text" name="gametitle"></p>
-<p>Steam AppID: <input type="text" name="appid" size="10"></p>
-<p>Playtime (in hours): <input type="text" name="playtime" size="4"></p>
-<p>Achievements: <input type="text" name="cheevoearned" size="4"> earned out of <input type="text" name="cheevoall" size="4"></p>
-<p>Your SteamID64 or custom link name: <input type="text" name="steamid" size="20"></p>
-<p>Custom text: <input type="text" name="customtext" size="20"></p>
-<p>Background: <input type="radio" name="bgtype" value="solid" checked> Solid <input type="radio" name="bgtype" value="gradient"> Gradient</p>
-<p>Color 1 (in HEX): #<input type="text" name="bgcolor1" maxlength="6"></p>
-<p id="bgcolor2" style="display: none;">Color 2 (in HEX): #<input type="text" name="bgcolor2" maxlength="6"></p>
-<p id="gradientstyle" style="display: none;">Gradient type: <input type="radio" name="gradientstyle" value="horizontal" checked>Horizontal <input type="radio" name="gradientstyle" value="vertical"> Vertical</p>
-<p>Completion bars: <input type="radio" name="barnum" value="none"> None <input type="radio" name="barnum" value="one" checked> 1 <input type="radio" name="barnum" value="two"> 2</p>
-<p id="bar1">Completion bar 1 color: <select name="bar1"><option value="#5BC0DE">Completed (blue)</option><option value="#5CB85C">Beaten (green)</option><option value="#f0ad4e">Unfinished (orange)</option><option value="#EEE">Never played (white)</option><option value="#D9534F">Won't play (red)</option></select>
-<p id="bar2" style="display: none;">Completion bar 2 color: <select name="bar2"><option value="#5BC0DE">Completed (blue)</option><option value="#5CB85C">Beaten (green)</option><option value="#f0ad4e">Unfinished (orange)</option><option value="#EEE">Never played (white)</option><option value="#D9534F">Won't play (red)</option></select>
-<h2>Preview:</h2>
-<p>Due to some magic I have no idea of, the bar looks better after you paste it on BLAEO. I'm not a wizard, unfortunately :/ </p>
-<div id="preview" style="width: 75%;"></div>
-<h2>Code to copy: <button class="copybutton" style="vertical-align:top;">Copy to clipboard</button><span id="copiedtext" style="display: none;"> Code copied</span></h2>
-<textarea id="generated" class="generatedtext" rows="8" cols="100" readonly="readonly";></textarea>
+	<div class="container">
+		<!--Navbar-->
+		<nav class="navbar navbar-expand-sm navbar-light fixed-top" role="tablist" style="background-color: rgba(248,248,248,0.9) !important;">
+			<span class="navbar-brand">
+				<a href="https://www.backlog-assassins.net/" target="_blank"><img src="assets/blaeologo.png" class="d-inline-block align-top"></a> Generators <small class="text-muted">v1.0</small></span>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav align-middle">
+					<ul class="nav nav-pills" id="pills-tab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="generatecoolstuffnav" data-toggle="pill" href="#generator" role="tab">Generate cool stuff</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="settingsnav" data-toggle="pill" href="#settingstab" role="tab">Settings</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="aboutnav" data-toggle="pill" href="#about" role="tab">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!--Navbar end-->
+		<br>
+		<br>
+		<div class="tab-content">
+			<!--Generate cool stuff tab-->
+			<div class="tab-pane fade show active" id="generator" role="tabpanel">
+				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active btn-lg" id="bartab" data-toggle="pill" href="#bargenerator" role="tab" aria-controls="pills-home" aria-selected="true">Bar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn-lg" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Game box</a>
+					</li>
+				</ul>
+				<div class="alert alert-warning" style="display: none;" id="autofillwarning" role="alert">Autofilling will not work without a valid SteamID64.</div>
+				<div class="alert alert-danger show" role="alert" id="autofillerror" style="display: none;">
+					<strong>Failed to fetch data.</strong> <a data-toggle="collapse" href="#errorreasons" aria-expanded="false" aria-controls="collapseExample">Possible reasons:</a>
+					<div class="collapse" id="errorreasons">
+						<ul style="margin-bottom: 0;">
+							<li>Invalid AppID/SteamID64</li>
+							<li>You don't own this game / You are not a BLAEO member</li>
+							<li>Internet connection problems</li>
+							<li>BLAEO website is down</li>
+						</ul>
+					</div>
+				</div>
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="bargenerator" role="tabpanel">
+						<!--Game data fields-->
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#gamedata">Game data</legend>
+							<div class="show" id="gamedata">
+								<div class="form-row">
+									<div class="col">
+										<label for="appid" class="firstinputs">Game's AppID:</label>
+										<input class="form-control" type="number" name="appid" id="appid" placeholder="220">
+										<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
+									</div>
+									<div class="col">
+										<label for="gametitle" class="firstinputs">Game title:</label>
+										<input class="form-control" type="text" name="gametitle" id="gametitle" placeholder="Half-Life 2">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="playtime">Playtime:</label>
+										<input class="form-control" type="number" step="0.1" name="playtime" placeholder="0">
+										<small class="form-text text-muted">Specified in hours.</small>
+									</div>
+									<div class="col">
+										<label for="cheevoearned" style="clear: right;">Achievements:</label>
+										<div class="input-group">
+											<input type="number" class="form-control" name="cheevoearned" placeholder="0">
+											<div class="input-group-append">
+												<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
+											</div>
+											<input type="number" class="form-control" name="cheevoall" id="cheevoall" placeholder="0">
+										</div>
+										<div class="btn-group-toggle" data-toggle="buttons">
+  										<label class="btn btn-outline-primary" name="noachievements" style="width: 148px;">
+    									<input class="noachievements" type="checkbox" checked autocomplete="off">No achievements
+  										</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<!--Customization fields-->
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#customization">Customization</legend>
+							<div class="show" id="customization">
+								<div class="form-row">
+									<div class="col">
+										<label for="bgtype" class="firstinputs" style="margin-bottom: .7rem;">Background type:</label>
+										<select class="form-control" name="bgtype" id="bgtype">
+											<option value="solid">Solid</option>
+											<option value="to right">Horizontal gradient</option>
+											<option value="to bottom">Vertical gradient</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="textcolor">Text color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" name="textcolor" id="textcolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;">
+											</div>
+											<input class="form-control" type="text" name="textcolor" id="textcolor" maxlength="7" value="#">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="bgcolor1">Background color 1:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" name="bgcolor1" id="bgcolor1" style="margin: 0; padding: 0; width: 60px; height: 42px;">
+											</div>
+											<input class="form-control" type="text" name="bgcolor1text" id="bgcolor1text" maxlength="7" value="#">
+										</div>
+									</div>
+									<div class="col">
+										<label for="bgcolor2">Background color 2:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" name="bgcolor2" id="bgcolor2" style="margin: 0; padding: 0; width: 60px; height: 42px;" disabled="true">
+											</div>
+											<input class="form-control" type="text" name="bgcolor2text" id="bgcolor2text" maxlength="7" value="#" disabled="true">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="barnum">Completion bar:</label>
+										<br>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary active" id="baron">
+												<input type="radio" name="barnum" value="true" autocomplete="off" checked> Yes
+											</label>
+											<label class="btn btn-outline-primary" id="baroff">
+												<input type="radio" name="barnum" value="false" autocomplete="off"> No
+											</label>
+										</div>
+									</div>
+									<div class="col">
+										<label for="barcolor">Completion bar color:</label>
+										<select class="form-control" name="barcolor" id="barcolor">
+											<option value="completed">Completed (blue)</option>
+											<option value="beaten">Beaten (green)</option>
+											<option value="unfinished">Unfinished (orange)</option>
+											<option value="won't play">Won't play (red)</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="customtext">Custom text:</label>
+										<input class="form-control" type="text" name="customtext" id="customtext" placeholder="You can put anything here">
+									</div>
+								</div>
+						</fieldset>
+						<div id="preview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000; height: 69px;"></div>
+						<h3 style="margin-top: 8px;">Code to copy:
+							<button class="copybutton btn btn-outline-primary" id="copybutton" style="vertical-align:top; width: initial;">Copy to clipboard</button>
+						</h3>
+						<textarea id="generated" class="generatedtext form-control" readonly="readonly" rows="6" ;></textarea>
+						</div>
+						<!--Game box generator-->
+						<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+							<fieldset class="border rounded form-group" style="padding: 12px;">
+								<legend class="legendfix border rounded" data-toggle="collapse" data-target="#boxgamedata">Game data</legend>
+								<div class="show" id="boxgamedata">
+									<div class="form-row">
+										<div class="col">
+											<label for="appid" class="firstinputs">Game's AppID:</label>
+											<input class="form-control" type="number" name="appid" id="appid" placeholder="220">
+											<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
+										</div>
+										<div class="col">
+											<label for="gametitle" class="firstinputs">Game title:</label>
+											<input class="form-control" type="text" name="gametitle" id="gametitle" placeholder="Half-Life 2">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="col">
+											<label for="playtime">Playtime:</label>
+											<input class="form-control" type="number" name="playtime" id="playtime" placeholder="0">
+											<small class="form-text text-muted">Specified in hours.</small>
+										</div>
+										<div class="col">
+											<label for="cheevoearned" style="clear: right;">Achievements:</label>
+											<div class="input-group">
+												<input type="number" class="form-control" name="cheevoearned" id="barcheevoearned" placeholder="0">
+												<div class="input-group-append">
+													<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
+												</div>
+												<input type="number" class="form-control" name="cheevoall" id="barcheevoall" placeholder="0">
+											</div>
+											<div class="btn-group-toggle" data-toggle="buttons">
+	  										<label class="btn btn-outline-primary" name="noachievements" style="width: 148px;">
+	    									<input class="noachievements" type="checkbox" checked autocomplete="off">No achievements
+	  										</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset class="border rounded form-group" style="padding: 12px;">
+								<legend class="legendfix border rounded" data-toggle="collapse" data-target="#boxcustomization">Customization</legend>
+								<div class="show" id="boxcustomization">
+									<div class="form-row">
+										<div class="col">
+											<label class="firstinputs" for="barcolor">Completion bar color:</label>
+											<select class="form-control" name="barcolor" id="barcolor">
+										<option value="completed">Completed (blue)</option>
+										<option value="beaten">Beaten (green)</option>
+										<option value="unfinished">Unfinished (orange)</option>
+										<option value="wont-play">Won't play (red)</option>
+									</select>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<div class="alert alert-info alert-dismissible fade show" role="alert" style="display: block;">
+								Game boxes are designed to be placed in a list. Put <strong>&lt;ul class="games"&gt;</strong> before the first game box in a list and <strong>&lt;/ul&gt;</strong> after the last box in the list.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+							</div>
+							<h3 style="margin-top: 8px;">Code to copy:
+									<button class="copybutton btn btn-outline-primary" id="boxcopybutton" style="vertical-align:top; width: initial;">Copy to clipboard</button>
+							</h3>
+							<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxgenerated" class="boxgeneratedtext form-control" readonly="readonly" rows="6"></textarea>
+							<div id="boxpreview" style="width: 192px; float: left;"></div>
+						</div>
+					</div>
+				</div>
+				<!--Settings tab-->
+
+				<div class="tab-pane fade" id="settingstab" role="tabpanel">
+					<div class="alert alert-info" role="alert">
+						Settings are saved automatically.
+					</div>
+					<fieldset class="border rounded form-group" style="padding: 12px;">
+						<legend class="legendfix border rounded" data-toggle="collapse" data-target="#settings">Autofilling</legend>
+						<div class="form-row show" id="settings">
+							<div class="col">
+								<p style="margin-top: 4px; margin-bottom: 8px;">Use autofilling:</p>
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-outline-primary" id="autofillon" for="autofillon" style="margin-right: 10px">Yes
+								<input type="radio" value="true">
+								</label>
+									<label class="btn btn-outline-primary" id="autofilloff" for="autofilloff">No
+								<input type="radio"  value="false">
+								</label>
+								</div>
+								<small class="form-text text-muted">Autofills game data fields after entering game's Steam AppID, using BLAEO stats. Requires your SteamID64
+								to work.</small>
+								<br>
+							</div>
+							<div class="col">
+								<label for="steamid">Your SteamID64:</label>
+								<input class="form-control" type="number" name="steamid" id="steamid">
+								<small class="form-text text-muted">
+									<a href="https://steamid.io/" target="_blank">Use this website</a> to get your SteamID64.</small>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="border rounded form-group" style="padding: 12px;">
+						<legend class="legendfix border rounded" data-toggle="collapse" data-target="#previewsettings">Preview</legend>
+						<div class="row show" id="previewsettings">
+							<div class="col">
+								<label for="baralwayspreview">Bar: Preview always visible:</label><br>
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-outline-primary" id="baralwayspreviewon" style="margin-right: 10px">Yes
+								<input type="radio" value="bottom">
+								</label>
+									<label class="btn btn-outline-primary" id="baralwayspreviewoff">No
+								<input type="radio" value="disable">
+								</label>
+								</div>
+							</div>
+							<div>
+							</div>
+					</fieldset>
+
+					</div>
+					<!--About tab-->
+					<div class="tab-pane fade" id="about" role="tabpanel" align="center">
+						<h2 align="center">BLAEO Generators <small class="text-muted">v1.0</small></h2>
+						<p>Developed by <strong><a href="http://steamcommunity.com/id/kubikill" target="_blank">kubikill</a></strong><br>
+							for Backlog Assasins Extraordinaire</p>
+						<p>Thanks to mandrill for the help!</p>
+						<p>Powered by <strong><a href="https://getbootstrap.com" target="_blank">Bootstrap 4.0</a></strong> and magic</p>
+						<h2>Changelog:</h2><br>
+						<h4 align="left">v1.0 - March 18, 2018</h4>
+						<ul align="left">
+							<li>Initial release</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
+
 </html>
