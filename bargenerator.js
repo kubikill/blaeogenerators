@@ -6,7 +6,7 @@ $(document).ready(function() {
     vCheevoEarned = "0",
     vCheevoAll = "0",
     vPlaytime = "0",
-    vSteamID = "null and void",
+    vSteamID,
     vCustomText = "",
     vBgType = "solid",
     vBgColor1 = "#000000",
@@ -35,8 +35,6 @@ $(document).ready(function() {
   var textColorText = document.getElementById("textcolor");
   var gameTitleField = document.getElementById("gametitle");
   var playtimeField = document.getElementById("playtime");
-  var cheevoEarnedField = document.getElementById("cheevoearned");
-  var cheevoAllField = document.getElementById("cheevoall");
   var barField = document.getElementById("barcolor");
   var steamIDField = document.getElementById("steamid");
   // Copy to clipboard button code
@@ -69,7 +67,7 @@ $(document).ready(function() {
       document.getElementsByName("appid")[i].value = vAppID;
     }
     // Do not fetch if SteamID/AppID is invalid or autofilling is off
-    if (!vAppID || vSteamID.match(/[a-z]/i) || vSteamID == "" || useAutofill == "false") {
+    if (!vAppID || vSteamID.match(/[a-z]/i) || !vSteamID || useAutofill == "false") {
       vAppID = "220";
       return 0;
     }
@@ -100,8 +98,8 @@ $(document).ready(function() {
         else {
           achievementCode = "no achievements";
           updPreview();
-          vCheevoEarned = "0";
-          vCheevoAll = "0";
+          updCheevoEarned("foo", "0")
+          updCheevoAll("bar", "0")
           for (i=0; i < document.getElementsByName("cheevoearned").length; i++) {
           document.getElementsByName("cheevoearned")[i].value = "0";
           document.getElementsByName("cheevoall")[i].value = "0";
@@ -118,7 +116,6 @@ $(document).ready(function() {
       })
       .catch(function(response) {
         $('#autofillerror').fadeIn();
-        console.log(response.status);
       });
   }
   // Add event listeners - those trigger when something gets typed or changed
@@ -206,9 +203,8 @@ $(document).ready(function() {
   $(autofillOn).click(function() {
     useAutofill = "true";
     localStorage.autofill = true;
-    if (vSteamID == "") {
+    if (!vSteamID) {
       $('#autofillwarning').show();
-	  console.log("Autofill show");
     }
     else {
       $('#autofillwarning').hide();
@@ -329,9 +325,8 @@ $(document).ready(function() {
       vSteamID = this.value;
     }
     localStorage.steamID = vSteamID;
-    if (vSteamID == "" && useAutofill == "true") {
+    if (!vSteamID && useAutofill == "true") {
       $('#autofillwarning').show();
-	  console.log("SteamID show");
     } else {
       $('#autofillwarning').hide();
     }
@@ -473,9 +468,7 @@ $(document).ready(function() {
   } else {
     document.getElementById("baralwayspreviewoff").classList.add("active");
   }
-  if (vSteamID == "" && useAutofill == "true") {
-	  console.log("SteamID " + vSteamID);
-	  console.log("Use autofill " + useAutofill);
+  if (!vSteamID && useAutofill == "true") {
     $('#autofillwarning').show();
   }
 });
