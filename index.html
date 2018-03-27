@@ -116,7 +116,7 @@
 		<!--Navbar-->
 		<nav class="navbar navbar-expand-sm navbar-light fixed-top" role="tablist" style="background-color: rgba(248,248,248,0.9) !important;">
 			<span class="navbar-brand">
-				<a href="https://www.backlog-assassins.net/" target="_blank"><img src="assets/blaeologo.png" class="d-inline-block align-top"></a> Generators <small class="text-muted">v1.0</small></span>
+				<a href="https://www.backlog-assassins.net/" target="_blank"><img src="assets/blaeologo.png" class="d-inline-block align-top"></a> Generators <small class="text-muted">v1.01</small></span>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -161,6 +161,12 @@
 							<li>BLAEO website is down</li>
 						</ul>
 					</div>
+				</div>
+				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firsttimemsg" style="display: block;">
+					Welcome to BLAEO Generators! Make sure to check the settings tab to set up autofilling.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="firsttimebtn">
+					<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="tab-content" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="bargenerator" role="tabpanel">
@@ -266,6 +272,7 @@
 											<option value="beaten">Beaten (green)</option>
 											<option value="unfinished">Unfinished (orange)</option>
 											<option value="wont-play">Won't play (red)</option>
+											<option value="never-played">Never played (white)</option>
 										</select>
 									</div>
 								</div>
@@ -333,6 +340,7 @@
 										<option value="beaten">Beaten (green)</option>
 										<option value="unfinished">Unfinished (orange)</option>
 										<option value="wont-play">Won't play (red)</option>
+										<option value="never-played">Never played (white)</option>
 									</select>
 										</div>
 									</div>
@@ -404,12 +412,19 @@
 					</div>
 					<!--About tab-->
 					<div class="tab-pane fade" id="about" role="tabpanel" align="center">
-						<h2 align="center">BLAEO Generators <small class="text-muted">v1.0</small></h2>
+						<h2 align="center">BLAEO Generators <small class="text-muted">v1.01</small></h2>
 						<p>Developed by <strong><a href="http://steamcommunity.com/id/kubikill" target="_blank">kubikill</a></strong><br>
 							for Backlog Assasins Extraordinaire</p>
 						<p>Thanks to mandrill for the help!</p>
 						<p>Powered by <strong><a href="https://getbootstrap.com" target="_blank">Bootstrap 4.0</a></strong> and magic</p>
 						<h2>Changelog:</h2><br>
+						<h4 align="left">v1.01 - March 27, 2018</h4>
+						<ul align="left">
+							<li>Added an one-time welcoming message</li>
+							<li>Added "never played (white)" to completion bar colors</li>
+							<li>Fixed achievement links pointing to "undefined" profiles, and not updating properly</li>
+							<li>Fixed AppIDs not updating properly</li>
+						</ul>
 						<h4 align="left">v1.0 - March 18, 2018</h4>
 						<ul align="left">
 							<li>Initial release</li>

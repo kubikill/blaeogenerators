@@ -1,5 +1,11 @@
 $(document).ready(function() {
 	$('#autofillwarning').hide();
+	if (localStorage.firstTimeMsgDismissed) {
+		$('#firsttimemsg').hide();
+	}
+	document.getElementById("firsttimebtn").onclick = function() {
+		localStorage.firstTimeMsgDismissed = true;
+	}
   // Declare variables
   var vGameTitle = "Half-Life 2",
     vAppID = "220",
@@ -18,9 +24,15 @@ $(document).ready(function() {
     barAlwaysPreview,
     boxBarColor = "completed",
     vTextColor = "#FFFFFF",
-    achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+    achievementCode,
     noAchievements = false;
     vSteamID = localStorage.steamID;
+	if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements';
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
   // Get IDs of stuff
   var previewElement = document.getElementById("preview");
   var boxPreview = document.getElementById("boxpreview");
@@ -66,9 +78,16 @@ $(document).ready(function() {
     for (i=0; i < document.getElementsByName("appid").length; i++) {
       document.getElementsByName("appid")[i].value = vAppID;
     }
+	if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements';
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
     // Do not fetch if SteamID/AppID is invalid or autofilling is off
-    if (!vAppID || vSteamID.match(/[a-z]/i) || !vSteamID || useAutofill == "false") {
-      vAppID = "220";
+    if (!vAppID || !vSteamID || useAutofill == "false") {
+	  updPreview();
+	  console.log("nope");
       return 0;
     }
     fetch('https://www.backlog-assassins.net/users/+' + vSteamID + '/games/' + this.value, {
@@ -91,15 +110,20 @@ $(document).ready(function() {
           document.getElementsByName("cheevoall")[i].value = stats.game.achievements.total;
           document.getElementsByName("noachievements")[i].classList.remove('active');
         }
-          achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+          if (!vSteamID) {
+				achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+			}
+			else {
+				achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+			}
           updCheevoEarned("welp, i can't stop you ¯\_(ツ)_/¯", stats.game.achievements.unlocked);
           updCheevoAll("i could leave this empty but i decided to put some silly stuff here soooo uhhhh, have a nice day", stats.game.achievements.total);
         }
         else {
           achievementCode = "no achievements";
           updPreview();
-          updCheevoEarned("foo", "0")
-          updCheevoAll("bar", "0")
+          vCheevoEarned = "0";
+          vCheevoAll = "0";
           for (i=0; i < document.getElementsByName("cheevoearned").length; i++) {
           document.getElementsByName("cheevoearned")[i].value = "0";
           document.getElementsByName("cheevoall")[i].value = "0";
@@ -116,30 +140,39 @@ $(document).ready(function() {
       })
       .catch(function(response) {
         $('#autofillerror').fadeIn();
+		updPreview();
       });
+	  
   }
   // Add event listeners - those trigger when something gets typed or changed
   document.getElementsByName("steamid")[0].addEventListener('blur', updSteamID);
-  document.getElementsByName("gametitle")[0].addEventListener('input', updGameTitle);
-  document.getElementsByName("gametitle")[1].addEventListener('input', updGameTitle);
-  document.getElementsByName("appid")[0].addEventListener('blur', fetchBLAEO);
-  document.getElementsByName("appid")[1].addEventListener('blur', fetchBLAEO);
-  document.getElementsByName("playtime")[0].addEventListener('input', updPlaytime);
-  document.getElementsByName("playtime")[1].addEventListener('input', updPlaytime);
-  document.getElementsByName("cheevoearned")[0].addEventListener('input', updCheevoEarned);
-  document.getElementsByName("cheevoearned")[1].addEventListener('input', updCheevoEarned);
-  document.getElementsByName("cheevoall")[0].addEventListener('input', updCheevoAll);
-  document.getElementsByName("cheevoall")[1].addEventListener('input', updCheevoAll);
+	for (i=0; i < document.getElementsByName("gametitle").length; i++) {
+        document.getElementsByName("gametitle")[i].addEventListener('input', updGameTitle)
+      }
+	for (i=0; i < document.getElementsByName("appid").length; i++) {
+        document.getElementsByName("appid")[i].addEventListener('blur', fetchBLAEO)
+      }
+	for (i=0; i < document.getElementsByName("playtime").length; i++) {
+        document.getElementsByName("playtime")[i].addEventListener('input', updPlaytime)
+    }
+	for (i=0; i < document.getElementsByName("cheevoearned").length; i++) {
+        document.getElementsByName("cheevoearned")[i].addEventListener('input', updCheevoEarned)
+    }
+	for (i=0; i < document.getElementsByName("cheevoall").length; i++) {
+        document.getElementsByName("cheevoall")[i].addEventListener('input', updCheevoAll)
+    }
+	for (i=0; i < document.getElementsByName("textcolor").length; i++) {
+        document.getElementsByName("textcolor")[i].addEventListener('input', updTextColor)
+    }
+	for (i=0; i < document.getElementsByName("barcolor").length; i++) {
+        document.getElementsByName("barcolor")[i].addEventListener('input', updBar1)
+    }
   document.getElementsByName("bgtype")[0].addEventListener('change', updBgType);
   document.getElementsByName("bgcolor1")[0].addEventListener('input', updBgColor1);
   document.getElementsByName("bgcolor1text")[0].addEventListener('input', updBgColor1);
   document.getElementsByName("bgcolor2")[0].addEventListener('input', updBgColor2);
   document.getElementsByName("bgcolor2text")[0].addEventListener('input', updBgColor2);
-  document.getElementsByName("textcolor")[0].addEventListener('input', updTextColor);
-  document.getElementsByName("textcolor")[1].addEventListener('input', updTextColor);
   document.getElementsByName("barnum")[0].addEventListener('change', updBarType);
-  document.getElementsByName("barcolor")[0].addEventListener('change', updBar1);
-  document.getElementsByName("barcolor")[1].addEventListener('change', updBar1);
   document.getElementsByName("customtext")[0].addEventListener('input', updCustomText);
 
   // Makes the Yes/No buttons work
@@ -156,7 +189,12 @@ $(document).ready(function() {
         document.getElementsByName("cheevoall")[i].readOnly = false;
       }
       document.getElementsByName("noachievements")[1].classList.remove('active');
-      achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>';
+      if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
   }
     else {
       for (i=0; i < document.getElementsByName("cheevoearned").length; i++) {
@@ -175,7 +213,12 @@ $(document).ready(function() {
         document.getElementsByName("cheevoall")[i].readOnly = false;
       }
       document.getElementsByName("noachievements")[0].classList.remove('active');
-      achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>';
+      if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
 
   }
     else {
@@ -214,6 +257,7 @@ $(document).ready(function() {
     useAutofill = "false";
     localStorage.autofill = false;
     $('#autofillwarning').hide();
+	$('#autofillerror').fadeOut();
   });
   $(barAlwaysPreviewOn).click(function() {
     barAlwaysPreview = true;
@@ -279,7 +323,12 @@ $(document).ready(function() {
     for (i=0; i < document.getElementsByName("cheevoearned").length; i++) {
       document.getElementsByName("cheevoearned")[i].value = tempVar;
     }
-    achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+    if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
     updPreview();
   }
 
@@ -297,7 +346,12 @@ $(document).ready(function() {
     for (i=0; i < document.getElementsByName("cheevoall").length; i++) {
       document.getElementsByName("cheevoall")[i].value = tempVar;
     }
-    achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+    if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
     updPreview();
   }
 
@@ -330,6 +384,13 @@ $(document).ready(function() {
     } else {
       $('#autofillwarning').hide();
     }
+	if (!vSteamID) {
+	achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
+	}
+	else {
+	achievementCode = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+	}
+    updPreview();
   }
 
   function updCustomText() {
@@ -422,6 +483,9 @@ $(document).ready(function() {
         break;
       case "wont-play":
         vBarColor = "#D9534F";
+        break;
+	  case "never-played":
+        vBarColor = "#EEEEEE";
         break;
       default:
         vBarColor = tempVar;
