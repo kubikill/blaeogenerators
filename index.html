@@ -4,20 +4,19 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-	    crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX"
-	    crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/solid.css" integrity="sha384-HTDlLIcgXajNzMJv5hiW5s2fwegQng6Hi+fN6t5VAcwO/9qbg2YEANIyKBlqLsiT"
-	    crossorigin="anonymous">
+	 crossorigin="anonymous">
+	<script src="https://use.fontawesome.com/fba1eae16c.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Arimo|Oswald" media="all" rel="stylesheet">
 	<title>BLAEO Generators</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	    crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	    crossorigin="anonymous"></script>
-	<script src="bargeneratorv1o1.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.8.6/dist/showdown.min.js" crossorigin="anonymous"></script>
+	<script src="bargeneratorv1o2.js"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
@@ -76,7 +75,7 @@
 			border-radius: .25rem !important;
 		}
 
-		.arrow::before {
+		.copyarrow::before {
 			border-right-color: #28A745 !important;
 		}
 
@@ -132,9 +131,44 @@
 		#generated {
 			margin-top: 10px;
 		}
+
+		#panelpreview h4 {
+			font-family: Oswald, Arial, sans-serif;
+			line-height: 1.3;
+			font-size: 18px;
+		}
+
+		.media-body {
+			font-size: 14px;
+		}
+
+		@-webkit-keyframes progress-bar-anim {
+			from {
+				background-position: 40px 0
+			}
+
+			to {
+				background-position: 0 0
+			}
+		}
+
+		@keyframes progress-bar-anim {
+			from {
+				background-position: 40px 0
+			}
+
+			to {
+				background-position: 0 0
+			}
+		}
+
+		.progress-bar-animated {
+			animation: progress-bar-anim 2s linear infinite;
+		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="./assets/gamebox.css">
 	<link rel="stylesheet" type="text/css" href="./assets/progressbar.css">
+	<link rel="stylesheet" type="text/css" href="./assets/panel.css">
 </head>
 
 <body>
@@ -145,12 +179,12 @@
 				<a href="https://www.backlog-assassins.net/" target="_blank">
 					<img src="assets/blaeologo.png" class="d-inline-block align-top">
 				</a> Generators
-				<small class="text-muted">v1.1</small>
+				<small class="text-muted">v1.2</small>
 			</span>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="collapse navbar-collapse" id="topnavbar">
 				<div class="navbar-nav align-middle">
 					<ul class="nav nav-pills" id="pills-tab" role="tablist">
 						<li class="nav-item">
@@ -175,6 +209,9 @@
 				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 					<li class="nav-item">
 						<a class="nav-link active btn-lg" id="bartab" data-toggle="pill" href="#bargenerator" role="tab">Bar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn-lg" id="paneltab" data-toggle="pill" href="#panelgenerator" role="tab">Panel</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link btn-lg" id="gameboxtab" data-toggle="pill" href="#gameboxgenerator" role="tab">Game box</a>
@@ -212,29 +249,29 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="appid">Game's AppID:</label>
-										<input class="form-control" type="number" name="appid" id="appid" placeholder="220" data-toggle="tooltip" data-placement="bottom"
-										    title="Tooltip on bottom">
+										<input class="form-control appid" id="appid" type="number" placeholder="220" data-toggle="tooltip" data-placement="bottom"
+										 title="Tooltip on bottom">
 										<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
 									</div>
 									<div class="col">
 										<label for="gametitle" class="firstinputs">Game title:</label>
-										<input class="form-control" type="text" name="gametitle" id="gametitle" placeholder="Half-Life 2">
+										<input class="form-control gametitle" id="gametitle" type="text" placeholder="Half-Life 2">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="playtime">Playtime:</label>
-										<input class="form-control" type="number" step="0.1" name="playtime" placeholder="0">
+										<input class="form-control playtime" id="playtime" type="number" step="0.1" placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
 										<label for="cheevoearned" style="clear: right;">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control" name="cheevoearned" min="0" placeholder="0">
+											<input type="number" class="form-control cheevoearned" id="cheevoearned" min="0" placeholder="0">
 											<div class="input-group-append">
 												<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
 											</div>
-											<input type="number" class="form-control" name="cheevoall" id="cheevoall" min="0" placeholder="0">
+											<input type="number" class="form-control cheevoall" min="0" placeholder="0">
 										</div>
 										<small class="form-text text-muted">Use "0" if game has no achievements.</small>
 									</div>
@@ -255,8 +292,8 @@
 										</select>
 									</div>
 									<div class="col">
-										<label for="bgtype" class="firstinputs" style="margin-bottom: .7rem;">Game image position:</label>
-										<select class="form-control" name="imagepos" id="imagepos">
+										<label for="imagepos" class="firstinputs" style="margin-bottom: .7rem;">Game image position:</label>
+										<select class="form-control imagepos" id="imagepos">
 											<option value="left">Left</option>
 											<option value="right" selected>Right</option>
 										</select>
@@ -264,7 +301,7 @@
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="bgcolor1">Background color 1:</label>
+										<label for="bgcolor1text">Background color 1:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" name="bgcolor1" id="bgcolor1" style="margin: 0; padding: 0; width: 60px; height: 42px;">
@@ -273,11 +310,11 @@
 										</div>
 									</div>
 									<div class="col">
-										<label for="bgcolor2">Background color 2:</label>
+										<label for="bgcolor2text">Background color 2:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" name="bgcolor2" id="bgcolor2" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												    disabled="true">
+												 disabled="true">
 											</div>
 											<input class="form-control" type="text" name="bgcolor2text" id="bgcolor2text" maxlength="7" value="#000000" disabled="true">
 										</div>
@@ -286,7 +323,7 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="barpos">Completion bar position:</label>
-										<select class="form-control" name="barpos" id="barpos">
+										<select class="form-control barpos" id="barpos">
 											<option value="left">Left</option>
 											<option value="right">Right</option>
 											<option value="hide">Hide</option>
@@ -294,7 +331,7 @@
 									</div>
 									<div class="col">
 										<label for="barcolor">Completion bar color:</label>
-										<select class="form-control" name="barcolor" id="barcolor">
+										<select class="form-control barcolor" id="barcolor">
 											<option value="completed">Completed (blue)</option>
 											<option value="beaten">Beaten (green)</option>
 											<option value="unfinished">Unfinished (orange)</option>
@@ -308,46 +345,239 @@
 										<label for="titlecolor">Title color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" name="titlecolor" id="titlecolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												    value="#FFFFFF">
+												<input class="form-control titlecolor" type="color" id="titlecolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
+												 value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" name="titlecolor" id="titlecolor" maxlength="7" value="#FFFFFF">
+											<input class="form-control titlecolor" type="text" id="titlecolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 									<div class="col">
 										<label for="textcolor">Text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" name="textcolor" id="textcolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												    value="#FFFFFF">
+												<input class="form-control textcolor" type="color" id="textcolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
+												 value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" name="textcolor" id="textcolor" maxlength="7" value="#FFFFFF">
+											<input class="form-control textcolor" type="text" id="textcolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="customtext">Custom text:</label>
-										<input class="form-control" type="text" name="customtext" id="customtext" placeholder="You can put anything here">
+										<input class="form-control customtext" type="text" id="customtext" placeholder="You can put anything here">
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#barreview">Review</legend>
+							<div class="show" id="barreview">
+								<div class="form-row">
+									<div class="col">
+										<label for="reviewtrigger">Review trigger method:</label>
+										<select class="form-control reviewtrigger" id="reviewtrigger">
+											<option value="bar">Click on bar</option>
+											<option value="button">Click on button</option>
+										</select>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="review">Review:</label>
-										<textarea class="form-control" type="text" name="review" id="review" placeholder="This game is awesome and stuff" rows="4"></textarea>
-										<small class="form-text text-muted">Leave blank to disable. HTML tags are supported.
-											<b>Refreshing or closing the page will wipe the review!</b>
+										<textarea class="form-control review" type="text" id="review" placeholder="This game is awesome and stuff" rows="4"></textarea>
+										<span class="dropdown">
+											<button class="btn btn-outline-primary dropdown-toggle load" type="button" style="margin-top: 4px;" id="autosave1" data-placement="right"
+											 data-content="Loaded!" data-toggle="dropdown">
+												Load
+											</button>
+											<div class="dropdown-menu">
+												<button class="dropdown-item autosave" type="button" value="#autosave1">Autosave -
+													<span class="autosavedate"></span>
+												</button>
+												<button class="dropdown-item save1load" type="button" value="#autosave1">Save 1
+													<span class="save1title"></span>
+												</button>
+												<button class="dropdown-item save2load" type="button" value="#autosave1">Save 2
+													<span class="save2title"></span>
+												</button>
+												<button class="dropdown-item save3load" type="button" value="#autosave1">Save 3
+													<span class="save3title"></span>
+												</button>
+											</div>
+										</span>
+										<span class="dropdown">
+											<button class="btn btn-outline-primary dropdown-toggle save" type="button" style="margin-top: 4px;" id="load1" data-placement="right"
+											 data-content="Saved!" data-toggle="dropdown">
+												Save
+											</button>
+											<div class="dropdown-menu">
+												<button class="dropdown-item save1" type="button" value="#load1">Save 1
+													<span class="save1title"></span>
+												</button>
+												<button class="dropdown-item save2" type="button" value="#load1">Save 2
+													<span class="save2title"></span>
+												</button>
+												<button class="dropdown-item save3" type="button" value="#load1">Save 3
+													<span class="save3title"></span>
+												</button>
+											</div>
+										</span>
+										<small class="form-text text-muted">Leave blank to disable review. Markdown and HTML tags are supported. Reviews are saved automatically after refreshing/leaving
+											the page.
 										</small>
 									</div>
 								</div>
+							</div>
 						</fieldset>
-						<p>(click on the bar to show the review)</p>
 						<div id="preview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;"></div>
 						<h3 style="margin-top: 8px;">Code to copy:
 							<button class="copybutton btn btn-outline-primary" id="copybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							    data-placement="right" data-content="Copied!">Copy to clipboard</button>
+							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
 						</h3>
 						<textarea id="generated" class="generatedtext form-control" readonly="readonly" rows="6" ;></textarea>
+					</div>
+					<!--Panel generator-->
+					<div class="tab-pane fade" id="panelgenerator" role="tabpanel">
+						<!--Game data fields-->
+						<div class="alert alert-danger show" role="alert" id="autofillerror3" style="display: none;">
+							<strong>Failed to fetch data.</strong>
+							<a data-toggle="collapse" href="#errorreasons3">Possible reasons:</a>
+							<div class="collapse" id="errorreasons3">
+								<ul style="margin-bottom: 0;">
+									<li>Invalid AppID/SteamID64</li>
+									<li>You don't own this game</li>
+									<li>You are not a BLAEO member</li>
+									<li>Problems with internet connection</li>
+									<li>BLAEO website is down</li>
+								</ul>
+							</div>
+						</div>
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelgamedata">Game data</legend>
+							<div class="show" id="panelgamedata">
+								<div class="form-row">
+									<div class="col">
+										<label for="appid3">Game's AppID:</label>
+										<input class="form-control appid" id="appid3" type="number" placeholder="220" data-toggle="tooltip" data-placement="bottom"
+										 title="Tooltip on bottom">
+										<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
+									</div>
+									<div class="col">
+										<label for="gametitle3" class="firstinputs">Game title:</label>
+										<input class="form-control gametitle" id="gametitle3" type="text" placeholder="Half-Life 2">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="playtime3">Playtime:</label>
+										<input class="form-control playtime" id="playtime3" type="number" step="0.1" placeholder="0">
+										<small class="form-text text-muted">Specified in hours.</small>
+									</div>
+									<div class="col">
+										<label for="cheevoearned3" style="clear: right;">Achievements:</label>
+										<div class="input-group">
+											<input type="number" class="form-control cheevoearned" id="cheevoearned3" min="0" placeholder="0">
+											<div class="input-group-append">
+												<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
+											</div>
+											<input type="number" class="form-control cheevoall" min="0" placeholder="0">
+										</div>
+										<small class="form-text text-muted">Use "0" if game has no achievements.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="rating1">Rating:</label>
+										<input class="form-control rating" id="rating1" type="text" placeholder="8/10">
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<!--Customization fields-->
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelcustomization">Customization</legend>
+							<div class="show" id="panelcustomization">
+								<div class="form-row">
+									<div class="col">
+										<label for="panelcolor">Background/text color:</label>
+										<select class="form-control" id="panelcolor">
+											<option value="info">Blue</option>
+											<option value="success">Green</option>
+											<option value="warning">Light yellow</option>
+											<option value="danger">Red</option>
+											<option value="default">Light gray</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="barcolor3">Completion bar color:</label>
+										<select class="form-control barcolor" id="barcolor3">
+											<option value="completed">Completed (blue)</option>
+											<option value="beaten">Beaten (green)</option>
+											<option value="unfinished">Unfinished (orange)</option>
+											<option value="wont play">Won't play (red)</option>
+											<option value="never played">Never played (white)</option>
+										</select>
+									</div>
+								</div>
+						</fieldset>
+						<fieldset class="border rounded form-group" style="padding: 12px;">
+							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelreview">Review</legend>
+							<div class="show" id="panelreview">
+								<div class="form-row">
+									<div class="col">
+										<label for="panelreview">Review:</label>
+										<textarea class="form-control review" type="text" id="panelreview" placeholder="This game is awesome and stuff" rows="4"></textarea>
+										<span class="dropdown">
+											<button class="btn btn-outline-primary dropdown-toggle load" type="button" style="margin-top: 4px;" id="autosave2" data-placement="right"
+											 data-content="Loaded!" data-toggle="dropdown">
+												Load
+											</button>
+											<div class="dropdown-menu">
+												<button class="dropdown-item autosave" type="button" value="#autosave2">Autosave -
+													<span class="autosavedate"></span>
+												</button>
+												<button class="dropdown-item save1load" type="button" value="#autosave2">Save 1
+													<span class="save1title"></span>
+												</button>
+												<button class="dropdown-item save2load" type="button" value="#autosave2">Save 2
+													<span class="save2title"></span>
+												</button>
+												<button class="dropdown-item save3load" type="button" value="#autosave2">Save 3
+													<span class="save3title"></span>
+												</button>
+											</div>
+										</span>
+										<span class="dropdown">
+											<button class="btn btn-outline-primary dropdown-toggle save" type="button" style="margin-top: 4px;" id="load2" data-placement="right"
+											 data-content="Saved!" data-toggle="dropdown">
+												Save
+											</button>
+											<div class="dropdown-menu">
+												<button class="dropdown-item save1" type="button" value="#load2">Save 1
+													<span class="save1title"></span>
+												</button>
+												<button class="dropdown-item save2" type="button" value="#load2">Save 2
+													<span class="save2title"></span>
+												</button>
+												<button class="dropdown-item save3" type="button" value="#load2">Save 3
+													<span class="save3title"></span>
+												</button>
+											</div>
+										</span>
+										<small class="form-text text-muted">Leave blank to disable. Markdown and HTML tags are supported. Reviews are saved automatically after refreshing/leaving
+											the page.
+										</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div id="panelpreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;"></div>
+						<h3 style="margin-top: 8px;">Code to copy:
+							<button class="copybutton btn btn-outline-primary" id="panelcopybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
+							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
+						</h3>
+						<textarea id="panelgenerated" class="panelgeneratedtext form-control" readonly="readonly" rows="6" ;></textarea>
 						</div>
 						<!--Game box generator-->
 						<div class="tab-pane fade" id="gameboxgenerator" role="tabpanel">
@@ -369,29 +599,29 @@
 								<div class="show" id="boxgamedata">
 									<div class="form-row">
 										<div class="col">
-											<label for="appid" class="firstinputs">Game's AppID:</label>
-											<input class="form-control" type="number" name="appid" id="appid" placeholder="220">
+											<label for="appid2" class="firstinputs">Game's AppID:</label>
+											<input class="form-control appid" id="appid2" type="number" placeholder="220">
 											<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
 										</div>
 										<div class="col">
-											<label for="gametitle" class="firstinputs">Game title:</label>
-											<input class="form-control" type="text" name="gametitle" id="gametitle" placeholder="Half-Life 2">
+											<label for="gametitle2" class="firstinputs">Game title:</label>
+											<input class="form-control gametitle" id="gametitle2" type="text" placeholder="Half-Life 2">
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col">
-											<label for="playtime">Playtime:</label>
-											<input class="form-control" type="number" name="playtime" id="playtime" placeholder="0">
+											<label for="playtime2">Playtime:</label>
+											<input class="form-control playtime" id="playtime2" type="number" step="0.1" placeholder="0">
 											<small class="form-text text-muted">Specified in hours.</small>
 										</div>
 										<div class="col">
-											<label for="cheevoearned" style="clear: right;">Achievements:</label>
+											<label for="cheevoearned2" style="clear: right;">Achievements:</label>
 											<div class="input-group">
-												<input type="number" class="form-control" name="cheevoearned" id="barcheevoearned" min="0" placeholder="0">
+												<input type="number" class="form-control cheevoearned" id="cheevoearned2" min="0" placeholder="0">
 												<div class="input-group-append">
 													<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
 												</div>
-												<input type="number" class="form-control" name="cheevoall" id="barcheevoall" min="0" placeholder="0">
+												<input type="number" class="form-control cheevoall" min="0" placeholder="0">
 											</div>
 										</div>
 									</div>
@@ -402,8 +632,8 @@
 								<div class="show" id="boxcustomization">
 									<div class="form-row">
 										<div class="col">
-											<label class="firstinputs" for="barcolor">Completion bar color:</label>
-											<select class="form-control" name="barcolor" id="barcolor">
+											<label class="firstinputs" for="barcolor2">Completion bar color:</label>
+											<select class="form-control barcolor" id="barcolor2">
 												<option value="completed">Completed (blue)</option>
 												<option value="beaten">Beaten (green)</option>
 												<option value="unfinished">Unfinished (orange)</option>
@@ -425,12 +655,12 @@
 							<h3 style="margin-top: 8px;">
 								Code to copy:
 								<button class="copybutton btn btn-outline-primary" id="boxcopybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-								    data-placement="right" data-content="Copied!">
+								 data-placement="right" data-content="Copied!">
 									Copy to clipboard
 								</button>
 							</h3>
 							<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxgenerated" class="boxgeneratedtext form-control"
-							    readonly="readonly" rows="6"></textarea>
+							 readonly="readonly" rows="6"></textarea>
 							<div id="boxpreview" style="width: 192px; float: left;">
 							</div>
 						</div>
@@ -439,7 +669,7 @@
 							<div class="alert alert-warning" style="display: none;" id="uncategorizedwarning" role="alert">
 								You have
 								<span id="uncategorized"></span> uncategorized game
-								<span id="multipleuncategorized"></span>! Go
+								<span id="multipleuncategorized"></span> Go
 								<span id="uncategorizedlink"></span> to categorize
 								<span id="multipleuncategorized2"></span>.
 							</div>
@@ -458,31 +688,106 @@
 									<div class="form-row">
 										<div class="col">
 											<label for="completed">Completed:</label>
-											<input class="form-control" type="number" name="completed" id="completed" min="0" placeholder="0">
+											<div class="input-group">
+												<input class="form-control" type="number" id="completed" min="0" placeholder="0">
+												<div class="input-group-append">
+													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
+													<div class="dropdown-menu">
+														<button class="dropdown-item completeddecor" value="none">
+															<span id="completednone">
+																<i class="fa fa-check-circle"></i>
+															</span>None</button>
+														<button class="dropdown-item completeddecor" value="striped">
+															<span id="completedstriped"></span>Striped</button>
+														<button class="dropdown-item completeddecor" value="animated">
+															<span id="completedanimated"></span>Striped w/ animation</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col">
-											<label for="completed">Beaten:</label>
-											<input class="form-control" type="number" name="beaten" id="beaten" min="0" placeholder="0">
+											<label for="beaten">Beaten:</label>
+											<div class="input-group">
+												<input class="form-control" type="number" id="beaten" min="0" placeholder="0">
+												<div class="input-group-append">
+													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
+													<div class="dropdown-menu">
+														<button class="dropdown-item beatendecor" value="none">
+															<span id="beatennone">
+																<i class="fa fa-check-circle"></i>
+															</span>None</button>
+														<button class="dropdown-item beatendecor" value="striped">
+															<span id="beatenstriped"></span>Striped</button>
+														<button class="dropdown-item beatendecor" value="animated">
+															<span id="beatenanimated"></span>Striped w/ animation</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col">
-											<label for="completed">Unfinished:</label>
-											<input class="form-control" type="number" name="unfinished" id="unfinished" min="0" placeholder="0">
+											<label for="unfinished">Unfinished:</label>
+											<div class="input-group">
+												<input class="form-control" type="number" id="unfinished" min="0" placeholder="0">
+												<div class="input-group-append">
+													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
+													<div class="dropdown-menu">
+														<button class="dropdown-item unfinisheddecor" value="none">
+															<span id="unfinishednone">
+																<i class="fa fa-check-circle"></i>
+															</span>None</button>
+														<button class="dropdown-item unfinisheddecor" value="striped">
+															<span id="unfinishedstriped"></span>Striped</button>
+														<button class="dropdown-item unfinisheddecor" value="animated">
+															<span id="unfinishedanimated"></span>Striped w/ animation</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col">
-											<label for="completed">Never played:</label>
-											<input class="form-control" type="number" name="neverplayed" id="neverplayed" min="0" placeholder="0">
+											<label for="neverplayed">Never played:</label>
+											<div class="input-group">
+												<input class="form-control" type="number" id="neverplayed" min="0" placeholder="0">
+												<div class="input-group-append">
+													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
+													<div class="dropdown-menu">
+														<button class="dropdown-item neverplayeddecor" value="none">
+															<span id="neverplayednone">
+																<i class="fa fa-check-circle"></i>
+															</span>None</button>
+														<button class="dropdown-item neverplayeddecor" value="striped">
+															<span id="neverplayedstriped"></span>Striped</button>
+														<button class="dropdown-item neverplayeddecor" value="animated">
+															<span id="neverplayedanimated"></span>Striped w/ animation</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col">
-											<label for="completed">Won't play:</label>
-											<input class="form-control" type="number" name="wontplay" id="wontplay" min="0" placeholder="0">
+											<label for="wontplay">Won't play:</label>
+											<div class="input-group">
+												<input class="form-control" type="number" id="wontplay" min="0" placeholder="0">
+												<div class="input-group-append">
+													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
+													<div class="dropdown-menu">
+														<button class="dropdown-item wontplaydecor" value="none">
+															<span id="wontplaynone">
+																<i class="fa fa-check-circle"></i>
+															</span>None</button>
+														<button class="dropdown-item wontplaydecor" value="striped">
+															<span id="wontplaystriped"></span>Striped</button>
+														<button class="dropdown-item wontplaydecor" value="animated">
+															<span id="wontplayanimated"></span>Striped w/ animation</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -491,7 +796,7 @@
 							</div>
 							<h3 style="margin-top: 8px;">Code to copy:
 								<button class="copybutton btn btn-outline-primary" id="progressbarcopybutton" style="vertical-align:top; width: initial;"
-								    data-toggle="popover" data-placement="right" data-content="Copied!">Copy to clipboard</button>
+								 data-toggle="popover" data-placement="right" data-content="Copied!">Copy to clipboard</button>
 							</h3>
 							<textarea id="progressbargenerated" class="progressbargenerated form-control" readonly="readonly" rows="6" ;></textarea>
 						</div>
@@ -521,7 +826,7 @@
 							</div>
 							<div class="col">
 								<label for="steamid">Your SteamID64:</label>
-								<input class="form-control" type="number" name="steamid" id="steamid">
+								<input class="form-control" type="number" id="steamid">
 								<small class="form-text text-muted">
 									<a href="https://steamid.io/" target="_blank">Use this website</a> to get your SteamID64.</small>
 							</div>
@@ -531,8 +836,14 @@
 				<!--About tab-->
 				<div class="tab-pane fade" id="about" role="tabpanel" align="center">
 					<h2 align="center">BLAEO Generators
-						<small class="text-muted">v1.1</small>
+						<small class="text-muted">v1.2</small>
 					</h2>
+					<p>A tool for generating bars, game boxes, panels and progress bars for use with BLAEO posts.</p>
+					<p>
+						<a href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/">
+							<strong>Steam forum post</strong>
+						</a> - post your feedback, suggestions and bug reports there
+					</p>
 					<p>Developed by
 						<strong>
 							<a href="http://steamcommunity.com/id/kubikill" target="_blank">kubikill</a>
@@ -545,6 +856,17 @@
 					<p>Thanks to mandrill for the help with the autofilling feature!</p>
 					<h2>Changelog:</h2>
 					<br>
+					<h4 align="left">v1.2 - May 25, 2018</h4>
+					<ul align="left">
+						<li>
+							<b>Added a panel generator</b>
+						</li>
+						<li>Added Markdown support to reviews</li>
+						<li>Added automatic and manual saving for reviews</li>
+						<li>Bar: Added "click button to view review"</li>
+						<li>Progress bar: Added striped/animated bars</li>
+						<li>Miscellaneous small changes</li>
+					</ul>
 					<h4 align="left">v1.1 - April 21, 2018</h4>
 					<ul align="left">
 						<li>
