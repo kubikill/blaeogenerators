@@ -313,7 +313,7 @@ $(document).ready(function () {
         if (!vSteamID) {
           achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
         } else {
-          achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+          achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
         }
         updPreview();
       });
@@ -505,8 +505,8 @@ $(document).ready(function () {
         achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
         achievementCodeBox = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
       } else {
-        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
-        achievementCodeBox = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+        achievementCodeBox = '<a href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
       }
     }
     updPreview();
@@ -534,8 +534,8 @@ $(document).ready(function () {
         achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
         achievementCodeBox = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
       } else {
-        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
-        achievementCodeBox = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+        achievementCodeBox = '<a href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
       }
     }
     updPreview();
@@ -573,7 +573,7 @@ $(document).ready(function () {
     if (!vSteamID) {
       achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
     } else {
-      achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+      achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
     }
     updPreview();
   }
@@ -629,7 +629,7 @@ $(document).ready(function () {
       if (!vSteamID) {
         achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
       } else {
-        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+        achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;" href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
       }
     }
     updPreview();
@@ -1011,14 +1011,14 @@ $(document).ready(function () {
     updBg();
     updBars();
     // Bar
-    preview.innerHTML = '<div ' + reviewCode2Bar + 'style="font-family: Oswald, Arial, sans-serif; line-height: 1; font-weight: 500; box-sizing: border-box; position: relative; min-height: 69px;' + bgCode + '; text-shadow: 1px 1px 0 black; ' + barCode + '; ' + reviewPointer + '"><div style="float: ' + vImagePos + ';"><a href="http://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0; padding-top: 5px; font-size: 22px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 11px; font-family: Arimo; line-height: 1.4; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
-    viewCodeElement.textContent = '<div ' + reviewCode2Bar + 'style="position: relative; min-height: 69px; ' + bgCode + '; text-shadow: 1px 1px 0 black; ' + reviewPointer + barCode + ';"><div style="float: ' + vImagePos + ';"><a href="http://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0px; padding-top: 5px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 1rem; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
+    preview.innerHTML = '<div ' + reviewCode2Bar + 'style="font-family: Oswald, Arial, sans-serif; line-height: 1; font-weight: 500; box-sizing: border-box; position: relative; min-height: 69px;' + bgCode + '; text-shadow: 1px 1px 0 black; ' + barCode + '; ' + reviewPointer + '"><div style="float: ' + vImagePos + ';"><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0; padding-top: 5px; font-size: 22px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 11px; font-family: Arimo; line-height: 1.4; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
+    viewCodeElement.textContent = '<div ' + reviewCode2Bar + 'style="position: relative; min-height: 69px; ' + bgCode + '; text-shadow: 1px 1px 0 black; ' + reviewPointer + barCode + ';"><div style="float: ' + vImagePos + ';"><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0px; padding-top: 5px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 1rem; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
     // Game box
-    boxPreview.innerHTML = '<ul class="games"><li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="http://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li></ul>';
-    boxViewCodeElement.textContent = '<li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="http://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li>';
+    boxPreview.innerHTML = '<ul class="games"><li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li></ul>';
+    boxViewCodeElement.textContent = '<li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li>';
     // Panel
-    panelPreview.innerHTML = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="http://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div>' + reviewCodePanel + '</div>';
-    panelViewCodeElement.textContent = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="http://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div> ' + reviewCodePanel + '</div>';
+    panelPreview.innerHTML = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div>' + reviewCodePanel + '</div>';
+    panelViewCodeElement.textContent = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div> ' + reviewCodePanel + '</div>';
   }
 
   function updProgressBarPreview() {
@@ -1033,8 +1033,8 @@ $(document).ready(function () {
       achievementCode = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
       achievementCodeBox = vCheevoEarned + ' of ' + vCheevoAll + ' achievements'
     } else {
-      achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;"href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
-      achievementCodeBox = '<a href="http://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+      achievementCode = '<a style="color: ' + vTextColor + '; text-decoration: underline;"href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
+      achievementCodeBox = '<a href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
     }
   }
   updPreview();
