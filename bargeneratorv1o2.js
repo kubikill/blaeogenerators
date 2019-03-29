@@ -73,7 +73,10 @@ $(document).ready(function () {
     useMargin = "",
     vRating = "8/10",
     randomString,
-    randomStringPool = "abcdefghijklmnopqrstuvwxyz1234567890";
+    randomStringPool = "abcdefghijklmnopqrstuvwxyz1234567890",
+    vScreenshot = "",
+    vScreenshotPanel = "",
+    lb = "";
   vSteamID = localStorage.steamID;
   // Get IDs of stuff
   var previewElement = document.getElementById("preview");
@@ -97,8 +100,23 @@ $(document).ready(function () {
   var playtimeField = document.getElementById("playtime");
   var steamIDField = document.getElementById("steamid");
   // Copy to clipboard button code
-  var copyButton = document.querySelector('.copybutton');
+  var copyButton = document.querySelector('#copybutton');
   copyButton.addEventListener('click', function (event) {
+    updPreview();
+    var copyArea = document.querySelector('.generatedtext');
+    copyArea.select();
+    try {
+      viewCodeElement.select();
+      var successful = document.execCommand('copy');
+    } catch (err) {
+      console.log('Unable to copy');
+    }
+  })
+  var copyReadableButton = document.querySelector('#copyreadablebutton');
+  copyReadableButton.addEventListener('click', function (event) {
+    lb = "\n";
+    updPreview();
+    lb = "";
     var copyArea = document.querySelector('.generatedtext');
     copyArea.select();
     try {
@@ -110,6 +128,7 @@ $(document).ready(function () {
   })
   var boxCopyButton = document.querySelector('#boxcopybutton');
   boxCopyButton.addEventListener('click', function (event) {
+    updPreview();
     var copyArea = document.querySelector('.boxgeneratedtext');
     copyArea.select();
     try {
@@ -119,8 +138,23 @@ $(document).ready(function () {
       console.log('Unable to copy');
     }
   })
+  var boxCopyReadableButton = document.querySelector('#boxcopyreadablebutton');
+  boxCopyReadableButton.addEventListener('click', function (event) {
+    lb = "\n";
+    updPreview();
+    lb = "";
+    var copyArea = document.querySelector('.boxgeneratedtext');
+    copyArea.select();
+    try {
+      viewCodeElement.select();
+      var successful = document.execCommand('copy');
+    } catch (err) {
+      console.log('Unable to copy');
+    }
+  })
   var panelCopyButton = document.querySelector('#panelcopybutton');
   panelCopyButton.addEventListener('click', function (event) {
+    updPreview();
     var copyArea = document.querySelector('.panelgeneratedtext');
     copyArea.select();
     try {
@@ -130,12 +164,41 @@ $(document).ready(function () {
       console.log('Unable to copy');
     }
   })
+  var panelCopyReadableButton = document.querySelector('#panelcopyreadablebutton');
+  panelCopyReadableButton.addEventListener('click', function (event) {
+    lb = "\n";
+    updPreview();
+    lb = "";
+    var copyArea = document.querySelector('.panelgeneratedtext');
+    copyArea.select();
+    try {
+      viewCodeElement.select();
+      var successful = document.execCommand('copy');
+    } catch (err) {
+      console.log('Unable to copy');
+    }
+  })
   var progressBarCopyButton = document.querySelector('#progressbarcopybutton');
   progressBarCopyButton.addEventListener('click', function (event) {
+    updProgressBarPreview();
     var copyArea = document.querySelector('.progressbargenerated');
     copyArea.select();
     try {
       progressBarViewCodeElement.select();
+      var successful = document.execCommand('copy');
+    } catch (err) {
+      console.log('Unable to copy');
+    }
+  })
+  var progressBarCopyReadableButton = document.querySelector('#progressbarcopyreadablebutton');
+  progressBarCopyReadableButton.addEventListener('click', function (event) {
+    lb = "\n";
+    updProgressBarPreview();
+    lb = "";
+    var copyArea = document.querySelector('.progressbargenerated');
+    copyArea.select();
+    try {
+      viewCodeElement.select();
       var successful = document.execCommand('copy');
     } catch (err) {
       console.log('Unable to copy');
@@ -258,6 +321,7 @@ $(document).ready(function () {
   // Fetch cool stuff from BLAEO function. Also, update appID
   var fetchBLAEO = function () {
     vAppID = this.value;
+    updScreenshot("nopreview");
     var objLength = document.getElementsByClassName("appid").length;
     for (i = 0; i < objLength; i++) {
       document.getElementsByClassName("appid")[i].value = vAppID;
@@ -423,6 +487,18 @@ $(document).ready(function () {
   document.getElementById("fetchlibrary").addEventListener('click', fetchLibrary);
   document.getElementById("panelcolor").addEventListener('change', updPanelColor);
   document.getElementById("reviewtrigger").addEventListener('change', updReviewTrigger);
+  document.getElementById("screenshot1on").addEventListener('click', function() {
+    updScreenshot(true);
+  });
+  document.getElementById("screenshot1off").addEventListener('click', function() {
+    updScreenshot(false);
+  });
+  document.getElementById("screenshot2on").addEventListener('click', function() {
+    updScreenshot(true);
+  });
+  document.getElementById("screenshot2off").addEventListener('click', function() {
+    updScreenshot(false);
+  });
   // Makes the Yes/No buttons work
   var autofillOn = document.getElementById("autofillon");
   var autofillOff = document.getElementById("autofilloff");
@@ -609,6 +685,7 @@ $(document).ready(function () {
       vTitleColor = vTitleColor + "0"
     }
     titleColorPick.value = vTitleColor;
+    updScreenshot("nopreview");
     updPreview();
   }
 
@@ -994,6 +1071,28 @@ $(document).ready(function () {
     updProgressBarPreview();
   }
 
+  function updScreenshot(val) {
+    if (val && vSteamID) {
+      vScreenshot = ' <a style="color: '+ vTitleColor + '" href="https://steamcommunity.com/profiles/' + vSteamID + '/screenshots/?appid=' + vAppID + '" title="View Steam screenshots"><i class="fa fa-camera" style="font-size: 80%"></i></a>';
+      vScreenshotPanel = ' <a href="https://steamcommunity.com/profiles/' + vSteamID + '/screenshots/?appid=' + vAppID + '" title="View Steam screenshots"><i class="fa fa-camera"></i></a>';
+      document.getElementById("screenshot1on").classList.add("active");
+      document.getElementById("screenshot2on").classList.add("active");
+      document.getElementById("screenshot1off").classList.remove("active");
+      document.getElementById("screenshot2off").classList.remove("active");
+    } else {
+      vScreenshot = '';
+      vScreenshotPanel = '';
+      document.getElementById("screenshot1on").classList.remove("active");
+      document.getElementById("screenshot2on").classList.remove("active");
+      document.getElementById("screenshot1off").classList.add("active");
+      document.getElementById("screenshot2off").classList.add("active");
+    }
+    console.log(val);
+    if (val != "nopreview") {
+      updPreview();
+    }
+  }
+
   function calculateWidth() {
     widthCompleted = vCompleted / vLibrary * 100;
     widthCompleted.toFixed(4);
@@ -1011,19 +1110,19 @@ $(document).ready(function () {
     updBg();
     updBars();
     // Bar
-    preview.innerHTML = '<div ' + reviewCode2Bar + 'style="font-family: Oswald, Arial, sans-serif; line-height: 1; font-weight: 500; box-sizing: border-box; position: relative; min-height: 69px;' + bgCode + '; text-shadow: 1px 1px 0 black; ' + barCode + '; ' + reviewPointer + '"><div style="float: ' + vImagePos + ';"><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0; padding-top: 5px; font-size: 22px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 11px; font-family: Arimo; line-height: 1.4; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
-    viewCodeElement.textContent = '<div ' + reviewCode2Bar + 'style="position: relative; min-height: 69px; ' + bgCode + '; text-shadow: 1px 1px 0 black; ' + reviewPointer + barCode + ';"><div style="float: ' + vImagePos + ';"><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0px; padding-top: 5px; color: ' + vTitleColor + '">' + vGameTitle + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 1rem; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
+    preview.innerHTML = '<div ' + reviewCode2Bar + 'style="font-family: Oswald, Arial, sans-serif; line-height: 1; font-weight: 500; box-sizing: border-box; position: relative; min-height: 69px;' + bgCode + '; text-shadow: 1px 1px 0 black; ' + barCode + '; ' + reviewPointer + '"><div style="float: ' + vImagePos + ';"><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a></div><div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);"><h2 style="margin-bottom: 0; padding-top: 5px; font-size: 22px; color: ' + vTitleColor + '">' + vGameTitle + vScreenshot + '</h2><p style="margin-bottom: 0; padding-bottom: 6px; font-size: 11px; font-family: Arimo; line-height: 1.4; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p></div> ' + reviewCodeButton + '</div>' + reviewCodeBar + '<br>';
+    viewCodeElement.textContent = '<div ' + reviewCode2Bar + 'style="position: relative; min-height: 69px; ' + bgCode + '; text-shadow: 1px 1px 0 black; ' + reviewPointer + barCode + ';">' + lb + '<div style="float: ' + vImagePos + ';">' + lb + '<a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg" /></a>' + lb + '</div>' + lb + '<div style="padding-left: 1rem; ' + useMargin + ' width: calc(100% - 184px);">' + lb + '<h2 style="margin-bottom: 0px; padding-top: 5px; color: ' + vTitleColor + '">' + vGameTitle + vScreenshot + '</h2>' + lb + '<p style="margin-bottom: 0; padding-bottom: 6px; font-size: 1rem; color: ' + vTextColor + '">' + vPlaytime + ' hours, ' + achievementCode + '<br>' + vCustomText + '</p>' + lb + '</div> ' + lb + reviewCodeButton + '</div>' + lb + reviewCodeBar + '<br>';
     // Game box
     boxPreview.innerHTML = '<ul class="games"><li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li></ul>';
-    boxViewCodeElement.textContent = '<li class="game-thumbnail game game-' + boxBarColor + '"><div class="title">' + vGameTitle + '</div><a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a><div class="caption"><p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p></div></li>';
+    boxViewCodeElement.textContent = '<li class="game-thumbnail game game-' + boxBarColor + '">' + lb + '<div class="title">' + vGameTitle + '</div>' + lb + '<a href="https://store.steampowered.com/app/' + vAppID + '/" target="_blank"><img alt="' + vGameTitle + '" src="http://cdn.akamai.steamstatic.com/steam/apps/' + vAppID + '/capsule_184x69.jpg"></a>' + lb + '<div class="caption">' + lb + '<p>' + vPlaytime + ' hours playtime</p><p>' + achievementCodeBox + '</p>' + lb + '</div>' + lb + '</li>';
     // Panel
-    panelPreview.innerHTML = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div>' + reviewCodePanel + '</div>';
-    panelViewCodeElement.textContent = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i></font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div> ' + reviewCodePanel + '</div>';
+    panelPreview.innerHTML = '<div class="panel panel-' + vPanelColor + '"><div ' + reviewCode2Panel + ' class="panel-heading"><div style="' + barCode + '; float: left; padding-right: 10px;"><img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;"></div><div class="media-body"><h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank" title="Steam page"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i>' + vScreenshotPanel + '</font></a></h4><div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div><div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div><span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + '</div></div>' + reviewCodePanel + '</div>';
+    panelViewCodeElement.textContent = '<div class="panel panel-' + vPanelColor + '">' + lb + '<div ' + reviewCode2Panel + ' class="panel-heading">' + lb + '<div style="' + barCode + '; float: left; padding-right: 10px;">' + lb + '<img alt="' + vGameTitle + '" src="https://steamcdn-a.akamaihd.net/steam/apps/' + vAppID + '/header.jpg" style="min-height: 90px; max-height: 90px; width: 192.55px;">' + lb + '</div>' + lb + '<div class="media-body">' + lb + '<h4 class="media-heading">' + vGameTitle + ' <a href="https://store.steampowered.com/app/' + vAppID + '" target="_blank" title="Steam page"><font size="2px"><i aria-hidden="true" class="fa fa-external-link"></i>' + vScreenshotPanel + '</font></a></h4>' + lb + '<div><i aria-hidden="true" class="fa fa-star"></i> ' + vRating + '</div>' + lb + '<div><i class="fa fa-clock-o" aria-hidden="true"></i> ' + vPlaytime + ' hours</div>' + lb + '<span><i aria-hidden="true" class="fa fa-trophy"></i> ' + achievementCodeBox + '</span>' + reviewCode3 + lb + '</div>' + lb + '</div> ' + reviewCodePanel + lb + '</div>';
   }
 
   function updProgressBarPreview() {
     progressBarPreview.innerHTML = '<div class="list-progress"><div class="progress-bar game-completed ' + vCompletedDecorPreview + '" title="completed: ' + vCompleted + ' of ' + vLibrary + ' games" style="width: ' + widthCompleted + '%; padding-left: 0px;">' + Math.round(widthCompleted) + '%</div><div class="progress-bar game-beaten ' + vBeatenDecorPreview + '" title="beaten: ' + vBeaten + ' of ' + vLibrary + ' games" style="width: ' + widthBeaten + '%; padding-left: 0px;">' + Math.round(widthBeaten) + '%</div><div class="progress-bar game-unfinished ' + vUnfinishedDecorPreview + '" title="unfinished: ' + vUnfinished + ' of ' + vLibrary + ' games" style="width: ' + widthUnfinished + '%; padding-left: 0px;">' + Math.round(widthUnfinished) + '%</div><div class="progress-bar game-never-played ' + vNeverPlayedDecorPreview + '" title="never played: ' + vNeverPlayed + ' of ' + vLibrary + ' games" style="width: ' + widthNeverPlayed + '%; padding-left: 0px;">' + Math.round(widthNeverPlayed) + '%</div><div class="progress-bar game-wont-play ' + vWontPlayDecorPreview + '" title="won\'t play: ' + vWontPlay + ' of ' + vLibrary + ' games" style="width: ' + widthWontPlay + '%; padding-left: 0px;"> ' + Math.round(widthWontPlay) + '%</div></div>';
-    progressBarViewCodeElement.textContent = '<div class="list-progress"><div class="progress-bar game-completed ' + vCompletedDecor + '" title="completed: ' + vCompleted + ' of ' + vLibrary + ' games" style="width: ' + widthCompleted + '%; padding-left: 0px;">' + Math.round(widthCompleted) + '%</div><div class="progress-bar game-beaten ' + vBeatenDecor + '" title="beaten: ' + vBeaten + ' of ' + vLibrary + ' games" style="width: ' + widthBeaten + '%; padding-left: 0px;">' + Math.round(widthBeaten) + '%</div><div class="progress-bar game-unfinished ' + vUnfinishedDecor + '" title="unfinished: ' + vUnfinished + ' of ' + vLibrary + ' games" style="width: ' + widthUnfinished + '%; padding-left: 0px;">' + Math.round(widthUnfinished) + '%</div><div class="progress-bar game-never-played ' + vNeverPlayedDecor + '" title="never played: ' + vNeverPlayed + ' of ' + vLibrary + ' games" style="width: ' + widthNeverPlayed + '%; padding-left: 0px;">' + Math.round(widthNeverPlayed) + '%</div><div class="progress-bar game-wont-play ' + vWontPlayDecor + '" title="won\'t play: ' + vWontPlay + ' of ' + vLibrary + ' games" style="width: ' + widthWontPlay + '%; padding-left: 0px;"> ' + Math.round(widthWontPlay) + '%</div></div>';
+    progressBarViewCodeElement.textContent = '<div class="list-progress">' + lb + '<div class="progress-bar game-completed ' + vCompletedDecor + '" title="completed: ' + vCompleted + ' of ' + vLibrary + ' games" style="width: ' + widthCompleted + '%; padding-left: 0px;">' + Math.round(widthCompleted) + '%</div>' + lb + '<div class="progress-bar game-beaten ' + vBeatenDecor + '" title="beaten: ' + vBeaten + ' of ' + vLibrary + ' games" style="width: ' + widthBeaten + '%; padding-left: 0px;">' + Math.round(widthBeaten) + '%</div>' + lb + '<div class="progress-bar game-unfinished ' + vUnfinishedDecor + '" title="unfinished: ' + vUnfinished + ' of ' + vLibrary + ' games" style="width: ' + widthUnfinished + '%; padding-left: 0px;">' + Math.round(widthUnfinished) + '%</div>' + lb + '<div class="progress-bar game-never-played ' + vNeverPlayedDecor + '" title="never played: ' + vNeverPlayed + ' of ' + vLibrary + ' games" style="width: ' + widthNeverPlayed + '%; padding-left: 0px;">' + Math.round(widthNeverPlayed) + '%</div>' + lb + '<div class="progress-bar game-wont-play ' + vWontPlayDecor + '" title="won\'t play: ' + vWontPlay + ' of ' + vLibrary + ' games" style="width: ' + widthWontPlay + '%; padding-left: 0px;"> ' + Math.round(widthWontPlay) + '%</div>' + lb + '</div>';
   }
   if (vCheevoAll == 0) {
     achievementCode = 'no achievements';
@@ -1037,7 +1136,7 @@ $(document).ready(function () {
       achievementCodeBox = '<a href="https://steamcommunity.com/profiles/' + vSteamID + '/stats/' + vAppID + '/?tab=achievements">' + vCheevoEarned + ' of ' + vCheevoAll + ' achievements</a>'
     }
   }
-  updPreview();
+  updScreenshot(true);
   updProgressBarPreview();
   steamIDField.value = localStorage.steamID;
   useAutofill = localStorage.autofill;

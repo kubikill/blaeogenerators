@@ -165,6 +165,9 @@
 		.progress-bar-animated {
 			animation: progress-bar-anim 2s linear infinite;
 		}
+		label[for="screenshot1"], label[for="screenshot2"] {
+			display: block;
+		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="./assets/gamebox.css">
 	<link rel="stylesheet" type="text/css" href="./assets/progressbar.css">
@@ -179,7 +182,7 @@
 				<a href="https://www.backlog-assassins.net/" target="_blank">
 					<img src="assets/blaeologo.png" class="d-inline-block align-top">
 				</a> Generators
-				<small class="text-muted">v1.2</small>
+				<small class="text-muted">v1.21</small>
 			</span>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
 				<span class="navbar-toggler-icon"></span>
@@ -332,11 +335,11 @@
 									<div class="col">
 										<label for="barcolor">Completion bar color:</label>
 										<select class="form-control barcolor" id="barcolor">
-											<option value="completed">Completed (blue)</option>
-											<option value="beaten">Beaten (green)</option>
-											<option value="unfinished">Unfinished (orange)</option>
-											<option value="wont play">Won't play (red)</option>
-											<option value="never played">Never played (white)</option>
+											<option value="completed">Completed (blue) - #5BC0DE</option>
+											<option value="beaten">Beaten (green) - #5CB85C</option>
+											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
+											<option value="wont play">Won't play (red) - #D9534F</option>
+											<option value="never played">Never played (white) - #EEEEEE</option>
 										</select>
 									</div>
 								</div>
@@ -366,6 +369,20 @@
 									<div class="col">
 										<label for="customtext">Custom text:</label>
 										<input class="form-control customtext" type="text" id="customtext" placeholder="You can put anything here">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="screenshot2">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary active" id="screenshot1on" for="screenshot1on" style="margin-right: 10px">Yes
+												<input type="radio" value="true">
+											</label>
+											<label class="btn btn-outline-primary" id="screenshot1off" for="screenshot1off">No
+												<input type="radio" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">If clicked, the icon will link to your Steam screenshots for this game. Requires your SteamID64 to work.</small>
 									</div>
 								</div>
 							</div>
@@ -434,6 +451,8 @@
 						<h3 style="margin-top: 8px;">Code to copy:
 							<button class="copybutton btn btn-outline-primary" id="copybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
 							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
+							<button class="copybutton btn btn-outline-primary" id="copyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
+							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
 						</h3>
 						<textarea id="generated" class="generatedtext form-control" readonly="readonly" rows="6" ;></textarea>
 					</div>
@@ -512,12 +531,26 @@
 									<div class="col">
 										<label for="barcolor3">Completion bar color:</label>
 										<select class="form-control barcolor" id="barcolor3">
-											<option value="completed">Completed (blue)</option>
-											<option value="beaten">Beaten (green)</option>
-											<option value="unfinished">Unfinished (orange)</option>
-											<option value="wont play">Won't play (red)</option>
-											<option value="never played">Never played (white)</option>
+											<option value="completed">Completed (blue) - #5BC0DE</option>
+											<option value="beaten">Beaten (green) - #5CB85C</option>
+											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
+											<option value="wont play">Won't play (red) - #D9534F</option>
+											<option value="never played">Never played (white) - #EEEEEE</option>
 										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="screenshot2">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary active" id="screenshot2on" for="screenshot2on" style="margin-right: 10px">Yes
+												<input type="radio" value="true">
+											</label>
+											<label class="btn btn-outline-primary" id="screenshot2off" for="screenshot2off">No
+												<input type="radio" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">If clicked, the icon will link to your Steam screenshots for this game. Requires your SteamID64 to work.</small>
 									</div>
 								</div>
 						</fieldset>
@@ -576,6 +609,8 @@
 						<h3 style="margin-top: 8px;">Code to copy:
 							<button class="copybutton btn btn-outline-primary" id="panelcopybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
 							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
+							 <button class="copybutton btn btn-outline-primary" id="panelcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
+							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
 						</h3>
 						<textarea id="panelgenerated" class="panelgeneratedtext form-control" readonly="readonly" rows="6" ;></textarea>
 						</div>
@@ -634,11 +669,11 @@
 										<div class="col">
 											<label class="firstinputs" for="barcolor2">Completion bar color:</label>
 											<select class="form-control barcolor" id="barcolor2">
-												<option value="completed">Completed (blue)</option>
-												<option value="beaten">Beaten (green)</option>
-												<option value="unfinished">Unfinished (orange)</option>
-												<option value="wont play">Won't play (red)</option>
-												<option value="never played">Never played (white)</option>
+												<option value="completed">Completed (blue) - #5BC0DE</option>
+												<option value="beaten">Beaten (green) - #5CB85C</option>
+												<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
+												<option value="wont play">Won't play (red) - #D9534F</option>
+												<option value="never played">Never played (white) - #EEEEEE</option>
 											</select>
 										</div>
 									</div>
@@ -658,6 +693,8 @@
 								 data-placement="right" data-content="Copied!">
 									Copy to clipboard
 								</button>
+								<button class="copybutton btn btn-outline-primary" id="boxcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
+							 data-placement="right" data-content="Copied!">Copy with linebreaks code to clipboard</button>
 							</h3>
 							<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxgenerated" class="boxgeneratedtext form-control"
 							 readonly="readonly" rows="6"></textarea>
@@ -797,6 +834,8 @@
 							<h3 style="margin-top: 8px;">Code to copy:
 								<button class="copybutton btn btn-outline-primary" id="progressbarcopybutton" style="vertical-align:top; width: initial;"
 								 data-toggle="popover" data-placement="right" data-content="Copied!">Copy to clipboard</button>
+								 <button class="copybutton btn btn-outline-primary" id="progressbarcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
+							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
 							</h3>
 							<textarea id="progressbargenerated" class="progressbargenerated form-control" readonly="readonly" rows="6" ;></textarea>
 						</div>
@@ -836,7 +875,7 @@
 				<!--About tab-->
 				<div class="tab-pane fade" id="about" role="tabpanel" align="center">
 					<h2 align="center">BLAEO Generators
-						<small class="text-muted">v1.2</small>
+						<small class="text-muted">v1.21</small>
 					</h2>
 					<p>A tool for generating bars, game boxes, panels and progress bars for use with BLAEO posts.</p>
 					<p>
@@ -856,6 +895,12 @@
 					<p>Thanks to mandrill for the help with the autofilling feature!</p>
 					<h2>Changelog:</h2>
 					<br>
+					<h4 align="left">v1.21 - March 29, 2019</h4>
+					<ul align="left">
+						<li>Bar and Panel: Added screenshot button</li>
+						<li>Added "Copy with linebreaks to clipboard" buttons to export easier to read code</li>
+						<li>Added hex color codes to "Completion bar color"</li>
+					</ul>
 					<h4 align="left">v1.2 - May 25, 2018</h4>
 					<ul align="left">
 						<li>
