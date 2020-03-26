@@ -1,0 +1,1212 @@
+.panel,
+.post,
+.comment,
+div.profile-summary {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.panel-body,
+.post .body,
+.post .comment form,
+.comment .post form,
+.comment .body,
+.comment form {
+    padding: 15px
+}
+
+.panel-body:before,
+.post .body:before,
+.post .comment form:before,
+.comment .post form:before,
+.comment .body:before,
+.comment form:before,
+.panel-body:after,
+.post .body:after,
+.post .comment form:after,
+.comment .post form:after,
+.comment .body:after,
+.comment form:after {
+    content: " ";
+    display: table
+}
+
+.panel-body:after,
+.post .body:after,
+.post .comment form:after,
+.comment .post form:after,
+.comment .body:after,
+.comment form:after {
+    clear: both
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px
+}
+
+.panel-heading>.dropdown .dropdown-toggle,
+.navbar-nav .panel-heading>li.dropdown>img.avatar,
+.navbar-nav .post>.avatar .panel-heading>li.dropdown>img,
+.post>.avatar .navbar-nav .panel-heading>li.dropdown>img,
+.navbar-nav .comment>.avatar .panel-heading>li.dropdown>img,
+.comment>.avatar .navbar-nav .panel-heading>li.dropdown>img {
+    color: inherit
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit
+}
+
+.panel-title>a,
+.panel-title>small,
+.panel-title>.small,
+.panel-title>small>a,
+.panel-title>.small>a {
+    color: inherit
+}
+
+.panel-footer,
+.post .footer,
+.comment .footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.list-group,
+.post>.list-group,
+.comment>.list-group,
+div.profile-summary>.list-group,
+.panel>.panel-collapse>.list-group,
+.post>.panel-collapse>.list-group,
+.comment>.panel-collapse>.list-group,
+div.profile-summary>.panel-collapse>.list-group {
+    margin-bottom: 0
+}
+
+.panel>.list-group .list-group-item,
+.post>.list-group .list-group-item,
+.comment>.list-group .list-group-item,
+div.profile-summary>.list-group .list-group-item,
+.panel>.panel-collapse>.list-group .list-group-item,
+.post>.panel-collapse>.list-group .list-group-item,
+.comment>.panel-collapse>.list-group .list-group-item,
+div.profile-summary>.panel-collapse>.list-group .list-group-item {
+    border-width: 1px 0;
+    border-radius: 0
+}
+
+.panel>.list-group:first-child .list-group-item:first-child,
+.post>.list-group:first-child .list-group-item:first-child,
+.comment>.list-group:first-child .list-group-item:first-child,
+div.profile-summary>.list-group:first-child .list-group-item:first-child,
+.panel>.panel-collapse>.list-group:first-child .list-group-item:first-child,
+.post>.panel-collapse>.list-group:first-child .list-group-item:first-child,
+.comment>.panel-collapse>.list-group:first-child .list-group-item:first-child,
+div.profile-summary>.panel-collapse>.list-group:first-child .list-group-item:first-child {
+    border-top: 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px
+}
+
+.panel>.list-group:last-child .list-group-item:last-child,
+.post>.list-group:last-child .list-group-item:last-child,
+.comment>.list-group:last-child .list-group-item:last-child,
+div.profile-summary>.list-group:last-child .list-group-item:last-child,
+.panel>.panel-collapse>.list-group:last-child .list-group-item:last-child,
+.post>.panel-collapse>.list-group:last-child .list-group-item:last-child,
+.comment>.panel-collapse>.list-group:last-child .list-group-item:last-child,
+div.profile-summary>.panel-collapse>.list-group:last-child .list-group-item:last-child {
+    border-bottom: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child,
+.post>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child,
+.comment>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child,
+div.profile-summary>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0
+}
+
+.panel-heading+.list-group .list-group-item:first-child {
+    border-top-width: 0
+}
+
+.list-group+.panel-footer,
+.post .list-group+.footer,
+.comment .list-group+.footer {
+    border-top-width: 0
+}
+
+
+.panel>.table-responsive,
+.post>.table-responsive,
+.comment>.table-responsive,
+div.profile-summary>.table-responsive {
+    border: 0;
+    margin-bottom: 0
+}
+
+.panel-group {
+    margin-bottom: 20px
+}
+
+.panel-group .panel,
+.panel-group .post,
+.panel-group .comment,
+.panel-group div.profile-summary {
+    margin-bottom: 0;
+    border-radius: 4px
+}
+
+.panel-group .panel+.panel,
+.panel-group .post+.panel,
+.panel-group .comment+.panel,
+.panel-group div.profile-summary+.panel,
+.panel-group .panel+.post,
+.panel-group .post+.post,
+.panel-group .comment+.post,
+.panel-group div.profile-summary+.post,
+.panel-group .panel+.comment,
+.panel-group .post+.comment,
+.panel-group .comment+.comment,
+.panel-group div.profile-summary+.comment,
+.panel-group .panel+div.profile-summary,
+.panel-group .post+div.profile-summary,
+.panel-group .comment+div.profile-summary,
+.panel-group div.profile-summary+div.profile-summary {
+    margin-top: 5px
+}
+
+.panel-group .panel-heading {
+    border-bottom: 0
+}
+
+.panel-group .panel-heading+.panel-collapse>.panel-body,
+.panel-group .post .panel-heading+.panel-collapse>.body,
+.post .panel-group .panel-heading+.panel-collapse>.body,
+.panel-group .comment .post .panel-heading+.panel-collapse>form,
+.panel-group .comment .panel-heading+.panel-collapse>.body,
+.comment .panel-group .panel-heading+.panel-collapse>.body,
+.panel-group .comment .panel-heading+.panel-collapse>form,
+.comment .panel-group .panel-heading+.panel-collapse>form,
+.panel-group .panel-heading+.panel-collapse>.list-group {
+    border-top: 1px solid #ddd
+}
+
+.panel-group .panel-footer,
+.panel-group .post .footer,
+.post .panel-group .footer,
+.panel-group .comment .footer,
+.comment .panel-group .footer {
+    border-top: 0
+}
+
+.panel-group .panel-footer+.panel-collapse .panel-body,
+.panel-group .post .footer+.panel-collapse .panel-body,
+.post .panel-group .footer+.panel-collapse .panel-body,
+.panel-group .comment .footer+.panel-collapse .panel-body,
+.comment .panel-group .footer+.panel-collapse .panel-body,
+.panel-group .panel-footer+.panel-collapse .post .body,
+.post .panel-group .panel-footer+.panel-collapse .body,
+.panel-group .post .footer+.panel-collapse .body,
+.post .panel-group .footer+.panel-collapse .body,
+.panel-group .comment .post .footer+.panel-collapse form,
+.panel-group .panel-footer+.panel-collapse .comment .body,
+.comment .panel-group .panel-footer+.panel-collapse .body,
+.panel-group .comment .footer+.panel-collapse .body,
+.comment .panel-group .footer+.panel-collapse .body,
+.panel-group .panel-footer+.panel-collapse .comment form,
+.comment .panel-group .panel-footer+.panel-collapse form,
+.panel-group .post .footer+.panel-collapse .comment form,
+.comment .panel-group .post .footer+.panel-collapse form,
+.post .panel-group .footer+.panel-collapse .comment form,
+.panel-group .comment .footer+.panel-collapse form,
+.comment .panel-group .footer+.panel-collapse form {
+    border-bottom: 1px solid #ddd
+}
+
+.panel-default,
+.comment {
+    border-color: #ddd
+}
+
+.panel-default>.panel-heading,
+.comment>.panel-heading {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #ddd
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body,
+.comment>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-default>.panel-heading+.panel-collapse>.body,
+.post .comment>.panel-heading+.panel-collapse>.body,
+.post .comment>.panel-heading+.panel-collapse>form,
+.comment .post .panel-default>.panel-heading+.panel-collapse>form,
+.comment .panel-default>.panel-heading+.panel-collapse>.body,
+.comment>.panel-heading+.panel-collapse>.body,
+.comment .panel-default>.panel-heading+.panel-collapse>form,
+.comment>.panel-heading+.panel-collapse>form {
+    border-top-color: #ddd
+}
+
+.panel-default>.panel-heading .badge,
+.comment>.panel-heading .badge {
+    color: #f5f5f5;
+    background-color: #333333
+}
+
+.panel-default>.panel-footer+.panel-collapse>.panel-body,
+.comment>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-default>.footer+.panel-collapse>.panel-body,
+.post .comment>.footer+.panel-collapse>.panel-body,
+.comment .panel-default>.footer+.panel-collapse>.panel-body,
+.comment>.footer+.panel-collapse>.panel-body,
+.post .panel-default>.panel-footer+.panel-collapse>.body,
+.post .comment>.panel-footer+.panel-collapse>.body,
+.post .panel-default>.footer+.panel-collapse>.body,
+.post .comment>.panel-footer+.panel-collapse>form,
+.comment .post .panel-default>.panel-footer+.panel-collapse>form,
+.comment .panel-default>.panel-footer+.panel-collapse>.body,
+.comment>.panel-footer+.panel-collapse>.body,
+.post .comment>.footer+.panel-collapse>.body,
+.comment .panel-default>.footer+.panel-collapse>.body,
+.comment>.footer+.panel-collapse>.body,
+.comment .panel-default>.panel-footer+.panel-collapse>form,
+.comment>.panel-footer+.panel-collapse>form,
+.comment .post .panel-default>.footer+.panel-collapse>form,
+.post .comment>.footer+.panel-collapse>form,
+.comment .panel-default>.footer+.panel-collapse>form,
+.comment>.footer+.panel-collapse>form {
+    border-bottom-color: #ddd
+}
+
+.panel-primary,
+div.profile-summary {
+    border-color: #337ab7
+}
+
+.panel-primary>.panel-heading,
+div.profile-summary>.panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7
+}
+
+.panel-primary>.panel-heading+.panel-collapse>.panel-body,
+div.profile-summary>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-primary>.panel-heading+.panel-collapse>.body,
+.post div.profile-summary>.panel-heading+.panel-collapse>.body,
+.comment .post .panel-primary>.panel-heading+.panel-collapse>form,
+.comment .post div.profile-summary>.panel-heading+.panel-collapse>form,
+.comment .panel-primary>.panel-heading+.panel-collapse>.body,
+.comment div.profile-summary>.panel-heading+.panel-collapse>.body,
+.comment .panel-primary>.panel-heading+.panel-collapse>form,
+.comment div.profile-summary>.panel-heading+.panel-collapse>form {
+    border-top-color: #337ab7
+}
+
+.panel-primary>.panel-heading .badge,
+div.profile-summary>.panel-heading .badge {
+    color: #337ab7;
+    background-color: #fff
+}
+
+.panel-primary>.panel-footer+.panel-collapse>.panel-body,
+div.profile-summary>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-primary>.footer+.panel-collapse>.panel-body,
+.post div.profile-summary>.footer+.panel-collapse>.panel-body,
+.comment .panel-primary>.footer+.panel-collapse>.panel-body,
+.comment div.profile-summary>.footer+.panel-collapse>.panel-body,
+.post .panel-primary>.panel-footer+.panel-collapse>.body,
+.post div.profile-summary>.panel-footer+.panel-collapse>.body,
+.post .panel-primary>.footer+.panel-collapse>.body,
+.post div.profile-summary>.footer+.panel-collapse>.body,
+.comment .post .panel-primary>.panel-footer+.panel-collapse>form,
+.comment .post div.profile-summary>.panel-footer+.panel-collapse>form,
+.comment .panel-primary>.panel-footer+.panel-collapse>.body,
+.comment div.profile-summary>.panel-footer+.panel-collapse>.body,
+.comment .panel-primary>.footer+.panel-collapse>.body,
+.comment div.profile-summary>.footer+.panel-collapse>.body,
+.comment .panel-primary>.panel-footer+.panel-collapse>form,
+.comment div.profile-summary>.panel-footer+.panel-collapse>form,
+.comment .post .panel-primary>.footer+.panel-collapse>form,
+.comment .post div.profile-summary>.footer+.panel-collapse>form,
+.comment .panel-primary>.footer+.panel-collapse>form,
+.comment div.profile-summary>.footer+.panel-collapse>form {
+    border-bottom-color: #337ab7
+}
+
+.panel-success {
+    border-color: #d6e9c6
+}
+
+.panel-success>.panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6
+}
+
+.panel-success>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-success>.panel-heading+.panel-collapse>.body,
+.comment .post .panel-success>.panel-heading+.panel-collapse>form,
+.comment .panel-success>.panel-heading+.panel-collapse>.body,
+.comment .panel-success>.panel-heading+.panel-collapse>form {
+    border-top-color: #d6e9c6
+}
+
+.panel-success>.panel-heading .badge {
+    color: #dff0d8;
+    background-color: #3c763d
+}
+
+.panel-success>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-success>.footer+.panel-collapse>.panel-body,
+.comment .panel-success>.footer+.panel-collapse>.panel-body,
+.post .panel-success>.panel-footer+.panel-collapse>.body,
+.post .panel-success>.footer+.panel-collapse>.body,
+.comment .post .panel-success>.panel-footer+.panel-collapse>form,
+.comment .panel-success>.panel-footer+.panel-collapse>.body,
+.comment .panel-success>.footer+.panel-collapse>.body,
+.comment .panel-success>.panel-footer+.panel-collapse>form,
+.comment .post .panel-success>.footer+.panel-collapse>form,
+.comment .panel-success>.footer+.panel-collapse>form {
+    border-bottom-color: #d6e9c6
+}
+
+.panel-info,
+.comment-unread {
+    border-color: #bce8f1
+}
+
+.panel-info>.panel-heading,
+.comment-unread>.panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1
+}
+
+.panel-info>.panel-heading+.panel-collapse>.panel-body,
+.comment-unread>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-info>.panel-heading+.panel-collapse>.body,
+.post .comment-unread>.panel-heading+.panel-collapse>.body,
+.comment .post .panel-info>.panel-heading+.panel-collapse>form,
+.comment .post .comment-unread>.panel-heading+.panel-collapse>form,
+.comment .panel-info>.panel-heading+.panel-collapse>.body,
+.comment .comment-unread>.panel-heading+.panel-collapse>.body,
+.comment .panel-info>.panel-heading+.panel-collapse>form,
+.comment .comment-unread>.panel-heading+.panel-collapse>form {
+    border-top-color: #bce8f1
+}
+
+.panel-info>.panel-heading .badge,
+.comment-unread>.panel-heading .badge {
+    color: #d9edf7;
+    background-color: #31708f
+}
+
+.panel-info>.panel-footer+.panel-collapse>.panel-body,
+.comment-unread>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-info>.footer+.panel-collapse>.panel-body,
+.post .comment-unread>.footer+.panel-collapse>.panel-body,
+.comment .panel-info>.footer+.panel-collapse>.panel-body,
+.comment .comment-unread>.footer+.panel-collapse>.panel-body,
+.post .panel-info>.panel-footer+.panel-collapse>.body,
+.post .comment-unread>.panel-footer+.panel-collapse>.body,
+.post .panel-info>.footer+.panel-collapse>.body,
+.post .comment-unread>.footer+.panel-collapse>.body,
+.comment .post .panel-info>.panel-footer+.panel-collapse>form,
+.comment .post .comment-unread>.panel-footer+.panel-collapse>form,
+.comment .panel-info>.panel-footer+.panel-collapse>.body,
+.comment .comment-unread>.panel-footer+.panel-collapse>.body,
+.comment .panel-info>.footer+.panel-collapse>.body,
+.comment .comment-unread>.footer+.panel-collapse>.body,
+.comment .panel-info>.panel-footer+.panel-collapse>form,
+.comment .comment-unread>.panel-footer+.panel-collapse>form,
+.comment .post .panel-info>.footer+.panel-collapse>form,
+.comment .post .comment-unread>.footer+.panel-collapse>form,
+.comment .panel-info>.footer+.panel-collapse>form,
+.comment .comment-unread>.footer+.panel-collapse>form {
+    border-bottom-color: #bce8f1
+}
+
+.panel-warning {
+    border-color: #faebcc
+}
+
+.panel-warning>.panel-heading {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc
+}
+
+.panel-warning>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-warning>.panel-heading+.panel-collapse>.body,
+.comment .post .panel-warning>.panel-heading+.panel-collapse>form,
+.comment .panel-warning>.panel-heading+.panel-collapse>.body,
+.comment .panel-warning>.panel-heading+.panel-collapse>form {
+    border-top-color: #faebcc
+}
+
+.panel-warning>.panel-heading .badge {
+    color: #fcf8e3;
+    background-color: #8a6d3b
+}
+
+.panel-warning>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-warning>.footer+.panel-collapse>.panel-body,
+.comment .panel-warning>.footer+.panel-collapse>.panel-body,
+.post .panel-warning>.panel-footer+.panel-collapse>.body,
+.post .panel-warning>.footer+.panel-collapse>.body,
+.comment .post .panel-warning>.panel-footer+.panel-collapse>form,
+.comment .panel-warning>.panel-footer+.panel-collapse>.body,
+.comment .panel-warning>.footer+.panel-collapse>.body,
+.comment .panel-warning>.panel-footer+.panel-collapse>form,
+.comment .post .panel-warning>.footer+.panel-collapse>form,
+.comment .panel-warning>.footer+.panel-collapse>form {
+    border-bottom-color: #faebcc
+}
+
+.panel-danger {
+    border-color: #ebccd1
+}
+
+.panel-danger>.panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1
+}
+
+.panel-danger>.panel-heading+.panel-collapse>.panel-body,
+.post .panel-danger>.panel-heading+.panel-collapse>.body,
+.comment .post .panel-danger>.panel-heading+.panel-collapse>form,
+.comment .panel-danger>.panel-heading+.panel-collapse>.body,
+.comment .panel-danger>.panel-heading+.panel-collapse>form {
+    border-top-color: #ebccd1
+}
+
+.panel-danger>.panel-heading .badge {
+    color: #f2dede;
+    background-color: #a94442
+}
+
+.panel-danger>.panel-footer+.panel-collapse>.panel-body,
+.post .panel-danger>.footer+.panel-collapse>.panel-body,
+.comment .panel-danger>.footer+.panel-collapse>.panel-body,
+.post .panel-danger>.panel-footer+.panel-collapse>.body,
+.post .panel-danger>.footer+.panel-collapse>.body,
+.comment .post .panel-danger>.panel-footer+.panel-collapse>form,
+.comment .panel-danger>.panel-footer+.panel-collapse>.body,
+.comment .panel-danger>.footer+.panel-collapse>.body,
+.comment .panel-danger>.panel-footer+.panel-collapse>form,
+.comment .post .panel-danger>.footer+.panel-collapse>form,
+.comment .panel-danger>.footer+.panel-collapse>form {
+    border-bottom-color: #ebccd1
+}
+
+/*Game box*/
+
+ul.games {
+    padding: 0 0;
+    margin: 10px -5px;
+    min-height: 147px;
+    font-size: 0
+}
+
+ul.games li {
+    margin-left: 5px;
+    display: inline-block
+}
+
+ul.games li {
+    font-size: 14px
+}
+
+div.game-thumbnail {
+    display: inline-block
+}
+
+div.game-thumbnail,
+li.game-thumbnail {
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0s ease 0s
+}
+
+div.game-thumbnail .title,
+li.game-thumbnail .title {
+    width: 184px;
+    height: 69px;
+    padding: 4px;
+    color: #555555;
+    font-weight: bold;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    left: 4px;
+    top: 4px
+}
+
+div.game-thumbnail .caption,
+li.game-thumbnail .caption {
+    background-color: white;
+    width: 184px;
+    height: 58px;
+    padding-bottom: 0
+}
+
+div.game-thumbnail .caption p,
+li.game-thumbnail .caption p {
+    margin-bottom: 0px
+}
+
+div.game-thumbnail img,
+li.game-thumbnail img {
+    width: 184px;
+    height: 69px;
+    position: absolute;
+    left: 4px;
+    top: 4px
+}
+
+div.game-thumbnail img:hover,
+li.game-thumbnail img:hover {
+    opacity: 0.25
+}
+
+div.game-thumbnail.game-never-played,
+div.game-thumbnail[data-progress='never played'],
+li.game-thumbnail.game-never-played,
+li.game-thumbnail[data-progress='never played'] {
+    padding-bottom: 0;
+    border-bottom: 5px solid #eee
+}
+
+div.game-thumbnail.game-unfinished,
+div.game-thumbnail[data-progress='unfinished'],
+li.game-thumbnail.game-unfinished,
+li.game-thumbnail[data-progress='unfinished'] {
+    padding-bottom: 0;
+    border-bottom: 5px solid #f0ad4e
+}
+
+div.game-thumbnail.game-beaten,
+div.game-thumbnail[data-progress='beaten'],
+li.game-thumbnail.game-beaten,
+li.game-thumbnail[data-progress='beaten'] {
+    padding-bottom: 0;
+    border-bottom: 5px solid #5cb85c
+}
+
+div.game-thumbnail.game-completed,
+div.game-thumbnail[data-progress='completed'],
+li.game-thumbnail.game-completed,
+li.game-thumbnail[data-progress='completed'] {
+    padding-bottom: 0;
+    border-bottom: 5px solid #5bc0de
+}
+
+div.game-thumbnail.game-wont-play,
+div.game-thumbnail[data-progress='wont play'],
+li.game-thumbnail.game-wont-play,
+li.game-thumbnail[data-progress='wont play'] {
+    padding-bottom: 0;
+    border-bottom: 5px solid #d9534f
+}
+
+img.game-thumbnail {
+    width: 194px;
+    height: 79px
+}
+
+.game-media {
+    padding-left: 10px
+}
+
+.game-media .media-left img {
+    width: 184px;
+    height: 69px
+}
+
+.game-media.game-never-played,
+.game-media[data-progress='never played'] {
+    padding-left: 0;
+    border-left: 10px solid #eee
+}
+
+.game-media.game-unfinished,
+.game-media[data-progress='unfinished'] {
+    padding-left: 0;
+    border-left: 10px solid #f0ad4e
+}
+
+.game-media.game-beaten,
+.game-media[data-progress='beaten'] {
+    padding-left: 0;
+    border-left: 10px solid #5cb85c
+}
+
+.game-media.game-completed,
+.game-media[data-progress='completed'] {
+    padding-left: 0;
+    border-left: 10px solid #5bc0de
+}
+
+.game-media.game-wont-play,
+.game-media[data-progress='wont play'] {
+    padding-left: 0;
+    border-left: 10px solid #d9534f
+}
+
+.thumbnail,
+div.game-thumbnail,
+li.game-thumbnail,
+.theme {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out
+}
+
+.thumbnail>img,
+div.game-thumbnail>img,
+li.game-thumbnail>img,
+.theme>img,
+.thumbnail a>img,
+div.game-thumbnail a>img,
+li.game-thumbnail a>img,
+.theme a>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.thumbnail .caption,
+div.game-thumbnail .caption,
+li.game-thumbnail .caption,
+.theme .caption {
+    padding: 9px;
+    color: #333333
+}
+
+.text-center,
+li.game-placeholder,
+li.game-trashcan,
+.bucket,
+div.game-thumbnail,
+li.game-thumbnail,
+table#games .achievements,
+.game-table .achievements {
+    text-align: center;
+}
+
+/* Progress bar */
+
+.progress,
+div.list-progress {
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1)
+}
+
+.progress-bar {
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: width 0.6s ease;
+    -o-transition: width 0.6s ease;
+    transition: width 0.6s ease
+}
+
+.progress-striped .progress-bar,
+.progress-bar-striped {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px
+}
+
+.progress.active .progress-bar,
+div.active.list-progress .progress-bar,
+.progress-bar.active {
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite
+}
+
+.progress-bar-success {
+    background-color: #5cb85c
+}
+
+.progress-striped .progress-bar-success {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.progress-bar-info {
+    background-color: #5bc0de
+}
+
+.progress-striped .progress-bar-info {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.progress-bar-warning {
+    background-color: #f0ad4e
+}
+
+.progress-striped .progress-bar-warning {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.progress-bar-danger {
+    background-color: #d9534f
+}
+
+.progress-striped .progress-bar-danger {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+div.list-progress .game-never-played,
+div.list-progress [data-progress='never played'] {
+    background-color: #eee
+}
+
+div.list-progress .game-never-played.disabled,
+div.list-progress [data-progress='never played'].disabled {
+    background-color: white
+}
+
+div.list-progress .game-unfinished,
+div.list-progress [data-progress='unfinished'] {
+    background-color: #f0ad4e
+}
+
+div.list-progress .game-unfinished.disabled,
+div.list-progress [data-progress='unfinished'].disabled {
+    background-color: #f8d9ac
+}
+
+div.list-progress .game-beaten,
+div.list-progress [data-progress='beaten'] {
+    background-color: #5cb85c
+}
+
+div.list-progress .game-beaten.disabled,
+div.list-progress [data-progress='beaten'].disabled {
+    background-color: #a3d7a3
+}
+
+div.list-progress .game-completed,
+div.list-progress [data-progress='completed'] {
+    background-color: #5bc0de
+}
+
+div.list-progress .game-completed.disabled,
+div.list-progress [data-progress='completed'].disabled {
+    background-color: #b0e1ef
+}
+
+div.list-progress .game-wont-play,
+div.list-progress [data-progress='wont play'] {
+    background-color: #d9534f
+}
+
+div.list-progress .game-wont-play.disabled,
+div.list-progress [data-progress='wont play'].disabled {
+    background-color: #eba5a3
+}
+
+div.list-progress .progress-bar {
+    color: transparent;
+    cursor: pointer;
+    padding-left: 2px
+}
+
+div.list-progress:hover .progress-bar {
+    color: white
+}
+
+div.list-progress:hover .progress-bar.game-never-played,
+div.list-progress:hover .progress-bar[data-progress='never played'] {
+    color: #555555
+}
+
+/* Backport Bootstrap 3 columns */
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+    float: left;
+}
+
+.col-xs-12 {
+    width: 100%;
+}
+
+.col-xs-11 {
+    width: 91.66666667%;
+}
+
+.col-xs-10 {
+    width: 83.33333333%;
+}
+
+.col-xs-9 {
+    width: 75%;
+}
+
+.col-xs-8 {
+    width: 66.66666667%;
+}
+
+.col-xs-7 {
+    width: 58.33333333%;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+.col-xs-5 {
+    width: 41.66666667%;
+}
+
+.col-xs-4 {
+    width: 33.33333333%;
+}
+
+.col-xs-3 {
+    width: 25%;
+}
+
+.col-xs-2 {
+    width: 16.66666667%;
+}
+
+.col-xs-1 {
+    width: 8.33333333%;
+}
+
+@media (min-width: 768px) {
+
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12 {
+        float: left;
+    }
+
+    .col-sm-12 {
+        width: 100%;
+    }
+
+    .col-sm-11 {
+        width: 91.66666667%;
+    }
+
+    .col-sm-10 {
+        width: 83.33333333%;
+    }
+
+    .col-sm-9 {
+        width: 75%;
+    }
+
+    .col-sm-8 {
+        width: 66.66666667%;
+    }
+
+    .col-sm-7 {
+        width: 58.33333333%;
+    }
+
+    .col-sm-6 {
+        width: 50%;
+    }
+
+    .col-sm-5 {
+        width: 41.66666667%;
+    }
+
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+
+    .col-sm-3 {
+        width: 25%;
+    }
+
+    .col-sm-2 {
+        width: 16.66666667%;
+    }
+
+    .col-sm-1 {
+        width: 8.33333333%;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12 {
+        float: left;
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+
+    .col-md-11 {
+        width: 91.66666667%;
+    }
+
+    .col-md-10 {
+        width: 83.33333333%;
+    }
+
+    .col-md-9 {
+        width: 75%;
+    }
+
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+
+    .col-md-7 {
+        width: 58.33333333%;
+    }
+
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-md-5 {
+        width: 41.66666667%;
+    }
+
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+
+    .col-md-2 {
+        width: 16.66666667%;
+    }
+
+    .col-md-1 {
+        width: 8.33333333%;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .col-lg-1,
+    .col-lg-2,
+    .col-lg-3,
+    .col-lg-4,
+    .col-lg-5,
+    .col-lg-6,
+    .col-lg-7,
+    .col-lg-8,
+    .col-lg-9,
+    .col-lg-10,
+    .col-lg-11,
+    .col-lg-12 {
+        float: left;
+    }
+
+    .col-lg-12 {
+        width: 100%;
+    }
+
+    .col-lg-11 {
+        width: 91.66666667%;
+    }
+
+    .col-lg-10 {
+        width: 83.33333333%;
+    }
+
+    .col-lg-9 {
+        width: 75%;
+    }
+
+    .col-lg-8 {
+        width: 66.66666667%;
+    }
+
+    .col-lg-7 {
+        width: 58.33333333%;
+    }
+
+    .col-lg-6 {
+        width: 50%;
+    }
+
+    .col-lg-5 {
+        width: 41.66666667%;
+    }
+
+    .col-lg-4 {
+        width: 33.33333333%;
+    }
+
+    .col-lg-3 {
+        width: 25%;
+    }
+
+    .col-lg-2 {
+        width: 16.66666667%;
+    }
+
+    .col-lg-1 {
+        width: 8.33333333%;
+    }
+}
+
+/* Bootstrap 3 labels */
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.media-body {
+    display: table-cell;
+    vertical-align: top;
+    width: 10000px;
+}

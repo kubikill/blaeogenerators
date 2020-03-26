@@ -5,18 +5,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noindex">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://use.fontawesome.com/fba1eae16c.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Arimo|Oswald" media="all" rel="stylesheet">
 	<title>BLAEO Generators</title>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-	 crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-	 crossorigin="anonymous"></script>
-	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" crossorigin="anonymous"></script>
-	<script src="bargeneratorv1o2.js"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
@@ -28,316 +21,426 @@
 	<meta name="msapplication-TileColor" content="#2d89ef">
 	<meta name="msapplication-config" content="./assets/browserconfig.xml?v=xQzj8j3wqR">
 	<meta name="theme-color" content="#566391">
-	<style>
-		fieldset > div {
-			width: 100%;	
-		}
-		.legendfix {
-			width: auto;
-			border-bottom: none;
-			padding: 0 6px;
-		}
-
-		fieldset {
-			display: flex;
-		}
-
-		.nav-link.active {
-			color: #fff !important;
-		}
-
-		.navbar-nav .nav-link {
-			padding-left: .5rem;
-			padding-right: .5rem;
-		}
-
-		.container {
-			margin-top: 1em;
-		}
-
-		.navbar {
-			border-bottom-style: solid;
-			border-bottom-width: 1px;
-			border-bottom-color: #E7E7E7;
-		}
-
-		body {
-			background-color: #f5f8fa;
-		}
-
-
-		.firstinputs {
-			margin-top: 0px;
-		}
-
-		input {
-			margin-bottom: 2px;
-		}
-
-		.btn {
-			border-radius: .25rem !important;
-		}
-
-		.copyarrow::before {
-			border-right-color: #28A745 !important;
-		}
-
-		.nav-pills .nav-link.active,
-		.nav-pills .show>.nav-link {
-			background-color: #566391;
-		}
-
-		a.nav-link {
-			color: #566391;
-		}
-
-		.btn-outline-primary:not(:disabled):not(.disabled).active,
-		.btn-outline-primary:not(:disabled):not(.disabled):active,
-		.show>.btn-outline-primary.dropdown-toggle {
-			background-color: #566391;
-		}
-
-		.btn-outline-primary {
-			border-color: #566391 !important;
-			color: #566391;
-		}
-
-		.btn-outline-primary:hover {
-			background-color: #566391;
-		}
-
-		#settings.collapse.show {
-			display: flex;
-		}
-
-		.copyarrow::before {
-			border-right-color: transparent !important;
-		}
-
-		.copyarrow::after {
-			border-right-color: #5CB85C !important;
-		}
-
-		#uncategorized,
-		#uncategorizedlink {
-			font-weight: bolder;
-		}
-
-		#fetchgame {
-			margin-bottom: 5px;
-		}
-
-		.navbar-brand a:hover {
-			text-decoration: none;
-		}
-
-		#generated {
-			margin-top: 10px;
-		}
-
-		#panelpreview h4 {
-			font-family: Oswald, Arial, sans-serif;
-			line-height: 1.3;
-			font-size: 18px;
-		}
-
-		.media-body {
-			font-size: 14px;
-		}
-
-		@-webkit-keyframes progress-bar-anim {
-			from {
-				background-position: 40px 0
-			}
-
-			to {
-				background-position: 0 0
-			}
-		}
-
-		@keyframes progress-bar-anim {
-			from {
-				background-position: 40px 0
-			}
-
-			to {
-				background-position: 0 0
-			}
-		}
-
-		.progress-bar-animated {
-			animation: progress-bar-anim 2s linear infinite;
-		}
-		label[for="screenshot1"], label[for="screenshot2"] {
-			display: block;
-		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="./assets/gamebox.css">
-	<link rel="stylesheet" type="text/css" href="./assets/progressbar.css">
-	<link rel="stylesheet" type="text/css" href="./assets/panel.css">
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-md navbar-light" role="tablist">
+		<span class="navbar-brand">
+			<a href="https://www.backlog-assassins.net/" target="_blank">
+				<img src="assets/blaeologo.png" class="d-inline-block align-top">
+			</a> Generators
+			<small class="text-muted">v2.0</small>
+		</span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="topnavbar">
+			<div class="navbar-nav nav-fill">
+				<ul class="nav nav-pills" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="pill" href="#generator" role="tab"><i
+								class="fa fa-wrench" aria-hidden="true"></i> Generate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="pill" href="#settingstab" role="tab"><i class="fa fa-cog"
+								aria-hidden="true"></i> Settings</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="pill" href="#faqtab" role="tab"><i class="fa fa-book"
+								aria-hidden="true"></i> Help/Resources</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="pill" href="#about" role="tab"><i class="fa fa-info-circle"
+								aria-hidden="true"></i> About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"
+							href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/"><i
+								class="fa fa-commenting" aria-hidden="true"></i> Feedback</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 	<div class="container">
-		<!--Navbar-->
-		<nav class="navbar navbar-expand-sm navbar-light fixed-top" role="tablist" style="background-color: rgba(248,248,248,0.9) !important;">
-			<span class="navbar-brand">
-				<a href="https://www.backlog-assassins.net/" target="_blank">
-					<img src="assets/blaeologo.png" class="d-inline-block align-top">
-				</a> Generators
-				<small class="text-muted">v1.21</small>
-			</span>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="topnavbar">
-				<div class="navbar-nav align-middle">
-					<ul class="nav nav-pills" id="pills-tab" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active" id="generatecoolstuffnav" data-toggle="pill" href="#generator" role="tab">Generate cool stuff</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="settingsnav" data-toggle="pill" href="#settingstab" role="tab">Settings</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="aboutnav" data-toggle="pill" href="#about" role="tab">About</a>
-						</li>
-					</ul>
+		<div class="modal fade" id="savemodal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="savemodallabel">Saving in</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group" id="savemodalnamediv">
+							<label for="savemodalname" class="col-form-label">Save name:</label>
+							<input type="text" class="form-control" id="savemodalname">
+						</div>
+						<div id="savemodalloadsavemsg">
+							The loadsave will automatically load when you open BLAEO Generators. It's useful if you want
+							to change some of the default generator settings. To reset loadsaves, visit the Settings
+							tab.
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							id="savemodalbtn">Save</button>
+					</div>
 				</div>
 			</div>
-		</nav>
-		<!--Navbar end-->
-		<br>
-		<br>
+		</div>
+		<div class="modal fade" id="loadmodal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="loadmodallabel">Loading</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Are you sure you want to load this save? All current data will be replaced!
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							id="loadmodalbtn">Load</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="tab-content">
 			<!--Generate cool stuff tab-->
 			<div class="tab-pane fade show active" id="generator" role="tabpanel">
-				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+				<ul class="nav nav-pills mb-3" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active btn-lg" id="bartab" data-toggle="pill" href="#bargenerator" role="tab">Bar</a>
+						<a class="nav-link active btn-lg" data-toggle="pill" href="#bargenerator" role="tab">Bar</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link btn-lg" id="paneltab" data-toggle="pill" href="#panelgenerator" role="tab">Panel</a>
+						<a class="nav-link btn-lg" data-toggle="pill" href="#panelgenerator" role="tab">Panel</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link btn-lg" id="gameboxtab" data-toggle="pill" href="#gameboxgenerator" role="tab">Game box</a>
+						<a class="nav-link btn-lg" data-toggle="pill" href="#boxgenerator" role="tab">Box</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link btn-lg" id="progressbartab" data-toggle="pill" href="#progressbargenerator" role="tab">Progress bar</a>
+						<a class="nav-link btn-lg" data-toggle="pill" href="#progressbargenerator"
+							role="tab">Progress</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn-lg" data-toggle="pill" href="#herogenerator" role="tab">Hero</a>
 					</li>
 				</ul>
-				<div class="alert alert-warning" style="display: none;" id="autofillwarning" role="alert">Autofilling will not work without a valid SteamID64.</div>
-				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firsttimemsg" style="display: block;">
-					Welcome to BLAEO Generators! Make sure to check the settings tab to set up autofilling.
-					<button type="button" class="close" data-dismiss="alert" id="firsttimebtn">
-						<span>&times;</span>
-					</button>
+				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firstvisitmsg" style="display: none">
+					Welcome to BLAEO Generators! Make sure to visit the Settings tab to set up
+					library sync and enable game search.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="firstvisitmsgbtn">
+						<span aria-hidden="true">&times;</span>
+					  </button>
 				</div>
-				<div class="tab-content" id="pills-tabContent">
+				<div class="tab-content">
+					<!--Bar generator-->
 					<div class="tab-pane fade show active" id="bargenerator" role="tabpanel">
 						<!--Game data fields-->
-						<div class="alert alert-danger show" role="alert" id="autofillerror1" style="display: none;">
-							<strong>Failed to fetch data.</strong>
-							<a data-toggle="collapse" href="#errorreasons1">Possible reasons:</a>
-							<div class="collapse" id="errorreasons1">
-								<ul style="margin-bottom: 0;">
-									<li>Invalid AppID/SteamID64</li>
-									<li>You don't own this game</li>
-									<li>You are not a BLAEO member</li>
-									<li>Problems with internet connection</li>
-									<li>BLAEO website is down</li>
-								</ul>
+						<fieldset class="border rounded form-group">
+							<div class="dropdowndiv">
+								<span class="dropdown loaddropdown" id="barload">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="barloadbtn" data-placement="top" data-content="Loaded!"
+										data-toggle="dropdown">Load</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 1 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 2 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 3 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Exitsave -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Loadsave
+										</button>
+									</div>
+								</span>
+								<span class="dropdown savedropdown" id="barsave">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="barsavebtn" data-placement="top" data-content="Saved!"
+										data-toggle="dropdown">
+										Save
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 1 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 2 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 3 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Loadsave
+										</button>
+									</div>
+								</span>
 							</div>
-						</div>
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#gamedata">Game data</legend>
+							<legend class="border rounded" data-toggle="collapse" data-target="#gamedata">Data
+							</legend>
 							<div class="show" id="gamedata">
 								<div class="form-row">
 									<div class="col">
-										<label for="appid">Game's AppID:</label>
-										<input class="form-control appid" id="appid" type="number" placeholder="220" data-toggle="tooltip" data-placement="bottom"
-										 title="Tooltip on bottom">
-										<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
+										<label for="bargamesearch">Search game:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-search"
+														aria-hidden="true"></i></span>
+											</div>
+											<input class="form-control" id="bargamesearch" type="text"
+												placeholder="Type a game's name..." disabled>
+										</div>
 									</div>
-									<div class="col">
-										<label for="gametitle" class="firstinputs">Game title:</label>
-										<input class="form-control gametitle" id="gametitle" type="text" placeholder="Half-Life 2">
+								</div>
+								<div class="form-row">
+									<div class="col-8">
+										<label for="bargamesearch">Game title:</label>
+										<input class="form-control" id="bargametitle" type="text"
+											placeholder="Half-Life 2">
+									</div>
+									<div class="col-4">
+										<label for="barappid">AppID:</label>
+										<input class="form-control appid" id="barappid" type="number" placeholder="220">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="playtime">Playtime:</label>
-										<input class="form-control playtime" id="playtime" type="number" step="0.1" placeholder="0">
+										<label for="barplaytime">Playtime:</label>
+										<input class="form-control" id="barplaytime" type="number" step="0.1"
+											placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
-										<label for="cheevoearned" style="clear: right;">Achievements:</label>
+										<label for="barachearned">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control cheevoearned" id="cheevoearned" min="0" placeholder="0">
+											<input type="number" class="form-control" id="barachearned" min="0"
+												placeholder="0">
 											<div class="input-group-append">
-												<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
+												<span class="input-group-text">of</span>
 											</div>
-											<input type="number" class="form-control cheevoall" min="0" placeholder="0">
+											<input type="number" class="form-control" id="barachtotal" min="0"
+												placeholder="0">
 										</div>
-										<small class="form-text text-muted">Use "0" if game has no achievements.</small>
+										<small class="form-text text-muted">Use 0 if the game has no
+											achievements.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="barcustomtext">Custom text:</label>
+										<input class="form-control" type="text" id="barcustomtext"
+											placeholder="You can put anything here">
+										<small class="form-text text-muted">Custom text is displayed under playtime and
+											achievements. HTML tags are supported.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="barplatform">Platform icon:</label>
+										<select class="form-control" id="barplatform">
+											<option value="none">Don't display</option>
+											<option value="steam">Steam</option>
+											<option value="gog">GoG</option>
+											<option value="epicstore">Epic Store</option>
+											<option value="origin">Origin</option>
+											<option value="uplay">uPlay</option>
+											<option value="microsoftstore">Microsoft Store</option>
+											<option value="battlenet">Battle.net</option>
+											<option value="rockstargames">Rockstar Games Launcher</option>
+											<option value="itchio">Itch.io</option>
+											<option value="drmfree">DRM-free</option>
+											<option value="android">Android</option>
+											<option value="ios">iOS</option>
+											<option value="playstation">PlayStation</option>
+											<option value="xbox">Xbox</option>
+											<option value="switch">Nintendo Switch</option>
+										</select>
+									</div>
+									<div class="col">
+										<label class="screenshotlabel">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst" id="barscreenshoton"
+												for="barscreenshoton">Yes
+												<input type="radio" id="barscreenshotoninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary active" id="barscreenshotoff"
+												for="barscreenshotoff">No
+												<input type="radio" id="barscreenshotoffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">The icon links to your Steam
+											screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#barreview">
+								Review</legend>
+							<div class="show" id="barreview">
+								<div class="form-row">
+									<div class="col">
+										<label for="barreviewtrigger">Review trigger method:</label>
+										<select class="form-control" id="barreviewtrigger">
+											<option value="bar">Bar</option>
+											<option value="button">Button</option>
+											<option value="alwaysvisible">Always visible</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row collapse" id="barbuttonrow">
+									<div class="col">
+										<label for="reviewtrigger">Button color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="barbuttoncolorpick"
+													value="#AAAAAA">
+											</div>
+											<input class="form-control" type="text" id="barbuttoncolor" maxlength="7"
+												value="#AAAAAA">
+										</div>
+									</div>
+									<div class="col">
+										<label for="reviewtrigger">Button text color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="barbuttontextcolorpick"
+													value="#FFFFFF">
+											</div>
+											<input class="form-control" type="text" id="barbuttontextcolor"
+												maxlength="7" value="#FFFFFF">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="review">Review:</label>
+										<textarea class="form-control review" type="text" id="barreviewfield"
+											placeholder="You can pet dogs 10/10" rows="4"></textarea>
+										<small class="form-text text-muted">Leave blank to disable the review. Markdown
+											and HTML tags are supported.
+											Reviews are autosaved after refreshing/leaving the page to prevent
+											accidental data loss.
+										</small>
 									</div>
 								</div>
 							</div>
 						</fieldset>
 						<!--Customization fields-->
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#customization">Customization</legend>
-							<div class="show" id="customization">
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#barcustomization">
+								Customize</legend>
+							<div class="show" id="barcustomization">
 								<div class="form-row">
 									<div class="col">
-										<label for="bgtype" class="firstinputs" style="margin-bottom: .7rem;">Background type:</label>
-										<select class="form-control" name="bgtype" id="bgtype">
-											<option value="solid">Solid</option>
-											<option value="to right">Horizontal gradient</option>
-											<option value="to bottom">Vertical gradient</option>
+										<label for="barbgtype">Background
+											type:</label>
+										<select class="form-control" id="barbgtype">
+											<option value="solid">Solid (1 color)</option>
+											<option value="hor-gradient">Horizontal gradient (2 colors)</option>
+											<option value="vert-gradient">Vertical gradient (2 colors)</option>
+											<option value="hor-gradient3">Horizontal gradient (3 colors)</option>
+											<option value="vert-gradient3">Vertical gradient (3 colors)</option>
 										</select>
 									</div>
 									<div class="col">
-										<label for="imagepos" class="firstinputs" style="margin-bottom: .7rem;">Game image position:</label>
-										<select class="form-control imagepos" id="imagepos">
+										<label for="barbgcolor1text">Background color 1:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="barbgcolor1">
+											</div>
+											<input class="form-control" type="text" id="barbgcolor1text" maxlength="7"
+												value="#000000">
+										</div>
+									</div>
+								</div>
+								<div class="form-row collapse" id="barbgmorecolors">
+									<div class="col">
+										<label for="barbgcolor2text">Background color 2:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="barbgcolor2" disabled>
+											</div>
+											<input class="form-control" type="text" id="barbgcolor2text" maxlength="7"
+												value="#000000" disabled>
+										</div>
+									</div>
+									<div class="col">
+										<label for="barbgcolor2text">Background color 3:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="barbgcolor3" disabled>
+											</div>
+											<input class="form-control" type="text" id="barbgcolor3text" maxlength="7"
+												value="#000000" disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="barimagetype">Game image type:</label>
+										<select class="form-control" id="barimagetype">
+											<option value="capsule" selected>Capsule</option>
+											<option value="header">Header</option>
+											<option value="custom">Custom</option>
+											<option value="none">None</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="barimagepos">Game
+											image position:</label>
+										<select class="form-control" id="barimagepos">
 											<option value="left">Left</option>
 											<option value="right" selected>Right</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-row">
+								<div class="form-row collapse" id="barcustomimagerow">
 									<div class="col">
-										<label for="bgcolor1text">Background color 1:</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<input class="form-control" type="color" name="bgcolor1" id="bgcolor1" style="margin: 0; padding: 0; width: 60px; height: 42px;">
-											</div>
-											<input class="form-control" type="text" name="bgcolor1text" id="bgcolor1text" maxlength="7" value="#000000">
-										</div>
+										<label for="barcustomimage">Custom image URL:</label>
+										<input class="form-control" type="text" id="barcustomimage"
+											placeholder="https://example.com/image.png">
 									</div>
 									<div class="col">
-										<label for="bgcolor2text">Background color 2:</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<input class="form-control" type="color" name="bgcolor2" id="bgcolor2" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												 disabled="true">
-											</div>
-											<input class="form-control" type="text" name="bgcolor2text" id="bgcolor2text" maxlength="7" value="#000000" disabled="true">
-										</div>
+										<label for="barcustomimagelink">Custom image link:</label>
+										<input class="form-control" type="text" id="barcustomimagelink"
+											placeholder="https://example.com">
+										<small class="form-text text-muted">If left empty, the image will link to the
+											game's Steam store page.</small>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="barpos">Completion bar position:</label>
-										<select class="form-control barpos" id="barpos">
+										<select class="form-control" id="barcomppos">
 											<option value="left">Left</option>
 											<option value="right">Right</option>
 											<option value="hide">Hide</option>
 										</select>
 									</div>
 									<div class="col">
-										<label for="barcolor">Completion bar color:</label>
-										<select class="form-control barcolor" id="barcolor">
+										<label for="barcompcolor">Completion bar color:</label>
+										<select class="form-control" id="barcompcolor">
 											<option value="completed">Completed (blue) - #5BC0DE</option>
 											<option value="beaten">Beaten (green) - #5CB85C</option>
 											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
@@ -348,604 +451,1528 @@
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="titlecolor">Title color:</label>
+										<label for="bartitlecolor">Title color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control titlecolor" type="color" id="titlecolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												 value="#FFFFFF">
+												<input class="form-control" type="color" id="bartitlecolorpick"
+													value="#FFFFFF">
 											</div>
-											<input class="form-control titlecolor" type="text" id="titlecolor" maxlength="7" value="#FFFFFF">
+											<input class="form-control" type="text" id="bartitlecolor" maxlength="7"
+												value="#FFFFFF">
 										</div>
+										<small class="form-text text-muted">Also affects platform icons.</small>
 									</div>
 									<div class="col">
-										<label for="textcolor">Text color:</label>
+										<label for="bartextcolor">Text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control textcolor" type="color" id="textcolorpick" style="margin: 0; padding: 0; width: 60px; height: 42px;"
-												 value="#FFFFFF">
+												<input class="form-control" type="color" id="bartextcolorpick"
+													value="#FFFFFF">
 											</div>
-											<input class="form-control textcolor" type="text" id="textcolor" maxlength="7" value="#FFFFFF">
+											<input class="form-control" type="text" id="bartextcolor" maxlength="7"
+												value="#FFFFFF">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="customtext">Custom text:</label>
-										<input class="form-control customtext" type="text" id="customtext" placeholder="You can put anything here">
+										<label for="barheight">Bar height:</label>
+										<select class="form-control" id="barheight">
+											<option value="small">Small</option>
+											<option value="medium" selected>Medium</option>
+											<option value="large">Large</option>
+										</select>
+										<small class="form-text text-muted">Small bars can either have only playtime and
+											achievements or custom text.</small>
 									</div>
-								</div>
-								<div class="form-row">
 									<div class="col">
-										<label for="screenshot2">Show screenshot icon:</label>
+										<label class="screenshotlabel">Text shadows:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active" id="screenshot1on" for="screenshot1on" style="margin-right: 10px">Yes
-												<input type="radio" value="true">
+											<label class="btn btn-outline-primary buttonfirst active"
+												id="bartextshadowson" for="bartextshadowson">Enable
+												<input type="radio" id="bartextshadowsoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="screenshot1off" for="screenshot1off">No
-												<input type="radio" value="false">
+											<label class="btn btn-outline-primary" id="bartextshadowsoff"
+												for="bartextshadowsoff">Disable
+												<input type="radio" id="bartextshadowsoffinput" value="false">
 											</label>
 										</div>
-										<small class="form-text text-muted">If clicked, the icon will link to your Steam screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label class="screenshotlabel">Show playtime and achievements:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst active" id="barshowinfoon"
+												for="barshowinfoon">Show
+												<input type="radio" id="barshowinfooninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary" id="barshowinfooff"
+												for="barshowinfooff">Hide
+												<input type="radio" id="barshowinfooffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">On small bar heights, hiding playtime and
+											achievements will show custom text.</small>
 									</div>
 								</div>
 							</div>
 						</fieldset>
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#barreview">Review</legend>
-							<div class="show" id="barreview">
+						<div id="barpreview">
+						</div>
+						<h3 style="margin-top: 8px;">Code:
+							<button class="copybutton btn btn-outline-primary" id="barcopycode"
+								data-content="Copied!">Copy to clipboard</button>
+						</h3>
+						<textarea id="bargenerated" class="form-control" readonly rows="6"></textarea>
+					</div>
+					<!--Panel generator-->
+					<div class="tab-pane fade" id="panelgenerator" role="tabpanel">
+						<!--Game data fields-->
+						<fieldset class="border rounded form-group">
+							<div class="dropdowndiv">
+								<span class="dropdown loaddropdown" id="panelload">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="panelloadbtn" data-placement="top" data-content="Loaded!"
+										data-toggle="dropdown">Load</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 1 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 2 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 3 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Exitsave -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Loadsave
+										</button>
+									</div>
+								</span>
+								<span class="dropdown savedropdown" id="panelsave">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="panelsavebtn" data-placement="top" data-content="Saved!"
+										data-toggle="dropdown">
+										Save
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 1 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 2 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 3 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Loadsave
+										</button>
+									</div>
+								</span>
+							</div>
+							<legend class="border rounded" data-toggle="collapse" data-target="#panelgamedata">Data
+							</legend>
+							<div class="show" id="panelgamedata">
 								<div class="form-row">
 									<div class="col">
-										<label for="reviewtrigger">Review trigger method:</label>
-										<select class="form-control reviewtrigger" id="reviewtrigger">
-											<option value="bar">Click on bar</option>
-											<option value="button">Click on button</option>
+										<label for="panelgamesearch">Search game:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-search"></i></span>
+											</div>
+											<input class="form-control" id="panelgamesearch" type="text"
+												placeholder="Type a game's name..." disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-8">
+										<label for="panelgametitle">Game title:</label>
+										<input class="form-control" id="panelgametitle" type="text"
+											placeholder="Half-Life 2">
+									</div>
+									<div class="col-4">
+										<label for="panelappid">AppID:</label>
+										<input class="form-control" id="panelappid" type="number" placeholder="220">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="panelplaytime">Playtime:</label>
+										<input class="form-control" id="panelplaytime" type="number" step="0.1"
+											placeholder="0">
+										<small class="form-text text-muted">Specified in hours.</small>
+									</div>
+									<div class="col">
+										<label for="panelachearned">Achievements:</label>
+										<div class="input-group">
+											<input type="number" class="form-control" id="panelachearned" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<span class="input-group-text">of</span>
+											</div>
+											<input type="number" class="form-control" id="panelachtotal" min="0"
+												placeholder="0">
+										</div>
+										<small class="form-text text-muted">Use 0 if the game has no
+											achievements.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="panelcustomtext">Rating:</label>
+										<input class="form-control" type="text" id="panelrating" placeholder="8/10">
+									</div>
+									<div class="col">
+										<label for="panelcustomtext">Custom text:</label>
+										<input class="form-control" type="text" id="panelcustomtext"
+											placeholder="You can put anything here">
+										<small class="form-text text-muted">Custom text is displayed to the right of the
+											game title. HTML tags are supported.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="panelplatform">Platform icon:</label>
+										<select class="form-control" id="panelplatform">
+											<option value="none">Don't display</option>
+											<option value="steam">Steam</option>
+											<option value="gog">GoG</option>
+											<option value="epicstore">Epic Store</option>
+											<option value="origin">Origin</option>
+											<option value="uplay">uPlay</option>
+											<option value="microsoftstore">Microsoft Store</option>
+											<option value="battlenet">Battle.net</option>
+											<option value="rockstargames">Rockstar Games Launcher</option>
+											<option value="itchio">Itch.io</option>
+											<option value="drmfree">DRM-free</option>
+											<option value="android">Android</option>
+											<option value="ios">iOS</option>
+											<option value="playstation">PlayStation</option>
+											<option value="xbox">Xbox</option>
+											<option value="switch">Nintendo Switch</option>
+										</select>
+									</div>
+									<div class="col">
+										<label class="screenshotlabel">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst" id="panelscreenshoton"
+												for="panelscreenshoton">Yes
+												<input type="radio" id="panelscreenshotoninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary active" id="panelscreenshotoff"
+												for="panelscreenshotoff">No
+												<input type="radio" id="panelscreenshotoffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">The icon links to your Steam
+											screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#panelreview">
+								Review</legend>
+							<div class="show" id="panelreview">
+								<div class="form-row">
+									<div class="col">
+										<label for="panelreviewtrigger">Review trigger method:</label>
+										<select class="form-control" id="panelreviewtrigger">
+											<option value="panel">Panel</option>
+											<option value="alwaysvisible">Always visible</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="panelreviewfield">Review:</label>
+										<textarea class="form-control review" type="text" id="panelreviewfield"
+											placeholder="This game is awesome and stuff" rows="4"></textarea>
+										<small class="form-text text-muted">Leave blank to disable. Markdown and HTML
+											tags are supported. Reviews are saved automatically after refreshing/leaving
+											the page.
+										</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#panelcustomization">
+								Customize</legend>
+							<div class="show" id="panelcustomization">
+								<div class="form-row">
+									<div class="col">
+										<label for="panelpreset">Background and text preset:</label>
+										<select class="form-control" id="panelpreset">
+											<option value="info">Blue</option>
+											<option value="success">Green</option>
+											<option value="warning">Light yellow</option>
+											<option value="danger">Red</option>
+											<option value="default">Light gray</option>
+											<option value="custom">Custom</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row collapse" id="panelbgcolordiv1">
+									<div class="col">
+										<label for="panelbgtype">Background
+											type:</label>
+										<select class="form-control" id="panelbgtype">
+											<option value="solid">Solid (1 color)</option>
+											<option value="hor-gradient">Horizontal gradient (2 colors)</option>
+											<option value="vert-gradient">Vertical gradient (2 colors)</option>
+											<option value="hor-gradient3">Horizontal gradient (3 colors)</option>
+											<option value="vert-gradient3">Vertical gradient (3 colors)</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="panelbgcolor1text">Background color 1:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="panelbgcolor1">
+											</div>
+											<input class="form-control" type="text" id="panelbgcolor1text" maxlength="7"
+												value="#000000">
+										</div>
+									</div>
+								</div>
+								<div class="form-row collapse" id="panelbgcolordiv2">
+									<div class="col">
+										<label for="panelbgcolor2text">Background color 2:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="panelbgcolor2" disabled>
+											</div>
+											<input class="form-control" type="text" id="panelbgcolor2text" maxlength="7"
+												value="#000000" disabled>
+										</div>
+									</div>
+									<div class="col">
+										<label for="panelbgcolor2text">Background color 3:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="panelbgcolor3" disabled>
+											</div>
+											<input class="form-control" type="text" id="panelbgcolor3text" maxlength="7"
+												value="#000000" disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row collapse" id="panelbgcolordiv3">
+									<div class="col">
+										<label for="paneltextcolor">Text color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="paneltextcolorpick"
+													value="#FFFFFF">
+											</div>
+											<input class="form-control" type="text" id="paneltextcolor" maxlength="7"
+												value="#FFFFFF">
+										</div>
+									</div>
+									<div class="col">
+										<label for="paneliconcolor">Icon color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="paneliconcolorpick"
+													value="#FFFFFF">
+											</div>
+											<input class="form-control" type="text" id="paneliconcolor" maxlength="7"
+												value="#FFFFFF">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label class="screenshotlabel">Game image type:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst active"
+												id="panelheaderimage" for="panelheaderimage">Header
+												<input id="panelheaderimageinput" type="radio" value="true">
+											</label>
+											<label class="btn btn-outline-primary" id="panelcustomimage"
+												for="panelcustomimage">Custom
+												<input id="panelcustomimageinput" type="radio" value="false">
+											</label>
+										</div>
+									</div>
+									<div class="col">
+										<label for="panelcompcolor">Completion bar color:</label>
+										<select class="form-control" id="panelcompcolor">
+											<option value="completed">Completed (blue) - #5BC0DE</option>
+											<option value="beaten">Beaten (green) - #5CB85C</option>
+											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
+											<option value="wont play">Won't play (red) - #D9534F</option>
+											<option value="never played">Never played (white) - #EEEEEE</option>
+											<option value="disabled">Disabled</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row collapse" id="panelcustomimagerow">
+									<div class="col">
+										<label for="panelcustomimageurl">Custom image URL:</label>
+										<input class="form-control" type="text" id="panelcustomimageurl"
+											placeholder="https://example.com/image.png">
+									</div>
+									<div class="col">
+										<label for="panelcustomimagelink">Custom image link:</label>
+										<input class="form-control" type="text" id="panelcustomimagelink"
+											placeholder="https://example.com">
+										<small class="form-text text-muted">If left empty, the image will link to the
+											game's Steam store page.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div id="panelpreview"
+							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						</div>
+						<h3 style="margin-top: 8px;">Code:
+							<button class="copybutton btn btn-outline-primary" id="panelcopycode" data-toggle="popover"
+								data-placement="right" data-content="Copied!">Copy to
+								clipboard</button>
+						</h3>
+						<textarea id="panelcode" class="form-control" readonly="readonly" rows="6" ;></textarea>
+					</div>
+					<!--Game box generator-->
+					<div class="tab-pane fade" id="boxgenerator" role="tabpanel">
+						<fieldset class="border rounded form-group">
+							<div class="dropdowndiv">
+								<span class="dropdown loaddropdown" id="boxload">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="boxloadbtn" data-placement="top" data-content="Loaded!"
+										data-toggle="dropdown">Load</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 1 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 2 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 3 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Exitsave -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Loadsave
+										</button>
+									</div>
+								</span>
+								<span class="dropdown savedropdown" id="boxsave">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="boxsavebtn" data-placement="top" data-content="Saved!"
+										data-toggle="dropdown">
+										Save
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 1 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 2 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 3 -
+											<span class="saveName"></span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Loadsave
+										</button>
+									</div>
+								</span>
+							</div>
+							<legend class="border rounded" data-toggle="collapse" data-target="#boxgamedata">Data
+							</legend>
+							<div class="show" id="boxgamedata">
+								<div class="form-row">
+									<div class="col">
+										<label for="boxgamesearch">Search game:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-search"></i></span>
+											</div>
+											<input class="form-control" id="boxgamesearch" type="text"
+												placeholder="Type a game's name..." disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-8">
+										<label for="boxgametitle">Game title:</label>
+										<input class="form-control" id="boxgametitle" type="text"
+											placeholder="Half-Life 2">
+									</div>
+									<div class="col-4">
+										<label for="boxappid">AppID:</label>
+										<input class="form-control" id="boxappid" type="number" placeholder="220">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="boxplaytime">Playtime:</label>
+										<input class="form-control" id="boxplaytime" type="number" step="0.1"
+											placeholder="0">
+										<small class="form-text text-muted">Specified in hours.</small>
+									</div>
+									<div class="col">
+										<label for="boxachearned">Achievements:</label>
+										<div class="input-group">
+											<input type="number" class="form-control" id="boxachearned" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<span class="input-group-text">of</span>
+											</div>
+											<input type="number" class="form-control" id="boxachtotal" min="0"
+												placeholder="0">
+										</div>
+										<small class="form-text text-muted">Use 0 if the game has no
+											achievements.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="boxplatform">Platform icon:</label>
+										<select class="form-control" id="boxplatform">
+											<option value="none">Don't display</option>
+											<option value="steam">Steam</option>
+											<option value="gog">GoG</option>
+											<option value="epicstore">Epic Store</option>
+											<option value="origin">Origin</option>
+											<option value="uplay">uPlay</option>
+											<option value="microsoftstore">Microsoft Store</option>
+											<option value="battlenet">Battle.net</option>
+											<option value="rockstargames">Rockstar Games Launcher</option>
+											<option value="itchio">Itch.io</option>
+											<option value="drmfree">DRM-free</option>
+											<option value="android">Android</option>
+											<option value="ios">iOS</option>
+											<option value="playstation">PlayStation</option>
+											<option value="xbox">Xbox</option>
+											<option value="switch">Nintendo Switch</option>
+										</select>
+									</div>
+									<div class="col">
+										<label class="screenshotlabel">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst" id="boxscreenshoton"
+												for="panelscreenshoton">Yes
+												<input type="radio" id="boxscreenshotoninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary active" id="boxscreenshotoff"
+												for="panelscreenshotoff">No
+												<input type="radio" id="boxscreenshotoffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">The icon links to your Steam
+											screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#boxcustomization">
+								Customize</legend>
+							<div class="show" id="boxcustomization">
+								<div class="form-row">
+									<div class="col">
+										<label for="boxpreset">Background preset:</label>
+										<select class="form-control" id="boxpreset">
+											<option value="none" selected>None</option>
+											<option value="completed">Blue</option>
+											<option value="beaten">Green</option>
+											<option value="unfinished">Light yellow</option>
+											<option value="wont-play">Red</option>
+											<option value="never-played">Light gray</option>
+											<option value="custom">Custom</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row collapse" id="boxbgcolordiv1">
+									<div class="col">
+										<label for="boxbgtype">Background
+											type:</label>
+										<select class="form-control" id="boxbgtype">
+											<option value="solid">Solid (1 color)</option>
+											<option value="hor-gradient">Horizontal gradient (2 colors)</option>
+											<option value="vert-gradient">Vertical gradient (2 colors)</option>
+											<option value="hor-gradient3">Horizontal gradient (3 colors)</option>
+											<option value="vert-gradient3">Vertical gradient (3 colors)</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="boxbgcolor1text">Background color 1:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="boxbgcolor1"
+													value="#FFFFFF">
+											</div>
+											<input class="form-control" type="text" id="boxbgcolor1text" value="#FFFFFF"
+												maxlength="7" value="#FFFFFF">
+										</div>
+									</div>
+								</div>
+								<div class="form-row collapse" id="boxbgcolordiv2">
+									<div class="col">
+										<label for="boxbgcolor2text">Background color 2:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="boxbgcolor2"
+													value="#FFFFFF" disabled>
+											</div>
+											<input class="form-control" type="text" id="boxbgcolor2text" maxlength="7"
+												value="#FFFFFF" disabled>
+										</div>
+									</div>
+									<div class="col">
+										<label for="boxbgcolor2text">Background color 3:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="boxbgcolor3"
+													value="#FFFFFF" disabled>
+											</div>
+											<input class="form-control" type="text" id="boxbgcolor3text" maxlength="7"
+												value="#FFFFFF" disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="boxtextcolor">Text color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="boxtextcolorpick"
+													value="#000000">
+											</div>
+											<input class="form-control" type="text" id="boxtextcolor" maxlength="7"
+												value="#000000">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="boximagetype">Game image type:</label>
+										<select class="form-control" id="boximagetype">
+											<option value="capsule" selected>Capsule</option>
+											<option value="header">Header</option>
+											<option value="custom">Custom</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="boxcompcolor">Completion bar color:</label>
+										<select class="form-control" id="boxcompcolor">
+											<option value="completed">Completed (blue) - #5BC0DE</option>
+											<option value="beaten">Beaten (green) - #5CB85C</option>
+											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
+											<option value="wont play">Won't play (red) - #D9534F</option>
+											<option value="never played">Never played (white) - #EEEEEE</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row collapse" id="boxcustomimagerow">
+									<div class="col">
+										<label for="boxcustomimageurl">Custom image URL:</label>
+										<input class="form-control" type="text" id="boxcustomimageurl"
+											placeholder="https://example.com/image.png">
+									</div>
+									<div class="col">
+										<label for="boxcustomimagelink">Custom image link:</label>
+										<input class="form-control" type="text" id="boxcustomimagelink"
+											placeholder="https://example.com">
+										<small class="form-text text-muted">If left empty, the image will link to the
+											game's Steam store page.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div class="alert alert-info alert-dismissible fade show" role="alert" style="display: block;">
+							When pasting the box code into your BLAEO post, the box code must be placed in a list,
+							between
+							<code>&lt;ul class="games"&gt;</code> and
+							<code>&lt;/ul&gt;</code>, or else the box won't display correctly. You can put multiple
+							boxes into 1 list.
+							<button type="button" class="close" data-dismiss="alert">
+								<span>&times;</span>
+							</button>
+						</div>
+						<h3 style="margin-top: 8px;">
+							Code:
+							<button class="copybutton btn btn-outline-primary" id="boxcopycode" data-toggle="popover"
+								data-placement="right" data-content="Copied!">
+								Copy to clipboard
+							</button>
+						</h3>
+						<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxcode"
+							class="form-control" readonly rows="6"></textarea>
+						<div style="width: 192px; float: left;">
+							<ul class="games" id="boxpreview"></ul>
+						</div>
+					</div>
+					<!--Progress bar generator-->
+					<div class="tab-pane fade" id="progressbargenerator" role="tabpanel">
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#pbdata">Data
+							</legend>
+							<div class="show" id="pbdata">
+								<div class="form-row">
+									<div class="col">
+										<div class="input-group">
+											<button type="button" id="pbauto" class="btn btn-outline-primary"
+												disabled>Autofill using your stats</button>
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Set decoration to all</button>
+												<div class="dropdown-menu" id="pbbardecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon">
+														</span> None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/
+														animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbcompleted">Completed:</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="pbcompleted" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Decoration</button>
+												<div class="dropdown-menu" id="pbcompleteddecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon"><i class="fa fa-check-circle"></i></span>
+														None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/
+														animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbbeaten">Beaten:</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="pbbeaten" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Decoration</button>
+												<div class="dropdown-menu" id="pbbeatendecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon">
+															<i class="fa fa-check-circle"></i>
+														</span> None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/ animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbunfinished">Unfinished:</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="pbunfinished" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Decoration</button>
+												<div class="dropdown-menu" id="pbunfinisheddecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon">
+															<i class="fa fa-check-circle"></i>
+														</span> None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/
+														animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbneverplayed">Never played:</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="pbneverplayed" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Decoration</button>
+												<div class="dropdown-menu" id="pbneverplayeddecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon">
+															<i class="fa fa-check-circle"></i>
+														</span> None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/
+														animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbwontplay">Won't play:</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="pbwontplay" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary dropdown-toggle" type="button"
+													data-toggle="dropdown">Decoration</button>
+												<div class="dropdown-menu" id="pbwontplaydecor">
+													<button class="dropdown-item pbdropdown" value="none">
+														<span class="pbicon">
+															<i class="fa fa-check-circle"></i>
+														</span> None</button>
+													<button class="dropdown-item pbdropdown" value="striped">
+														<span class="pbicon"></span> Striped</button>
+													<button class="dropdown-item pbdropdown" value="animated">
+														<span class="pbicon"></span> Striped w/ animation</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="form-row">
+									<div class="col">
+										<label for="pbround">Round percents to:</label>
+										<select class="form-control" id="pbround">
+											<option value="0" selected>0 decimal places</option>
+											<option value="1">1 decimal places</option>
+											<option value="2">2 decimal places</option>
+											<option value="3">3 decimal places</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div id="pbpreview"
+							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						</div>
+						<h3 style="margin-top: 8px;">Code:
+							<button class="copybutton btn btn-outline-primary" id="pbcopycode" data-toggle="popover"
+								data-placement="right" data-content="Copied!">Copy to
+								clipboard</button>
+						</h3>
+						<textarea id="pbcode" class="form-control" readonly="readonly" rows="6"></textarea>
+					</div>
+					<!--Hero generator-->
+					<div class="tab-pane fade" id="herogenerator" role="tabpanel">
+						<div class="alert alert-danger collapse" role="alert" id="heroimageerror">
+							<strong>Failed to load hero image!</strong> This game most likely does not have the new
+							Steam library assets uploaded. Use a custom image or use any other generator. You can check <a href="https://www.steamgriddb.com/">SteamGridDB</a> for custom hero images.
+						</div>
+						<fieldset class="border rounded form-group">
+							<div class="dropdowndiv">
+								<span class="dropdown loaddropdown" id="heroload">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="heroloadbtn" data-placement="top" data-content="Loaded!"
+										data-toggle="dropdown">Load</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 1 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 2 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Save 3 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Exitsave -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#loadmodal">Loadsave
+										</button>
+									</div>
+								</span>
+								<span class="dropdown savedropdown" id="herosave">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button"
+										id="herosavebtn" data-placement="top" data-content="Saved!"
+										data-toggle="dropdown">
+										Save
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 1 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 2 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Save 3 -
+											<span class="saveName">empty</span>
+										</button>
+										<button class="dropdown-item" type="button" data-toggle="modal"
+											data-target="#savemodal">Loadsave
+										</button>
+									</div>
+								</span>
+							</div>
+							<legend class="border rounded" data-toggle="collapse" data-target="#herogamedata">Data
+							</legend>
+							<div class="show" id="herogamedata">
+								<div class="form-row">
+									<div class="col">
+										<label for="herogamesearch">Search game:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-search"
+														aria-hidden="true"></i></span>
+											</div>
+											<input class="form-control" id="herogamesearch" type="text"
+												placeholder="Type a game's name..." disabled>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-8">
+										<label for="herogamesearch">Game title:</label>
+										<input class="form-control" id="herogametitle" type="text"
+											placeholder="Half-Life 2">
+									</div>
+									<div class="col-4">
+										<label for="heroappid">AppID:</label>
+										<input class="form-control appid" id="heroappid" type="number"
+											placeholder="220">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="heroplaytime">Playtime:</label>
+										<input class="form-control" id="heroplaytime" type="number" step="0.1"
+											placeholder="0">
+										<small class="form-text text-muted">Specified in hours.</small>
+									</div>
+									<div class="col">
+										<label for="heroachearned">Achievements:</label>
+										<div class="input-group">
+											<input type="number" class="form-control" id="heroachearned" min="0"
+												placeholder="0">
+											<div class="input-group-append">
+												<span class="input-group-text">of</span>
+											</div>
+											<input type="number" class="form-control" id="heroachtotal" min="0"
+												placeholder="0">
+										</div>
+										<small class="form-text text-muted">Use 0 if the game has no
+											achievements.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="herocustomtext">Custom text:</label>
+										<input class="form-control" type="text" id="herocustomtext"
+											placeholder="You can put anything here">
+										<small class="form-text text-muted">Custom text is displayed under playtime and
+											achievements. HTML tags are supported.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="heroplatform">Platform icon:</label>
+										<select class="form-control" id="heroplatform">
+											<option value="none">Don't display</option>
+											<option value="steam">Steam</option>
+											<option value="gog">GoG</option>
+											<option value="epicstore">Epic Store</option>
+											<option value="origin">Origin</option>
+											<option value="uplay">uPlay</option>
+											<option value="microsoftstore">Microsoft Store</option>
+											<option value="battlenet">Battle.net</option>
+											<option value="rockstargames">Rockstar Games Launcher</option>
+											<option value="itchio">Itch.io</option>
+											<option value="drmfree">DRM-free</option>
+											<option value="android">Android</option>
+											<option value="ios">iOS</option>
+											<option value="playstation">PlayStation</option>
+											<option value="xbox">Xbox</option>
+											<option value="switch">Nintendo Switch</option>
+										</select>
+									</div>
+									<div class="col">
+										<label class="screenshotlabel">Show screenshot icon:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst" id="heroscreenshoton"
+												for="heroscreenshoton">Yes
+												<input type="radio" id="heroscreenshotoninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary active" id="heroscreenshotoff"
+												for="barscreenshotoff">No
+												<input type="radio" id="heroscreenshotoffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">The icon links to your Steam
+											screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#heroreview">
+								Review</legend>
+							<div class="show" id="heroreview">
+								<div class="form-row">
+									<div class="col">
+										<label for="heroreviewtrigger">Review trigger method:</label>
+										<select class="form-control" id="heroreviewtrigger">
+											<option value="button">Button</option>
+											<option value="alwaysvisible">Always visible</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="review">Review:</label>
-										<textarea class="form-control review" type="text" id="review" placeholder="This game is awesome and stuff" rows="4"></textarea>
-										<span class="dropdown">
-											<button class="btn btn-outline-primary dropdown-toggle load" type="button" style="margin-top: 4px;" id="autosave1" data-placement="right"
-											 data-content="Loaded!" data-toggle="dropdown">
-												Load
-											</button>
-											<div class="dropdown-menu">
-												<button class="dropdown-item autosave" type="button" value="#autosave1">Autosave -
-													<span class="autosavedate"></span>
-												</button>
-												<button class="dropdown-item save1load" type="button" value="#autosave1">Save 1
-													<span class="save1title"></span>
-												</button>
-												<button class="dropdown-item save2load" type="button" value="#autosave1">Save 2
-													<span class="save2title"></span>
-												</button>
-												<button class="dropdown-item save3load" type="button" value="#autosave1">Save 3
-													<span class="save3title"></span>
-												</button>
-											</div>
-										</span>
-										<span class="dropdown">
-											<button class="btn btn-outline-primary dropdown-toggle save" type="button" style="margin-top: 4px;" id="load1" data-placement="right"
-											 data-content="Saved!" data-toggle="dropdown">
-												Save
-											</button>
-											<div class="dropdown-menu">
-												<button class="dropdown-item save1" type="button" value="#load1">Save 1
-													<span class="save1title"></span>
-												</button>
-												<button class="dropdown-item save2" type="button" value="#load1">Save 2
-													<span class="save2title"></span>
-												</button>
-												<button class="dropdown-item save3" type="button" value="#load1">Save 3
-													<span class="save3title"></span>
-												</button>
-											</div>
-										</span>
-										<small class="form-text text-muted">Leave blank to disable review. Markdown and HTML tags are supported. Reviews are saved automatically after refreshing/leaving
-											the page.
+										<textarea class="form-control review" type="text" id="heroreviewfield"
+											placeholder="You can pet dogs 10/10" rows="4"></textarea>
+										<small class="form-text text-muted">Leave blank to disable the review. Markdown
+											and HTML tags are supported.
+											Reviews are autosaved after refreshing/leaving the page to prevent
+											accidental data loss.
 										</small>
 									</div>
 								</div>
 							</div>
 						</fieldset>
-						<div id="preview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;"></div>
-						<h3 style="margin-top: 8px;">Code to copy:
-							<button class="copybutton btn btn-outline-primary" id="copybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
-							<button class="copybutton btn btn-outline-primary" id="copyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
-						</h3>
-						<textarea id="generated" class="generatedtext form-control" readonly="readonly" rows="6" ;></textarea>
-					</div>
-					<!--Panel generator-->
-					<div class="tab-pane fade" id="panelgenerator" role="tabpanel">
-						<!--Game data fields-->
-						<div class="alert alert-danger show" role="alert" id="autofillerror3" style="display: none;">
-							<strong>Failed to fetch data.</strong>
-							<a data-toggle="collapse" href="#errorreasons3">Possible reasons:</a>
-							<div class="collapse" id="errorreasons3">
-								<ul style="margin-bottom: 0;">
-									<li>Invalid AppID/SteamID64</li>
-									<li>You don't own this game</li>
-									<li>You are not a BLAEO member</li>
-									<li>Problems with internet connection</li>
-									<li>BLAEO website is down</li>
-								</ul>
-							</div>
-						</div>
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelgamedata">Game data</legend>
-							<div class="show" id="panelgamedata">
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#herocustomization">
+								Customize</legend>
+							<div class="show" id="herocustomization">
 								<div class="form-row">
 									<div class="col">
-										<label for="appid3">Game's AppID:</label>
-										<input class="form-control appid" id="appid3" type="number" placeholder="220" data-toggle="tooltip" data-placement="bottom"
-										 title="Tooltip on bottom">
-										<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
+										<label for="herocolorpreset">Color preset:</label>
+										<select class="form-control" id="herocolorpreset">
+											<option value="completed" selected>Completed</option>
+											<option value="beaten">Beaten</option>
+											<option value="unfinished">Unfinished</option>
+											<option value="wont play">Won't play</option>
+											<option value="never played">Never played</option>
+											<option value="custom">Custom</option>
+										</select>
 									</div>
 									<div class="col">
-										<label for="gametitle3" class="firstinputs">Game title:</label>
-										<input class="form-control gametitle" id="gametitle3" type="text" placeholder="Half-Life 2">
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="col">
-										<label for="playtime3">Playtime:</label>
-										<input class="form-control playtime" id="playtime3" type="number" step="0.1" placeholder="0">
-										<small class="form-text text-muted">Specified in hours.</small>
-									</div>
-									<div class="col">
-										<label for="cheevoearned3" style="clear: right;">Achievements:</label>
+										<label for="herobordercolor">Border color:</label>
 										<div class="input-group">
-											<input type="number" class="form-control cheevoearned" id="cheevoearned3" min="0" placeholder="0">
-											<div class="input-group-append">
-												<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="herobordercolor"
+													value="#FFFFFF" disabled>
 											</div>
-											<input type="number" class="form-control cheevoall" min="0" placeholder="0">
+											<input class="form-control" type="text" id="herobordercolortext"
+												value="#FFFFFF" maxlength="7" disabled>
 										</div>
-										<small class="form-text text-muted">Use "0" if game has no achievements.</small>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="rating1">Rating:</label>
-										<input class="form-control rating" id="rating1" type="text" placeholder="8/10">
-									</div>
-								</div>
-							</div>
-						</fieldset>
-						<!--Customization fields-->
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelcustomization">Customization</legend>
-							<div class="show" id="panelcustomization">
-								<div class="form-row">
-									<div class="col">
-										<label for="panelcolor">Background/text color:</label>
-										<select class="form-control" id="panelcolor">
-											<option value="info">Blue</option>
-											<option value="success">Green</option>
-											<option value="warning">Light yellow</option>
-											<option value="danger">Red</option>
-											<option value="default">Light gray</option>
-										</select>
+										<label for="herotilebgcolor">Tile background color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="herotilebgcolor"
+													value="#FFFFFF" disabled>
+											</div>
+											<input class="form-control" type="text" id="herotilebgcolortext"
+												value="#FFFFFF" maxlength="7" disabled>
+										</div>
 									</div>
 									<div class="col">
-										<label for="barcolor3">Completion bar color:</label>
-										<select class="form-control barcolor" id="barcolor3">
-											<option value="completed">Completed (blue) - #5BC0DE</option>
-											<option value="beaten">Beaten (green) - #5CB85C</option>
-											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
-											<option value="wont play">Won't play (red) - #D9534F</option>
-											<option value="never played">Never played (white) - #EEEEEE</option>
-										</select>
+										<label for="herotilecontentcolor">Tile text color:</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<input class="form-control" type="color" id="herotilecontentcolor"
+													value="#000000" disabled>
+											</div>
+											<input class="form-control" type="text" id="herotilecontentcolortext"
+												value="#000000" maxlength="7" disabled>
+										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label for="screenshot2">Show screenshot icon:</label>
+										<label class="screenshotlabel">Image type:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active" id="screenshot2on" for="screenshot2on" style="margin-right: 10px">Yes
-												<input type="radio" value="true">
+											<label class="btn btn-outline-primary buttonfirst active" id="heroheroimage"
+												for="heroheroimage">Hero
+												<input id="heroheroimageinput" type="radio" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="screenshot2off" for="screenshot2off">No
-												<input type="radio" value="false">
+											<label class="btn btn-outline-primary" id="herocustomimage"
+												for="herocustomimage">Custom
+												<input id="herocustomimageinput" type="radio" value="false">
 											</label>
 										</div>
-										<small class="form-text text-muted">If clicked, the icon will link to your Steam screenshots for this game. Requires your SteamID64 to work.</small>
+									</div>
+									<div class="col">
+										<label for="heroimageminheight">Image min/max height (px):</label>
+										<div class="input-group">
+											<input class="form-control" type="number" id="heroimageminheight"
+												value="160" min="0">
+											<div class="input-group-append">
+												<span class="input-group-text">/</span>
+											</div>
+											<input class="form-control" type="number" id="heroimagemaxheight"
+												value="300" min="0">
+										</div>
 									</div>
 								</div>
+							</div>
+							<div class="form-row collapse" id="herocustomimagerow">
+								<div class="col">
+									<label for="herocustomimageurl">Custom image URL:</label>
+									<input class="form-control" type="text" id="herocustomimageurl"
+										placeholder="https://example.com/image.png">
+								</div>
+								<div class="col">
+									<label for="herocustomimagelink">Custom image link:</label>
+									<input class="form-control" type="text" id="herocustomimagelink"
+										placeholder="https://example.com">
+									<small class="form-text text-muted">If left empty, the image will link to the
+										game's Steam store page.</small>
+								</div>
+							</div>
 						</fieldset>
-						<fieldset class="border rounded form-group" style="padding: 12px;">
-							<legend class="legendfix border rounded" data-toggle="collapse" data-target="#panelreview">Review</legend>
-							<div class="show" id="panelreview">
+						<fieldset class="border rounded form-group">
+							<legend class="border rounded" data-toggle="collapse" data-target="#herologosettings">
+								Logo</legend>
+							<div class="show" id="herologosettings">
 								<div class="form-row">
 									<div class="col">
-										<label for="panelreview">Review:</label>
-										<textarea class="form-control review" type="text" id="panelreview" placeholder="This game is awesome and stuff" rows="4"></textarea>
-										<span class="dropdown">
-											<button class="btn btn-outline-primary dropdown-toggle load" type="button" style="margin-top: 4px;" id="autosave2" data-placement="right"
-											 data-content="Loaded!" data-toggle="dropdown">
-												Load
-											</button>
-											<div class="dropdown-menu">
-												<button class="dropdown-item autosave" type="button" value="#autosave2">Autosave -
-													<span class="autosavedate"></span>
-												</button>
-												<button class="dropdown-item save1load" type="button" value="#autosave2">Save 1
-													<span class="save1title"></span>
-												</button>
-												<button class="dropdown-item save2load" type="button" value="#autosave2">Save 2
-													<span class="save2title"></span>
-												</button>
-												<button class="dropdown-item save3load" type="button" value="#autosave2">Save 3
-													<span class="save3title"></span>
-												</button>
-											</div>
-										</span>
-										<span class="dropdown">
-											<button class="btn btn-outline-primary dropdown-toggle save" type="button" style="margin-top: 4px;" id="load2" data-placement="right"
-											 data-content="Saved!" data-toggle="dropdown">
-												Save
-											</button>
-											<div class="dropdown-menu">
-												<button class="dropdown-item save1" type="button" value="#load2">Save 1
-													<span class="save1title"></span>
-												</button>
-												<button class="dropdown-item save2" type="button" value="#load2">Save 2
-													<span class="save2title"></span>
-												</button>
-												<button class="dropdown-item save3" type="button" value="#load2">Save 3
-													<span class="save3title"></span>
-												</button>
-											</div>
-										</span>
-										<small class="form-text text-muted">Leave blank to disable. Markdown and HTML tags are supported. Reviews are saved automatically after refreshing/leaving
-											the page.
-										</small>
+										<label for="herologopos">Logo position:</label>
+										<select class="form-control" id="herologopos">
+											<option value="topleft">Top left</option>
+											<option value="topcenter">Top center</option>
+											<option value="topright">Top right</option>
+											<option value="centerleft">Center left</option>
+											<option value="center" selected>Center</option>
+											<option value="centerright">Center right</option>
+											<option value="bottomleft">Bottom left</option>
+											<option value="bottomcenter">Bottom center</option>
+											<option value="bottomright">Bottom right</option>
+											<option value="hide">Hide</option>
+										</select>
+									</div>
+									<div class="col">
+										<label for="herologosize">Logo size (%):</label>
+										<input class="form-control" type="number" id="herologosize" placeholder="1"
+											value="20" min="1" max="200">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="herocustomlogourl">Custom logo URL:</label>
+										<input class="form-control" type="text" id="herocustomlogourl"
+											placeholder="https://example.com/image.png">
+									</div>
+									<div class="col">
+										<label class="screenshotlabel">Calculate logo size using hero's:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst active" id="herologocalcheight"
+												for="herologocalcheight">Height
+												<input id="herologocalcheightinput" type="radio" value="true">
+											</label>
+											<label class="btn btn-outline-primary" id="herologocalcwidth"
+												for="herologocalcwidth">Width
+												<input id="herologocalcwidthinput" type="radio" value="false">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="heroxoffset">Logo horizontal offset (%):</label>
+										<input class="form-control" type="number" id="heroxoffset" placeholder="0"
+											value="0">
+										<small class="form-text text-muted">Positive values move logo away from the
+											border.<br>
+											Negative values move logo towards the border.</small>
+									</div>
+									<div class="col">
+										<label for="heroyoffset">Logo vertical offset (%):</label>
+										<input class="form-control" type="number" id="heroyoffset" placeholder="0"
+											value="0">
+										<small class="form-text text-muted">Positive values move logo away from the
+											border.<br>
+											Negative values move logo towards the border.</small>
 									</div>
 								</div>
 							</div>
 						</fieldset>
-						<div id="panelpreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;"></div>
-						<h3 style="margin-top: 8px;">Code to copy:
-							<button class="copybutton btn btn-outline-primary" id="panelcopybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy to clipboard</button>
-							 <button class="copybutton btn btn-outline-primary" id="panelcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
+						<div id="heropreview"
+							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						</div>
+						<h3 style="margin-top: 8px;">Code:
+							<button class="copybutton btn btn-outline-primary" id="herocopycode" data-toggle="popover"
+								data-placement="right" data-content="Copied!">Copy to
+								clipboard</button>
 						</h3>
-						<textarea id="panelgenerated" class="panelgeneratedtext form-control" readonly="readonly" rows="6" ;></textarea>
-						</div>
-						<!--Game box generator-->
-						<div class="tab-pane fade" id="gameboxgenerator" role="tabpanel">
-							<div class="alert alert-danger show" role="alert" id="autofillerror2" style="display: none;">
-								<strong>Failed to fetch data.</strong>
-								<a data-toggle="collapse" href="#errorreasons2">Possible reasons:</a>
-								<div class="collapse" id="errorreasons2">
-									<ul style="margin-bottom: 0;">
-										<li>Invalid AppID/SteamID64</li>
-										<li>You don't own this game</li>
-										<li>You are not a BLAEO member</li>
-										<li>Problems with internet connection</li>
-										<li>BLAEO website is down</li>
-									</ul>
-								</div>
-							</div>
-							<fieldset class="border rounded form-group" style="padding: 12px;">
-								<legend class="legendfix border rounded" data-toggle="collapse" data-target="#boxgamedata">Game data</legend>
-								<div class="show" id="boxgamedata">
-									<div class="form-row">
-										<div class="col">
-											<label for="appid2" class="firstinputs">Game's AppID:</label>
-											<input class="form-control appid" id="appid2" type="number" placeholder="220">
-											<small class="form-text text-muted">To find out a game's AppID, go to its store page, look at it's URL and check the numbers after the /app/ part.</small>
-										</div>
-										<div class="col">
-											<label for="gametitle2" class="firstinputs">Game title:</label>
-											<input class="form-control gametitle" id="gametitle2" type="text" placeholder="Half-Life 2">
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="playtime2">Playtime:</label>
-											<input class="form-control playtime" id="playtime2" type="number" step="0.1" placeholder="0">
-											<small class="form-text text-muted">Specified in hours.</small>
-										</div>
-										<div class="col">
-											<label for="cheevoearned2" style="clear: right;">Achievements:</label>
-											<div class="input-group">
-												<input type="number" class="form-control cheevoearned" id="cheevoearned2" min="0" placeholder="0">
-												<div class="input-group-append">
-													<span class="input-group-text" style="padding: .375rem .4rem;">of</span>
-												</div>
-												<input type="number" class="form-control cheevoall" min="0" placeholder="0">
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-							<fieldset class="border rounded form-group" style="padding: 12px;">
-								<legend class="legendfix border rounded" data-toggle="collapse" data-target="#boxcustomization">Customization</legend>
-								<div class="show" id="boxcustomization">
-									<div class="form-row">
-										<div class="col">
-											<label class="firstinputs" for="barcolor2">Completion bar color:</label>
-											<select class="form-control barcolor" id="barcolor2">
-												<option value="completed">Completed (blue) - #5BC0DE</option>
-												<option value="beaten">Beaten (green) - #5CB85C</option>
-												<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
-												<option value="wont play">Won't play (red) - #D9534F</option>
-												<option value="never played">Never played (white) - #EEEEEE</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-							<div class="alert alert-info alert-dismissible fade show" role="alert" style="display: block;">
-								Game boxes are designed to be placed in a list. Put
-								<strong>&lt;ul class="games"&gt;</strong> before the first game box in a list and
-								<strong>&lt;/ul&gt;</strong> after the last box in the list.
-								<button type="button" class="close" data-dismiss="alert">
-									<span>&times;</span>
+						<textarea id="herocode" class="form-control" readonly="readonly" rows="6"></textarea>
+					</div>
+				</div>
+			</div>
+			<!--Settings tab-->
+			<div class="tab-pane fade" id="settingstab" role="tabpanel">
+				<div class="modal fade" id="resetmodal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="loadsaveresetmodallabel"></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<h3 style="margin-top: 8px;">
-								Code to copy:
-								<button class="copybutton btn btn-outline-primary" id="boxcopybutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-								 data-placement="right" data-content="Copied!">
-									Copy to clipboard
-								</button>
-								<button class="copybutton btn btn-outline-primary" id="boxcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy with linebreaks code to clipboard</button>
-							</h3>
-							<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxgenerated" class="boxgeneratedtext form-control"
-							 readonly="readonly" rows="6"></textarea>
-							<div id="boxpreview" style="width: 192px; float: left;">
+							<div class="modal-body">
+								Are you sure you want to reset this loadsave?
 							</div>
-						</div>
-						<!--Progress bar generator-->
-						<div class="tab-pane fade" id="progressbargenerator" role="tabpanel">
-							<div class="alert alert-warning" style="display: none;" id="uncategorizedwarning" role="alert">
-								You have
-								<span id="uncategorized"></span> uncategorized game
-								<span id="multipleuncategorized"></span> Go
-								<span id="uncategorizedlink"></span> to categorize
-								<span id="multipleuncategorized2"></span>.
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal"
+									id="loadsaveresetmodalbtn">Reset</button>
 							</div>
-							<div class="alert alert-danger show" role="alert" id="libraryerror" style="display: none;">
-								<strong>Failed to fetch stats. </strong>The SteamID64 you provided is invalid, there are problems with your internet connection
-								or BLAEO website is down.
-							</div>
-							<fieldset class="border rounded form-group" style="padding: 12px;">
-								<legend class="legendfix border rounded" data-toggle="collapse" data-target="#progressbardata">Data</legend>
-								<div class="show" id="progressbardata">
-									<div id="fetchlibrarydiv" class="form-row">
-										<div class="col">
-											<button type="button" id="fetchlibrary" class="btn btn-outline-primary btn-block">Fetch your library stats from BLAEO</button>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="completed">Completed:</label>
-											<div class="input-group">
-												<input class="form-control" type="number" id="completed" min="0" placeholder="0">
-												<div class="input-group-append">
-													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
-													<div class="dropdown-menu">
-														<button class="dropdown-item completeddecor" value="none">
-															<span id="completednone">
-																<i class="fa fa-check-circle"></i>
-															</span>None</button>
-														<button class="dropdown-item completeddecor" value="striped">
-															<span id="completedstriped"></span>Striped</button>
-														<button class="dropdown-item completeddecor" value="animated">
-															<span id="completedanimated"></span>Striped w/ animation</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="beaten">Beaten:</label>
-											<div class="input-group">
-												<input class="form-control" type="number" id="beaten" min="0" placeholder="0">
-												<div class="input-group-append">
-													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
-													<div class="dropdown-menu">
-														<button class="dropdown-item beatendecor" value="none">
-															<span id="beatennone">
-																<i class="fa fa-check-circle"></i>
-															</span>None</button>
-														<button class="dropdown-item beatendecor" value="striped">
-															<span id="beatenstriped"></span>Striped</button>
-														<button class="dropdown-item beatendecor" value="animated">
-															<span id="beatenanimated"></span>Striped w/ animation</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="unfinished">Unfinished:</label>
-											<div class="input-group">
-												<input class="form-control" type="number" id="unfinished" min="0" placeholder="0">
-												<div class="input-group-append">
-													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
-													<div class="dropdown-menu">
-														<button class="dropdown-item unfinisheddecor" value="none">
-															<span id="unfinishednone">
-																<i class="fa fa-check-circle"></i>
-															</span>None</button>
-														<button class="dropdown-item unfinisheddecor" value="striped">
-															<span id="unfinishedstriped"></span>Striped</button>
-														<button class="dropdown-item unfinisheddecor" value="animated">
-															<span id="unfinishedanimated"></span>Striped w/ animation</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="neverplayed">Never played:</label>
-											<div class="input-group">
-												<input class="form-control" type="number" id="neverplayed" min="0" placeholder="0">
-												<div class="input-group-append">
-													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
-													<div class="dropdown-menu">
-														<button class="dropdown-item neverplayeddecor" value="none">
-															<span id="neverplayednone">
-																<i class="fa fa-check-circle"></i>
-															</span>None</button>
-														<button class="dropdown-item neverplayeddecor" value="striped">
-															<span id="neverplayedstriped"></span>Striped</button>
-														<button class="dropdown-item neverplayeddecor" value="animated">
-															<span id="neverplayedanimated"></span>Striped w/ animation</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col">
-											<label for="wontplay">Won't play:</label>
-											<div class="input-group">
-												<input class="form-control" type="number" id="wontplay" min="0" placeholder="0">
-												<div class="input-group-append">
-													<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Decoration</button>
-													<div class="dropdown-menu">
-														<button class="dropdown-item wontplaydecor" value="none">
-															<span id="wontplaynone">
-																<i class="fa fa-check-circle"></i>
-															</span>None</button>
-														<button class="dropdown-item wontplaydecor" value="striped">
-															<span id="wontplaystriped"></span>Striped</button>
-														<button class="dropdown-item wontplaydecor" value="animated">
-															<span id="wontplayanimated"></span>Striped w/ animation</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-							<div id="progressbarpreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
-							</div>
-							<h3 style="margin-top: 8px;">Code to copy:
-								<button class="copybutton btn btn-outline-primary" id="progressbarcopybutton" style="vertical-align:top; width: initial;"
-								 data-toggle="popover" data-placement="right" data-content="Copied!">Copy to clipboard</button>
-								 <button class="copybutton btn btn-outline-primary" id="progressbarcopyreadablebutton" style="vertical-align:top; width: initial;" data-toggle="popover"
-							 data-placement="right" data-content="Copied!">Copy with linebreaks to clipboard</button>
-							</h3>
-							<textarea id="progressbargenerated" class="progressbargenerated form-control" readonly="readonly" rows="6" ;></textarea>
 						</div>
 					</div>
 				</div>
-				<!--Settings tab-->
-				<div class="tab-pane fade" id="settingstab" role="tabpanel">
-					<div class="alert alert-info" role="alert">
-						Settings are saved automatically.
-					</div>
-					<fieldset class="border rounded form-group" style="padding: 12px;">
-						<legend class="legendfix border rounded" data-toggle="collapse" data-target="#settings">Autofilling</legend>
-						<div class="form-row show" id="settings">
-							<div class="col">
-								<p style="margin-top: 4px; margin-bottom: 8px;">Use autofilling:</p>
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-									<label class="btn btn-outline-primary" id="autofillon" for="autofillon" style="margin-right: 10px">Yes
-										<input type="radio" value="true">
-									</label>
-									<label class="btn btn-outline-primary" id="autofilloff" for="autofilloff">No
-										<input type="radio" value="false">
-									</label>
-								</div>
-								<small class="form-text text-muted">Autofills game data fields after entering game's Steam AppID by fetching stats from your BLAEO profile. Requires
-									your SteamID64 to work.</small>
-								<br>
-							</div>
-							<div class="col">
-								<label for="steamid">Your SteamID64:</label>
+				<div class="alert alert-info" role="alert">
+					Settings are saved automatically.
+				</div>
+				<div class="alert alert-danger show" role="alert" id="fetcherroralert" style="display: none;">
+					<strong>Sync failed at fetching <span id="fetcherror"></span>!</strong> Check if the SteamID is
+					correct and
+					try again. The sync may also fail when the BLAEO website is down.
+				</div>
+				<fieldset class="border rounded form-group">
+					<legend class="border rounded" data-toggle="collapse" data-target="#settings">Sync settings</legend>
+					<div class="form-row show" id="settings">
+						<div class="col">
+							<label for="steamid">Your SteamID64:</label>
+							<div class="input-group">
 								<input class="form-control" type="number" id="steamid">
-								<small class="form-text text-muted">
-									<a href="https://steamid.io/" target="_blank">Use this website</a> to get your SteamID64.</small>
+								<div class="input-group-prepend">
+									<button class="btn btn-outline-primary" id="syncbutton" type="button"><i
+											class="fa fa-refresh" aria-hidden="true"></i> Sync</button>
+								</div>
 							</div>
+							<small class="form-text text-muted">
+								<a href="https://steamid.io/" target="_blank">Use this website</a> to get your
+								SteamID64.</small>
 						</div>
-					</fieldset>
-				</div>
-				<!--About tab-->
-				<div class="tab-pane fade" id="about" role="tabpanel" align="center">
-					<h2 align="center">BLAEO Generators
-						<small class="text-muted">v1.21</small>
-					</h2>
-					<p>A tool for generating bars, game boxes, panels and progress bars for use with BLAEO posts.</p>
-					<p>
-						<a href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/">
-							<strong>Steam forum post</strong>
-						</a> - post your feedback, suggestions and bug reports there
-					</p>
-					<p>Developed by
-						<strong>
-							<a href="http://steamcommunity.com/id/kubikill" target="_blank">kubikill</a>
-						</strong>
-						<br> for
-						<strong>
-							<a href="https://www.backlog-assassins.net/">Backlog Assassins Extraordinaire</a>
-						</strong>
-					</p>
-					<p>Thanks to mandrill for the help with the autofilling feature!</p>
-					<h2>Changelog:</h2>
-					<br>
-					<h4 align="left">v1.21 - March 29, 2019</h4>
-					<ul align="left">
-						<li>Bar and Panel: Added screenshot button</li>
-						<li>Added "Copy with linebreaks to clipboard" buttons to export easier to read code</li>
-						<li>Added hex color codes to "Completion bar color"</li>
-					</ul>
-					<h4 align="left">v1.2 - May 25, 2018</h4>
-					<ul align="left">
-						<li>
-							<b>Added a panel generator</b>
-						</li>
-						<li>Added Markdown support to reviews</li>
-						<li>Added automatic and manual saving for reviews</li>
-						<li>Bar: Added "click button to view review"</li>
-						<li>Progress bar: Added striped/animated bars</li>
-						<li>Miscellaneous small changes</li>
-					</ul>
-					<h4 align="left">v1.1 - April 21, 2018</h4>
-					<ul align="left">
-						<li>
-							<b>Added a progress bar generator</b>
-						</li>
-						<li>Bar: Added reviews</li>
-						<li>Bar: Added option to change game image position</li>
-						<li>Bar: Added option to change completion bar position</li>
-						<li>Bar: Text color can now be set separately for title and playtime/achievements</li>
-						<li>Bar: Text color option now affects achievement link</li>
-						<li>Changed how games with no achievements are handled</li>
-						<li>Fixed achievement text showing "undefined of x achievements", if user has 0 achievements in a game</li>
-						<li>Fixed fetching games with progress set to "never played" or "won't play"</li>
-						<li>Implemented some tiny changes I don't remember anymore</li>
-						<li>Removed the "preview always visible" option because it breaks review previewing ¯\_(ツ)_/¯ </li>
-					</ul>
-					<h4 align="left">v1.01 - March 27, 2018</h4>
-					<ul align="left">
-						<li>Added an one-time welcoming message</li>
-						<li>Added "never played (white)" to completion bar colors</li>
-						<li>Fixed achievement links pointing to "undefined" profiles, and not updating properly</li>
-						<li>Fixed AppIDs not updating properly</li>
-					</ul>
-					<h4 align="left">v1.0 - March 18, 2018</h4>
-					<ul align="left">
-						<li>Initial release</li>
-					</ul>
-				</div>
+						<div class="col-12 col-md-6">
+							<label class="screenshotlabel">Automatic sync:</label>
+							<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-outline-primary buttonfirst active" id="autosyncon"
+									for="autosyncon">Enabled
+									<input type="radio" value="true">
+								</label>
+								<label class="btn btn-outline-primary" id="autosyncoff" for="autosyncoff">Disabled
+									<input type="radio" value="false">
+								</label>
+							</div>
+							<small class="form-text text-muted">If enabled, a sync will be triggered if the last sync
+								was at least 24 hours ago.</small>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="border rounded form-group">
+					<legend class="border rounded" data-toggle="collapse" data-target="#stats">User stats</legend>
+					<div class="show" id="stats">
+						<p class="collapse" id="statssyncing"><i class="fa fa-refresh spin" aria-hidden="true"></i>
+							Syncing stats and library...</p>
+						<p id="lastsync">Last update: <span id="lastsyncdate">never</span></p>
+						<p id="userstats">No stats.</p>
+					</div>
+				</fieldset>
+				<fieldset class="border rounded form-group">
+					<legend class="border rounded" data-toggle="collapse" data-target="#loadsavereset">Reset loadsaves
+					</legend>
+					<div class="show" id="loadsavereset">
+						<button class="btn btn-outline-primary" id="barloadsaveresetbtn" type="button"
+							data-toggle="modal" data-target="#resetmodal">Reset bar loadsave</button>
+						<button class="btn btn-outline-primary" id="panelloadsaveresetbtn" type="button"
+							data-toggle="modal" data-target="#resetmodal">Reset panel loadsave</button>
+						<button class="btn btn-outline-primary" id="boxloadsaveresetbtn" type="button"
+							data-toggle="modal" data-target="#resetmodal">Reset box loadsave</button>
+						<button class="btn btn-outline-primary" id="heroloadsaveresetbtn" type="button"
+							data-toggle="modal" data-target="#resetmodal">Reset hero loadsave</button>
+					</div>
+				</fieldset>
+			</div>
+			<!--FAQ tab-->
+			<div class="tab-pane tab-content fade" id="faqtab" role="tabpanel">
+				<h3>Common issues</h3>
+				<br>
+				<h5>Some games cannot be autofilled, or data is outdated</h5>
+				<p>BLAEO Generators uses BLAEO's library data for the autofill feature. Try triggering a manual sync on
+					BLAEO and BLAEO Generators.<br></p>
+				<h5>Boxes look weird on BLAEO</h5>
+				<p>If your box looks like this...</p>
+				<li class="game-thumbnail game game-completed" style="font-size: 14px">
+					<div class="title" style="height: 69px;">Half-Life 2</div>
+					<a href="https://store.steampowered.com/app/220/" target="_blank"><img alt="Half-Life 2"
+							src="https://steamcdn-a.akamaihd.net/steam/apps/220/capsule_184x69.jpg"></a>
+					<div class="caption" style="height: auto; padding-bottom: 9px;">
+						<p>0 hours playtime</p>
+						<p>no achievements</p>
+					</div>
+				</li>
+				<p>...then you forgot to put the box code between <code>&lt;ul class="games"></code> and
+					<code>&lt;/ul></code>.</p>
+				<h3>Resources</h3>
+				<p><a href="https://www.w3schools.com/html/">W3Schools HTML tutorials/reference</a></p>
+				<p><a href="https://getbootstrap.com/docs/3.3/css/">Bootstrap 3.3 docs</a> + <a
+						href="https://getbootstrap.com/docs/3.3/components/">components</a></p>
+				<p><a href="https://fontawesome.com/v4.7.0/icons/">Font Awesome v4.7.0 icons</a> (v5 icons will not work
+					on BLAEO!)</p>
+				<p><a href="https://icons8.com/icons">Icons8 icons</a></p>
+				<p><a href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/1744478429688478255/">Enhanced
+						BLAEO userscript by revilheart</a></p>
+						<p><a href="https://www.steamgriddb.com/">SteamGridDB for custom hero images and logos</a></p>
+			</div>
+			<!--About tab-->
+			<div class="tab-pane fade" id="about" role="tabpanel">
+				<h2>BLAEO Generators
+					<small class="text-muted">v2.0</small>
+				</h2>
+				<p>A post snippet generator for use with BLAEO posts.</p>
+				<p>
+					<a href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/">
+						<strong>Steam forum post</strong>
+					</a> - post your feedback, suggestions and bug reports there
+				</p>
+				<p>Made by
+					<strong>
+						<a href="http://steamcommunity.com/id/kubikill" target="_blank">kubikill</a>
+					</strong>
+					<br> for
+					<strong>
+						<a href="https://www.backlog-assassins.net/">Backlog Assassins Extraordinaire</a>
+					</strong>
+				</p>
+				<p>Thanks to mandrill for help with the autofilling feature!</p>
+				<p>Icons: <a href="https://fontawesome.com/v4.7.0/">Font Awesome v4.7.0</a>, <a
+						href="https://icons8.com">Icons8</a></p>
+				<h2>Changelog:</h2>
+				<h4>v2.0 - March 26, 2020</h4>
+				<ul>
+					<li><strong>Added "Hero" generator</strong></li>
+					<li><strong>Games can now be autofilled by typing their name</strong></li>
+					<li>Improved save/load - all generator settings are now saved, saves can now be loaded automatically
+						on startup</li>
+					<li>Added support for spoiler tags in reviews</li>
+					<li>Added Help/Resources tab</li>
+					<li>Bar/Panel/Box: Added platform icons</li>
+					<li>Bar/Panel/Box: Game images can now link to a custom page</li>
+					<li>Bar/Panel: Added "always visible" reviews</li>
+					<li>Bar/Panel: Added ability to use 3 colors for gradient backgrounds</li>
+					<li>Bar: "Click to expand" is now displayed on the bar if the "bar" review trigger method is
+						used
+					</li>
+					<li>Bar: Game images can now be changed to: capsule (default), header, custom, none</li>
+					<li>Bar: Review button background and font colors can now be customized</li>
+					<li>Bar: Text shadows can now be disabled</li>
+					<li>Bar: Added option to hide playtime and achievements</li>
+					<li>Bar: Bar height can now be changed</li>
+					<li>Panel: Added a custom text field</li>
+					<li>Panel: The rating now won't display if the rating field is empty</li>
+					<li>Panel: Background color and text color can now be customized</li>
+					<li>Panel: Game images can now be changed to header or custom</li>
+					<li>Panel: The completion bar can now be hidden</li>
+					<li>Panel: Icon color can now be changed</li>
+					<li>Box: Added screenshot icon</li>
+					<li>Box: Background and text colors can now be changed</li>
+					<li>Box: Added background presets</li>
+					<li>Box: Game images can now be changed to: capsule (default), header, custom</li>
+					<li>Progress bar: Added option to change rounding of the percents</li>
+					<li>Progress bar: You can now apply decoration to all parts of the bar at once</li>
+					<li>Improved interface</li>
+					<li>Major code rewrite</li>
+				</ul>
+				<h4>v2.0 TEST5 - February 16, 2020</h4>
+				<ul>
+					<li>Implemented hero generator</li>
+					<li>Added "itch.io" platform icon</li>
+					<li>Panel: Added "always visible" reviews</li>
+					<li>Panel: Added a custom text field</li>
+					<li>Progress bar: Added option to change rounding of the percents</li>
+					<li>Moved customization sections closer to the previews</li>
+					<li>Improved navbar, now with 100% more icons</li>
+					<li>Changed alert for using the box code correctly</li>
+					<li>Fixed: Panel "More" position when ratings are disabled</li>
+					<li>Fixed: Box autofilling not updating the completion bar list</li>
+				</ul>
+				<h4>v2.0 TEST4 - November 14, 2019</h4>
+				<ul>
+					<li>Implemented saving and loading</li>
+					<li>Save/Load: Now saves all generator settings instead of the review only</li>
+					<li>Save/Load: Renamed autosaves to Exitsaves</li>
+					<li>Save/Load: Now saves all generator settings instead of just the review</li>
+					<li>Save/Load: Added loadsaves - loadsaves will automatically load when opening BLAEO
+						Generators,
+						can be used to change default settings of a generator</li>
+					<li>Panel: The rating now won't display if the rating field is empty</li>
+					<li>Box: Text color can now be changed without setting the background preset to custom</li>
+					<li>Fixed "Click to expand" text not displaying on bars when image type is set to none</li>
+					<li>Fixed completion bar not displaying on bars after changing the completion bar position if
+						the
+						compleiton bar color wasn't changed at least once</li>
+					<li>Fixed text wrapping in bars when there's still enough room when image type is set to none
+					</li>
+					<li>Fixed platform icon positions in bar</li>
+					<li>Fixed padding not applying to boxes</li>
+				</ul>
+				<h4>v2.0 TEST3 - November 2, 2019</h4>
+				<ul>
+					<li>Implemented progress bar generator</li>
+					<li>Bar: Added option to hide playtime and achievements</li>
+					<li>Panel: Added a separate option for icon color</li>
+					<li>Progress bar: Added option to change decoration of the entire bar at once</li>
+					<li>Fixed bar text color not affecting "Click to expand" text</li>
+					<li>Fixed custom panel images being stretched</li>
+					<li>Fixed box achievements not working</li>
+					<li>Fixed a typo in box code that caused it to not display properly on BLAEO</li>
+					<li>Fixed search fields not enabling after first sync</li>
+				</ul>
+				<h4>v2.0 TEST2 - October 29, 2019</h4>
+				<ul>
+					<li>Implemented box generator</li>
+					<li>Box: Added screenshot and platform icons</li>
+					<li>Box: Background and text colors can now be changed</li>
+					<li>Box: Added background presets</li>
+					<li>Box: Game images can now be changed to: capsule (default), header, custom</li>
+					<li>Box: Game images can now link to a custom page</li>
+					<li>Fixed library not syncing automatically</li>
+					<li>Fixed completion bar color not being autofilled</li>
+					<li>Search fields are now disabled if library wasn't synced at least once</li>
+					<li>Minor interface changes</li>
+					<li>Moved the Save/Load buttons (saving and loading not implemented yet)</li>
+				</ul>
+				<h4>v2.0 TEST1 - October 20, 2019</h4>
+				<ul>
+					<li>Implemented bar and panel generators</li>
+					<li>Bar/Panel: Added ability to use 3 colors for gradient backgrounds</li>
+					<li>Bar: "Click to expand" is now displayed on the bar if the "bar" review trigger method is
+						used
+					</li>
+					<li>Bar/Panel: Added platform icons</li>
+					<li>Bar: Game images can now be changed to: capsule (default), header, custom, none</li>
+					<li>Bar/Panel: Game images can now link to a custom page</li>
+					<li>Bar: Review button background and font colors can now be customized</li>
+					<li>Bar: Text shadows can now be disabled</li>
+					<li>Panel: Background color and text color can now be customized</li>
+					<li>Panel: Game images can now be changed to header or custom</li>
+					<li>Panel: The completion bar can now be hidden</li>
+				</ul>
+				<br>
+				<h4>v1.21 - March 29, 2019</h4>
+				<ul>
+					<li>Bar and Panel: Added screenshot button</li>
+					<li>Added "Copy with linebreaks to clipboard" buttons to export easier to read code</li>
+					<li>Added hex color codes to "Completion bar color"</li>
+				</ul>
+				<h4>v1.2 - May 25, 2018</h4>
+				<ul>
+					<li>
+						<b>Added a panel generator</b>
+					</li>
+					<li>Added Markdown support to reviews</li>
+					<li>Added automatic and manual saving for reviews</li>
+					<li>Bar: Added "click button to view review"</li>
+					<li>Progress bar: Added striped/animated bars</li>
+					<li>Miscellaneous small changes</li>
+				</ul>
+				<h4>v1.1 - April 21, 2018</h4>
+				<ul>
+					<li>
+						<b>Added a progress bar generator</b>
+					</li>
+					<li>Bar: Added reviews</li>
+					<li>Bar: Added option to change game image position</li>
+					<li>Bar: Added option to change completion bar position</li>
+					<li>Bar: Text color can now be set separately for title and playtime/achievements</li>
+					<li>Bar: Text color option now affects achievement link</li>
+					<li>Changed how games with no achievements are handled</li>
+					<li>Fixed achievement text showing "undefined of x achievements", if user has 0 achievements in
+						a
+						game</li>
+					<li>Fixed fetching games with progress set to "never played" or "won't play"</li>
+					<li>Implemented some tiny changes I don't remember anymore</li>
+					<li>Removed the "preview always visible" option because it breaks review previewing ¯\_(ツ)_/¯
+					</li>
+				</ul>
+				<h4>v1.01 - March 27, 2018</h4>
+				<ul>
+					<li>Added an one-time welcoming message</li>
+					<li>Added "never played (white)" to completion bar colors</li>
+					<li>Fixed achievement links pointing to "undefined" profiles, and not updating properly</li>
+					<li>Fixed AppIDs not updating properly</li>
+				</ul>
+				<h4>v1.0 - March 18, 2018</h4>
+				<ul>
+					<li>Initial release</li>
+				</ul>
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/elements.css">
+	<link rel="stylesheet" href="./css/awesomplete.css" />
+	<script src="./js/awesomplete.js"></script>
+	<script src="./js/notify.js"></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,254 @@
+fieldset>div {
+    width: 100%;
+}
+
+legend {
+    width: auto;
+    padding: 0 6px;
+}
+
+fieldset {
+    padding: 12px;
+}
+
+.nav-pills .nav-link.active {
+    color: #fff !important;
+}
+
+.navbar-nav .nav-link {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.container {
+    margin-top: 1em;
+}
+
+.navbar {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #E7E7E7;
+}
+
+body {
+    background-color: #f5f8fa;
+}
+
+input,
+select,
+.input-group {
+    margin-bottom: 4px;
+}
+
+.btn {
+    border-radius: .25rem !important;
+}
+
+.copyarrow::before {
+    border-right-color: #28A745 !important;
+}
+
+a.nav-link {
+    color: #566391;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle,
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link,
+.btn-outline-primary:hover {
+    background-color: #566391;
+}
+
+.btn-outline-primary {
+    border-color: #566391 !important;
+    color: #566391;
+}
+
+.copyarrow::before {
+    border-right-color: transparent !important;
+}
+
+.copyarrow::after {
+    border-right-color: #5CB85C !important;
+}
+
+.navbar-brand a:hover {
+    text-decoration: none;
+}
+
+#bargenerated {
+    margin-top: 10px;
+}
+
+#panelpreview h4 {
+    font-family: Oswald, Arial, sans-serif;
+    line-height: 1.3;
+    font-size: 18px;
+}
+
+.media-body {
+    font-size: 14px;
+}
+
+.progress-bar-animated {
+    animation: progress-bar-anim 2s linear infinite;
+}
+
+.screenshotlabel {
+    display: block;
+}
+
+nav {
+    background-color: rgba(248, 248, 248, 0.9)
+}
+
+#about {
+    text-align: center;
+}
+
+#about h4,
+#about ul {
+    text-align: left;
+}
+
+mark {
+    padding: 0;
+}
+
+#barpreview>div>div {
+    font-family: Oswald, Arial, sans-serif;
+    line-height: 1;
+    font-weight: 500;
+}
+
+#barpreview>div>div>p {
+    font-size: 11px !important;
+    font-family: Arimo;
+    line-height: 1.4;
+}
+
+#barpreview div>span {
+    font-family: Arimo;
+    font-size: 12px !important;
+}
+
+#barpreview h2 {
+    font-size: 24px;
+}
+
+#barpreview>div>div[data-toggle="collapse"] p {
+    font-family: Arimo, Arial, sans-serif;
+    font-size: 14px !important;
+}
+
+input[type="color"] {
+    margin: 0;
+    padding: 0;
+    width: 60px;
+}
+
+.buttonfirst {
+    margin-right: 10px;
+}
+
+.copybutton {
+    vertical-align: top;
+}
+
+.input-group-text {
+    border-right: 0;
+}
+
+.awesomplete {
+    flex-grow: 1;
+}
+
+.awesomplete>input {
+    margin: 0;
+}
+
+.dropdowndiv {
+    top: 0;
+    right: 12px;
+    position: absolute;
+    width: auto;
+}
+
+input {
+    -moz-appearance: textfield;
+}
+
+.dropdowndiv>span>button:not(:hover) {
+    background-color: #f5f8fa;
+}
+
+.dropdown:first-child {
+    margin-right: 8px;
+}
+#boxpreview, li.game-thumbnail {
+    margin-top: 0 !important;
+}
+fieldset {
+    position: relative;
+}
+@keyframes progress-bar-stripes { /* Animation fix */
+    from {
+      background-position: 2.5rem 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+#pbauto {
+    flex: 1;
+}
+@keyframes spin { /* Spinning animation */
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.spin {
+    animation: spin 2s linear infinite;
+}
+#faqtab h3 {
+    text-align: center;
+}
+label.btn:hover {
+    cursor: pointer;
+}
+.navbar-brand {
+    margin-right: .5rem;
+}
+#heropreview .row div:not([data-toggle=collapse]) {
+    padding: 10px !important;
+}
+#heropreview {
+    font-size: 14px;
+}
+span.spoiler:not(:hover) {
+    background-color: #ddd;
+    color: transparent;
+}
+.autocomplete.completed {
+    border-left: 7px solid #5bc0de;
+}
+.autocomplete.beaten {
+    border-left: 7px solid #5cb85c;
+}
+.autocomplete.unfinished {
+    border-left: 7px solid #f0ad4e;
+}
+.autocomplete.wontplay {
+    border-left: 7px solid #d9534f;
+}
+.autocomplete.neverplayed {
+    border-left: 7px solid #eee;
+}
+.autocomplete.uncategorized {
+    border-left: 7px solid #000;
+}
