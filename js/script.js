@@ -4046,7 +4046,7 @@ Uncategorized games: <a href="https://www.backlog-assassins.net/users/${user.id}
   eIds.settings.lastSyncDate.innerHTML = localStorage.getItem("lastSyncString");
   let time = new Date();
   if (
-    parseInt(localStorage.getItem("lastSync")) + 86400000 <= time.getTime() &&
+    parseInt(localStorage.getItem("lastsSync")) + 86400000 <= time.getTime() &&
     localStorage.getItem("autosync") === "true"
   ) {
     // 86400000 milliseconds = 24 hours. If at least 1 day passed since last sync, sync automatically
