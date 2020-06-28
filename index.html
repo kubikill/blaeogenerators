@@ -29,7 +29,7 @@
 			<a href="https://www.backlog-assassins.net/" target="_blank">
 				<img src="assets/blaeologo.png" class="d-inline-block align-top">
 			</a> Generators
-			<small class="text-muted">v2.0</small>
+			<small class="text-muted">v2.01</small>
 		</span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -132,12 +132,13 @@
 						<a class="nav-link btn-lg" data-toggle="pill" href="#herogenerator" role="tab">Hero</a>
 					</li>
 				</ul>
-				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firstvisitmsg" style="display: none">
+				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firstvisitmsg"
+					style="display: none">
 					Welcome to BLAEO Generators! Make sure to visit the Settings tab to set up
 					library sync and enable game search.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="firstvisitmsgbtn">
 						<span aria-hidden="true">&times;</span>
-					  </button>
+					</button>
 				</div>
 				<div class="tab-content">
 					<!--Bar generator-->
@@ -268,6 +269,7 @@
 											<option value="battlenet">Battle.net</option>
 											<option value="rockstargames">Rockstar Games Launcher</option>
 											<option value="itchio">Itch.io</option>
+											<option value="twitch">Twitch</option>
 											<option value="drmfree">DRM-free</option>
 											<option value="android">Android</option>
 											<option value="ios">iOS</option>
@@ -657,6 +659,7 @@
 											<option value="battlenet">Battle.net</option>
 											<option value="rockstargames">Rockstar Games Launcher</option>
 											<option value="itchio">Itch.io</option>
+											<option value="twitch">Twitch</option>
 											<option value="drmfree">DRM-free</option>
 											<option value="android">Android</option>
 											<option value="ios">iOS</option>
@@ -964,6 +967,7 @@
 											<option value="battlenet">Battle.net</option>
 											<option value="rockstargames">Rockstar Games Launcher</option>
 											<option value="itchio">Itch.io</option>
+											<option value="twitch">Twitch</option>
 											<option value="drmfree">DRM-free</option>
 											<option value="android">Android</option>
 											<option value="ios">iOS</option>
@@ -1301,7 +1305,8 @@
 					<div class="tab-pane fade" id="herogenerator" role="tabpanel">
 						<div class="alert alert-danger collapse" role="alert" id="heroimageerror">
 							<strong>Failed to load hero image!</strong> This game most likely does not have the new
-							Steam library assets uploaded. Use a custom image or use any other generator. You can check <a href="https://www.steamgriddb.com/">SteamGridDB</a> for custom hero images.
+							Steam library assets uploaded. Use a custom image or use any other generator. You can check
+							<a href="https://www.steamgriddb.com/">SteamGridDB</a> for custom hero images.
 						</div>
 						<fieldset class="border rounded form-group">
 							<div class="dropdowndiv">
@@ -1429,6 +1434,7 @@
 											<option value="battlenet">Battle.net</option>
 											<option value="rockstargames">Rockstar Games Launcher</option>
 											<option value="itchio">Itch.io</option>
+											<option value="twitch">Twitch</option>
 											<option value="drmfree">DRM-free</option>
 											<option value="android">Android</option>
 											<option value="ios">iOS</option>
@@ -1612,8 +1618,8 @@
 									<div class="col">
 										<label class="screenshotlabel">Calculate logo size using hero's:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active" id="herologocalcheight"
-												for="herologocalcheight">Height
+											<label class="btn btn-outline-primary buttonfirst active"
+												id="herologocalcheight" for="herologocalcheight">Height
 												<input id="herologocalcheightinput" type="radio" value="true">
 											</label>
 											<label class="btn btn-outline-primary" id="herologocalcwidth"
@@ -1770,12 +1776,14 @@
 				<p><a href="https://icons8.com/icons">Icons8 icons</a></p>
 				<p><a href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/1744478429688478255/">Enhanced
 						BLAEO userscript by revilheart</a></p>
-						<p><a href="https://www.steamgriddb.com/">SteamGridDB for custom hero images and logos</a></p>
+				<p><a href="https://github.com/kubikill/blaeo-post-saver">BLAEO Post Saver userscript by kubikill</a>
+				</p>
+				<p><a href="https://www.steamgriddb.com/">SteamGridDB for custom hero images and logos</a></p>
 			</div>
 			<!--About tab-->
 			<div class="tab-pane fade" id="about" role="tabpanel">
 				<h2>BLAEO Generators
-					<small class="text-muted">v2.0</small>
+					<small class="text-muted">v2.01</small>
 				</h2>
 				<p>A post snippet generator for use with BLAEO posts.</p>
 				<p>
@@ -1796,6 +1804,13 @@
 				<p>Icons: <a href="https://fontawesome.com/v4.7.0/">Font Awesome v4.7.0</a>, <a
 						href="https://icons8.com">Icons8</a></p>
 				<h2>Changelog:</h2>
+				<h4>v2.01 - June 28, 2020</h4>
+				<ul>
+					<li>Added Twitch platform icon</li>
+					<li>Added link to BLAEO Post Saver in Help/Resources</li>
+					<li>Minor tweaks to platform icon sizes and positions</li>
+					<li>Fixed "undefined" achievements appearing during game search in some rare cases</li>
+				</ul>
 				<h4>v2.0 - March 26, 2020</h4>
 				<ul>
 					<li><strong>Added "Hero" generator</strong></li>

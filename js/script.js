@@ -510,8 +510,11 @@ ${bar.review.code}<br>`;
       case "itchio":
         bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/ios-glyphs/21/${bar.title.color.slice(1)}/itch-io.png" title="Played on itch.io">`;
         break;
+      case "twitch":
+        bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/ios-glyphs/21/${bar.title.color.slice(1)}/twitch.png" title="Played on Twitch">`;
+        break;
       case "drmfree":
-        bar.title.platformCode = `<i class="fa fa-unlock-alt" title="DRM-free"></i>`;
+        bar.title.platformCode = '<i class="fa fa-unlock-alt" title="DRM-free"></i>';
         break;
       case "android":
         bar.title.platformCode = '<i class="fa fa-android" title="Played on Android"></i>';
@@ -542,7 +545,7 @@ ${bar.review.code}<br>`;
     customText: "",
     enabled: true,
     achievementsCode: "no achievements",
-    code: '<p style="margin-bottom: 0; padding-bottom: 5px; color: #FFFFFF; font-size: 1.1rem">0 hours, no achievements<br></p>'
+    code: '<p style="margin-bottom: 0; color: #FFFFFF; font-size: 1rem">0 hours, no achievements<br></p>'
   },
   updInfo(playtime, ach, achTotal, color, text, enabled) {
     let playtimeCalc = bar.info.playtime;
@@ -890,6 +893,9 @@ ${panel.info.code}${panel.review.triggerCode2}
         break;
       case "itchio":
         panel.title.platformCode = `<img style="vertical-align: -3px;" src="https://img.icons8.com/ios-glyphs/21/${panel.bgAndText.platformColor.slice(1)}/itch-io.png" title="Played on itch.io">`;
+        break;
+      case "twitch":
+        panel.title.platformCode = `<img style="vertical-align: -3px;" src="https://img.icons8.com/ios-glyphs/21/${panel.bgAndText.platformColor.slice(1)}/twitch.png" title="Played on Twitch">`;
         break;
       case "drmfree":
         panel.title.platformCode = `<i class="fa fa-unlock-alt" title="DRM-free"></i>`;
@@ -1252,7 +1258,7 @@ ${box.caption.code}</li>`;
       box.caption.achievementsCode = `${box.caption.achievements} of ${box.caption.achievementsTotal} achievements`;
     }
     if (box.caption.screenshot && steamId != "") {
-      box.caption.screenshotCode = `<a href="https://steamcommunity.com/profiles/${steamId}/screenshots/?appid=${box.gameInfo.id}" title="View Steam screenshots"><i class="fa fa-camera" style="color: ${box.caption.color}; font-size: 20px"></i></a>`;
+      box.caption.screenshotCode = `<a href="https://steamcommunity.com/profiles/${steamId}/screenshots/?appid=${box.gameInfo.id}" title="View Steam screenshots"><i class="fa fa-camera" style="color: ${box.caption.color}; vertical-align: middle; font-size: 20px; padding: 2px 0;"></i></a>`;
     } else {
       box.caption.screenshotCode = "";
     }
@@ -1284,14 +1290,17 @@ ${box.caption.code}</li>`;
       case "itchio":
         box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/ios-glyphs/24/${box.caption.color.slice(1)}/itch-io.png" title="Played on itch.io">`;
         break;
+      case "twitch":
+        box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/ios-glyphs/21/${box.caption.color.slice(1)}/twitch.png" title="Played on Twitch">`;
+        break;
       case "drmfree":
-        box.caption.platformCode = `<i style="font-size: 22px" class="fa fa-unlock-alt" title="DRM-free"></i>`;
+        box.caption.platformCode = `<i style="font-size: 24px; vertical-align: middle;" class="fa fa-unlock-alt" title="DRM-free"></i>`;
         break;
       case "android":
-        box.caption.platformCode = '<i style="font-size: 22px" class="fa fa-android" title="Played on Android"></i>';
+        box.caption.platformCode = '<i style="font-size: 24px; vertical-align: middle;" class="fa fa-android" title="Played on Android"></i>';
         break;
       case "ios":
-        box.caption.platformCode = `<i style="font-size: 22px" class="fa fa-apple" title="Played on iOS"></i>`;
+        box.caption.platformCode = `<i style="font-size: 24px; vertical-align: middle;" class="fa fa-apple" title="Played on iOS"></i>`;
         break;
       case "playstation":
         box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/metro/24/${box.caption.color.slice(1)}/play-station.png" title="Played on PlayStation">`;
@@ -1512,6 +1521,12 @@ ${hero.review.code}`;
     $(eIds.hero.logoSize).trigger("input");
     $(eIds.hero.logoXOffset).trigger("input");
     $(eIds.hero.logoYOffset).trigger("input");
+    $(eIds.hero.logoCustomUrl).trigger("blur");
+    if (eIds.hero.logoSizeCalcHeight.classList.contains("active")) {
+      $(eIds.hero.logoSizeCalcHeight).trigger("click")
+    } else {
+      $(eIds.hero.logoSizeCalcWidth).trigger("click")
+    };
     $(eIds.hero.reviewTrigger).trigger("change");
     $(eIds.hero.review).trigger("blur");
   },
@@ -1848,6 +1863,9 @@ ${hero.review.code}`;
       case "itchio":
         platformContent = `<img src="https://img.icons8.com/ios-glyphs/21/${hero.colors.tileText.slice(1)}/itch-io.png" title="Played on itch.io"> Played on itch.io`;
         break;
+      case "twitch":
+        platformContent = `<img src="https://img.icons8.com/ios-glyphs/21/${hero.colors.tileText.slice(1)}/twitch.png" title="Played on Twitch"> Played on Twitch`;
+        break;
       case "drmfree":
         platformContent = `<i class="fa fa-unlock-alt" title="DRM-free"></i> DRM-free`;
         break;
@@ -1968,7 +1986,11 @@ let awesompleteItem = function (t, e, n) {
   }
   let achievements;
   if (library.games[gameNameArray.indexOf(t.value)].achievements != undefined) {
-    achievements = `${library.games[gameNameArray.indexOf(t.value)].achievements.unlocked}/${library.games[gameNameArray.indexOf(t.value)].achievements.total}`;
+    if (library.games[gameNameArray.indexOf(t.value)].achievements.unlocked != undefined) {
+      achievements = `${library.games[gameNameArray.indexOf(t.value)].achievements.unlocked}/${library.games[gameNameArray.indexOf(t.value)].achievements.total}`;
+    } else {
+      achievements = `???/${library.games[gameNameArray.indexOf(t.value)].achievements.total}`
+    }
   } else {
     achievements = "N/A";
   }
@@ -2659,7 +2681,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     eIds.box.playtime.value = box.caption.playtime;
     eIds.box.achEarned.value = box.caption.achievements;
     eIds.box.achTotal.value = box.caption.achievementsTotal;
-    eIds.box.compColor.value = box.completionBar.name;
+    eIds.box.compColor.value = box.completionBar.col;
     box.update();
   };
   eIds.box.title.onblur = function (el) {
@@ -3151,24 +3173,24 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (el.target.value === "" || el.target.value === "0") {
       hero.updImage(...[, , , , , , ], "0")
     } else {
-      hero.updImage(...[, , , , ,  ,], el.target.value)
+      hero.updImage(...[, , , , , , ], el.target.value)
     }
     hero.update();
   };
   eIds.hero.imageMaxHeight.oninput = function (el) {
     if (el.target.value === "" || el.target.value === "0") {
-      hero.updImage(...[, , , , , , ,], "0")
+      hero.updImage(...[, , , , , , , ], "0")
     } else {
-      hero.updImage(...[, , , , , , ,], el.target.value)
+      hero.updImage(...[, , , , , , , ], el.target.value)
     }
     hero.update();
   };
   eIds.hero.imageCustomUrl.onblur = function (el) {
-    hero.updImage(...[, , , , , , , ,], el.target.value);
+    hero.updImage(...[, , , , , , , , ], el.target.value);
     hero.update();
   };
   eIds.hero.imageCustomLink.onblur = function (el) {
-    hero.updImage(...[, , , , , , , , ,], el.target.value);
+    hero.updImage(...[, , , , , , , , , ], el.target.value);
     hero.update();
   };
 
@@ -3190,7 +3212,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     hero.update();
   };
   eIds.hero.logoCustomUrl.onblur = function (el) {
-    hero.updImage(...[, , , , , ,  , , , ,], el.target.value);
+    hero.updImage(...[, , , , , , , , , , ], el.target.value);
     hero.update();
   };
   eIds.hero.logoSizeCalcHeight.onclick = function () {
@@ -3203,17 +3225,17 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   };
   eIds.hero.logoXOffset.oninput = function (el) {
     if (el.target.value === "") {
-      hero.updImage(...[, , , ,], "0");
+      hero.updImage(...[, , , , ], "0");
     } else {
-      hero.updImage(...[, , , ,], el.target.value);
+      hero.updImage(...[, , , , ], el.target.value);
     }
     hero.update();
   };
   eIds.hero.logoYOffset.oninput = function (el) {
     if (el.target.value === "") {
-      hero.updImage(...[, , , , ,], "0");
+      hero.updImage(...[, , , , , ], "0");
     } else {
-      hero.updImage(...[, , , , ,], el.target.value);
+      hero.updImage(...[, , , , , ], el.target.value);
     }
     hero.update();
   };
