@@ -234,6 +234,10 @@ span.spoiler:not(:hover) {
     background-color: #ddd;
     color: transparent;
 }
+span.spoiler:not(:hover) img {
+    -webkit-filter: contrast(0%) brightness(1.7);
+    filter: contrast(0%) brightness(1.7);
+}
 .autocomplete.completed {
     border-left: 7px solid #5bc0de;
 }

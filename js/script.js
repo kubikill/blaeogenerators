@@ -638,7 +638,7 @@ ${bar.review.code}<br>`;
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
         bar.review.triggerCodeButton = `<div data-target="#${bar.review.id}" data-toggle="collapse" style="cursor: pointer; position: absolute; width: 150px; height: 22px; left: 0; right: 0;bottom: -15px; background-color: ${bar.review.buttonColor}; border-radius: 8px; text-align: center; margin: 0 auto; color: ${bar.review.buttonTextColor}; z-index: 1;" class="collapsed"><p style="padding-top: 2px;">More <i class="fa fa-level-down"></i></p></div>`;
-        bar.review.code = `<div style="padding: 10px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
+        bar.review.code = `<div style="padding: 16px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
       } else {
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
@@ -1477,7 +1477,7 @@ const hero = {
   update() {
     eIds.hero.code.value = eIds.hero.preview.innerHTML = hero.code = `<div style="position: relative;">
 <div style="border: 3px solid ${hero.colors.border}; border-radius: 30px; overflow: hidden">
-<div style="position: relative; border: 3px solid ${hero.colors.border}; margin: -3px;">
+<div style="position: relative; border: 3px solid ${hero.colors.border}; margin: -3px; overflow: hidden;">
 ${hero.image.code}
 </div>
 <div class="row" style="display: flex; flex-wrap: wrap; padding: 0 5px; margin-bottom: -1px; text-align: center; background-color: ${hero.colors.tileBg}; color: ${hero.colors.tileText}">
@@ -1486,7 +1486,7 @@ ${hero.tiles.achievementsCode}${hero.tiles.screenshotCode}${hero.tiles.customTex
 </div>
 </div>
 </div>
-${hero.review.code}`;
+${hero.review.code}<br>`;
   },
   updEverything() {
     $(eIds.hero.appID).trigger("blur");
