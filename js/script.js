@@ -1553,13 +1553,13 @@ ${hero.review.code}<br>`;
     xOffset: 0,
     yOffset: 0,
     minHeight: "160",
-    maxHeight: "300",
+    maxHeight: "240",
     size: "20", // Logo size. Used only if type is "hero"
     sizeCalc: "height",
     heroUrl: "", // URL of image. Used only if type is "custom"
     link: "",
     logoUrl: "",
-    code: `<a href="https://store.steampowered.com/app/220"><img src="https://steamcdn-a.akamaihd.net/steam/apps/220/library_hero.jpg" style="object-fit: cover; min-height: 160px; width: 100%; max-height: 300px;"><img style="position: absolute;left: 50%; top: 50%; height: 20%; transform: translate(-50%, -50%);" src="https://steamcdn-a.akamaihd.net/steam/apps/220/logo.png"></a>`
+    code: `<a href="https://store.steampowered.com/app/220"><img src="https://steamcdn-a.akamaihd.net/steam/apps/220/library_hero.jpg" style="object-fit: cover; min-height: 160px; width: 100%; max-height: 240px;"><img style="position: absolute;left: 50%; top: 50%; height: 20%; transform: translate(-50%, -50%);" src="https://steamcdn-a.akamaihd.net/steam/apps/220/logo.png"></a>`
   },
   updImage(type, pos, size, sizeCalc, xOffset, yOffset, minHeight, maxHeight, heroUrl, link, logoUrl) {
     if (type) hero.image.type = type;
@@ -3752,7 +3752,7 @@ let emptyHeroSave = [{
   val: "160"
 }, {
   id: "heroimagemaxheight",
-  val: "300"
+  val: "240"
 }, {
   id: "herocustomimageurl",
   val: ""
