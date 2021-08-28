@@ -126,6 +126,8 @@ const eIds = { // Store HTML element IDs
     platform: byId("boxplatform"),
     screenshotOn: byId("boxscreenshoton"),
     screenshotOff: byId("boxscreenshotoff"),
+    minimalOn: byId("boxminimalon"),
+    minimalOff: byId("boxminimaloff"),
     preset: byId("boxpreset"),
     compColor: byId("boxcompcolor"),
     backgroundAndTextDiv1: byId("boxbgcolordiv1"),
@@ -235,13 +237,14 @@ const eIds = { // Store HTML element IDs
   },
   other: {
     firstVisitMsg: byId("firstvisitmsg"),
-    firstVisitMsgBtn: byId("firstvisitmsgbtn")
+    firstVisitMsgBtn: byId("firstvisitmsgbtn"),
+    firstVisitMsgSettingsLink: byId("firstvisitmsg-settingslink")
   }
 };
 const bar = {
   code: "",
   update() {
-    eIds.bar.code.value = eIds.bar.preview.innerHTML = bar.code = `<div ${bar.review.triggerCodeBar}style="position: relative; min-height: ${bar.height}px; ${bar.textShadows}${bar.completionBar.code} ${bar.background.code}">
+    eIds.bar.code.value = eIds.bar.preview.innerHTML = bar.code = `<div ${bar.review.triggerCodeBar}style="position: relative; min-height: ${bar.height}px; ${bar.textShadows}${bar.completionBar.code} ${bar.review.cursor} ${bar.background.code}">
 ${bar.image.code}
 <div style="padding-left: 1rem; width: ${bar.infoDiv.width} ${bar.infoDiv.margin}">
 ${bar.title.code} 
@@ -604,6 +607,7 @@ ${bar.review.code}<br>`;
   },
   review: {
     trigger: "bar",
+    cursor: "",
     buttonColor: "#AAAAAA",
     buttonTextColor: "#FFFFFF",
     id: "",
@@ -633,22 +637,26 @@ ${bar.review.code}<br>`;
         }
         bar.review.triggerCodeBar = `data-target="#${bar.review.id}" data-toggle="collapse" `;
         bar.review.triggerCodeButton = "";
+        bar.review.cursor = "cursor: pointer;";
         bar.review.code = `<div style="padding: 10px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
       } else if (bar.review.trigger == "button") {
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
         bar.review.triggerCodeButton = `<div data-target="#${bar.review.id}" data-toggle="collapse" style="cursor: pointer; position: absolute; width: 150px; height: 22px; left: 0; right: 0;bottom: -15px; background-color: ${bar.review.buttonColor}; border-radius: 8px; text-align: center; margin: 0 auto; color: ${bar.review.buttonTextColor}; z-index: 1;" class="collapsed"><p style="padding-top: 2px;">More <i class="fa fa-level-down"></i></p></div>`;
+        bar.review.cursor = "";
         bar.review.code = `<div style="padding: 16px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
       } else {
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
         bar.review.triggerCodeButton = "";
+        bar.review.cursor = "";
         bar.review.code = `<div style="padding: 10px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}">${reviewConv}</div>`;
       }
     } else {
       bar.review.triggerCodeBar = "";
       bar.review.triggerCodeBar2 = "";
       bar.review.triggerCodeButton = "";
+      bar.review.cursor = "";
       bar.review.code = "";
     }
   },
@@ -1053,6 +1061,11 @@ ${box.caption.code}</li>`;
     } else {
       $(eIds.box.screenshotOff).trigger("click")
     };
+    if (eIds.box.minimalOn.classList.contains("active")) {
+      $(eIds.box.minimalOn).trigger("click")
+    } else {
+      $(eIds.box.minimalOff).trigger("click")
+    };
     $(eIds.box.preset).trigger("change");
     $(eIds.box.compColor).trigger("change");
     $(eIds.box.bgType).trigger("change");
@@ -1083,7 +1096,7 @@ ${box.caption.code}</li>`;
       if (library.games[box.gameInfo.arrayPos].progress != undefined) {
         box.completionBar.col = library.games[box.gameInfo.arrayPos].progress;
       }
-    } else if (color != (undefined || null)) box.completionBar.col = color;
+    } else if (color) box.completionBar.col = color;
     switch (box.completionBar.col) {
       case "completed":
         box.completionBar.code = "game-completed";
@@ -1099,6 +1112,9 @@ ${box.caption.code}</li>`;
         break;
       case "never played":
         box.completionBar.code = "game-never-played";
+        break;
+      case "hidden":
+        box.completionBar.code = "";
         break;
     }
   },
@@ -1207,12 +1223,13 @@ ${box.caption.code}</li>`;
     color: "#000000",
     screenshot: false,
     platform: "none",
+    minimalMode: false,
     achievementsCode: "no achievements",
     screenshotCode: "",
     platformCode: "",
     code: `<div class="caption" style="height: auto; padding-bottom: 9px;"><p>0 hours playtime</p><p>no achievements</p></div>`
   },
-  updCaption(playtime, ach, achTotal, color, screenshot, platform) {
+  updCaption(playtime, ach, achTotal, color, screenshot, platform, minimalMode) {
     let playtimeCalc = box.caption.playtime;
     if (playtime == "auto") {
       box.caption.playtime = library.games[box.gameInfo.arrayPos].playtime;
@@ -1250,6 +1267,7 @@ ${box.caption.code}</li>`;
     if (color != (undefined || null)) box.caption.color = color;
     if (screenshot != (undefined || null)) box.caption.screenshot = screenshot;
     if (platform != (undefined || null)) box.caption.platform = platform;
+    if (minimalMode != (undefined || null)) box.caption.minimalMode = minimalMode;
     if (box.caption.achievementsTotal == 0) {
       box.caption.achievementsCode = "no achievements";
     } else if (steamId) {
@@ -1315,7 +1333,11 @@ ${box.caption.code}</li>`;
         box.caption.platformCode = "";
         break;
     }
-    box.caption.code = `<div class="caption" style="background-color: transparent; height: auto; padding-bottom: 9px; color: ${box.caption.color}"><p>${box.caption.playtime} hours playtime</p><p>${box.caption.achievementsCode}</p><p>${box.caption.screenshotCode} ${box.caption.platformCode}</p></div>`
+    if (box.caption.minimalMode) {
+      box.caption.code = "";
+    } else {
+      box.caption.code = `<div class="caption" style="background-color: transparent; height: auto; padding-bottom: 9px; color: ${box.caption.color}"><p>${box.caption.playtime} hours playtime</p><p>${box.caption.achievementsCode}</p><p>${box.caption.screenshotCode} ${box.caption.platformCode}</p></div>`
+    }
   },
 };
 const progressBar = {
@@ -1657,7 +1679,7 @@ ${hero.review.code}<br>`;
       hero.image.code = `<a href="${imgLink}"><img src="${tempURL}" style="object-fit: cover; min-height: ${hero.image.minHeight}px; width: 100%; max-height: ${hero.image.maxHeight}px;"></a>`;
     } else {
       hero.image.code = `<a href="${imgLink}"><img src="${tempURL}" style="object-fit: cover; min-height: ${hero.image.minHeight}px; width: 100%; max-height: ${hero.image.maxHeight}px;">
-    <img style="position: absolute;${vert} ${hor} ${hero.image.sizeCalc}: ${hero.image.size}%; ${transform}" src="${logoTempUrl}"></a>`;
+    <img style="position: absolute; object-fit:contain;${vert} ${hor} ${hero.image.sizeCalc}: ${hero.image.size}%; ${transform}" src="${logoTempUrl}"></a>`;
     }
   },
   review: {
@@ -2032,9 +2054,9 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     eIds.bar.title.value = bar.gameInfo.name = name.text.label;
     bar.gameInfo.arrayPos = gameNameArray.indexOf(bar.gameInfo.name);
     bar.gameInfo.id = library.games[bar.gameInfo.arrayPos].steam_id;
+    bar.updCompletionBar(null, "auto");
     bar.updImage();
     bar.updTitle();
-    bar.updCompletionBar(null, "auto");
     bar.updInfo("auto", "auto", "auto");
     // Update fields
     eIds.bar.appID.value = library.games[bar.gameInfo.arrayPos].steam_id;
@@ -2048,6 +2070,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   eIds.bar.appID.onblur = function (el) {
     if (el.target.value === "") {
       bar.gameInfo.id = "220";
+      bar.updImage();
+      bar.update();
       return 0;
     } else {
       bar.gameInfo.id = el.target.value;
@@ -2055,12 +2079,14 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(bar.gameInfo.id) != -1) {
       bar.gameInfo.arrayPos = gameIDArray.indexOf(bar.gameInfo.id);
     } else {
+      bar.updImage();
+      bar.update();
       return 0;
     }
     bar.gameInfo.name = library.games[bar.gameInfo.arrayPos].name;
+    bar.updCompletionBar(null, "auto");
     bar.updImage();
     bar.updTitle();
-    bar.updCompletionBar(null, "auto");
     bar.updInfo("auto", "auto", "auto");
     // Update fields
     eIds.bar.title.value = bar.gameInfo.name;
@@ -2238,6 +2264,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     } else {
       eIds.bar.compColor.disabled = false;
     }
+    bar.updImage();
     bar.update();
   };
 
@@ -2406,6 +2433,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   eIds.panel.appID.onblur = function (el) {
     if (el.target.value === "") {
       panel.gameInfo.id = "220";
+      panel.updImage();
+      panel.update();
       return 0;
     } else {
       panel.gameInfo.id = el.target.value;
@@ -2413,6 +2442,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(panel.gameInfo.id) != -1) {
       panel.gameInfo.arrayPos = gameIDArray.indexOf(panel.gameInfo.id);
     } else {
+      panel.updImage();
+      panel.update();
       return 0;
     }
     panel.gameInfo.name = library.games[panel.gameInfo.arrayPos].name;
@@ -2663,6 +2694,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   eIds.box.appID.onblur = function (el) {
     if (el.target.value === "") {
       box.gameInfo.id = "220";
+      box.updImage();
+      box.update();
       return 0;
     } else {
       box.gameInfo.id = el.target.value;
@@ -2670,6 +2703,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(box.gameInfo.id) != -1) {
       box.gameInfo.arrayPos = gameIDArray.indexOf(box.gameInfo.id);
     } else {
+      box.updImage();
+      box.update();
       return 0;
     }
     box.gameInfo.name = library.games[box.gameInfo.arrayPos].name;
@@ -2712,6 +2747,26 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   };
   eIds.box.screenshotOff.onclick = function (el) {
     box.updCaption(...[, , , , ], false);
+    box.update();
+  };
+  eIds.box.minimalOn.onclick = function (el) {
+    eIds.box.playtime.disabled = true;
+    eIds.box.achEarned.disabled = true;
+    eIds.box.achTotal.disabled = true;
+    eIds.box.platform.disabled = true;
+    eIds.box.screenshotOn.disabled = true;
+    eIds.box.screenshotOff.disabled = true;
+    box.updCaption(...[, , , , , ,], true);
+    box.update();
+  };
+  eIds.box.minimalOff.onclick = function (el) {
+    eIds.box.playtime.disabled = false;
+    eIds.box.achEarned.disabled = false;
+    eIds.box.achTotal.disabled = false;
+    eIds.box.platform.disabled = false;
+    eIds.box.screenshotOn.disabled = false;
+    eIds.box.screenshotOff.disabled = false;
+    box.updCaption(...[, , , , , ,], false);
     box.update();
   };
   eIds.box.preset.onchange = function (el) {
@@ -3019,6 +3074,8 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
   eIds.hero.appID.onblur = function (el) {
     if (el.target.value === "") {
       hero.gameInfo.id = "220";
+      hero.updImage();
+      hero.update();
       return 0;
     } else {
       hero.gameInfo.id = el.target.value;
@@ -3027,6 +3084,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(hero.gameInfo.id) != -1) {
       hero.gameInfo.arrayPos = gameIDArray.indexOf(hero.gameInfo.id);
     } else {
+      hero.updImage();
       hero.update();
       return 0;
     }
@@ -3628,6 +3686,14 @@ let emptyBoxSave = [{
     val: true
   },
   {
+    id: 'boxminimalon',
+    val: false
+  },
+  {
+    id: 'boxminimaloff',
+    val: true
+  },
+  {
     id: 'boxpreset',
     val: 'none'
   },
@@ -4038,6 +4104,9 @@ if (localStorage.getItem("autosync") === null) {
 eIds.other.firstVisitMsgBtn.onclick = () => {
   localStorage.setItem("firstvisit", "true");
 }
+eIds.other.firstVisitMsgSettingsLink.addEventListener("click", () => {
+  $("#settingsnav").tab('show');
+});
 
 // Load saved info
 if (localStorage.getItem("autosync") === "false") {

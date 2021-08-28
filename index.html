@@ -5,17 +5,15 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noindex">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://use.fontawesome.com/fba1eae16c.js"></script>
+	<title>BLAEO Generators v2.03</title>
 	<link href="https://fonts.googleapis.com/css?family=Arimo|Oswald" media="all" rel="stylesheet">
-	<title>BLAEO Generators</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
 	<link rel="manifest" href="./assets/manifest.json">
 	<link rel="mask-icon" href="./assets/safari-pinned-tab.svg" color="#1a1a1a">
 	<link rel="shortcut icon" href="./assets/favicon.ico">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<meta name="apple-mobile-web-app-title" content="BLAEO Generators">
 	<meta name="application-name" content="BLAEO Generators">
 	<meta name="msapplication-TileColor" content="#2d89ef">
@@ -29,7 +27,7 @@
 			<a href="https://www.backlog-assassins.net/" target="_blank">
 				<img src="assets/blaeologo.png" class="d-inline-block align-top">
 			</a> Generators
-			<small class="text-muted">v2.02</small>
+			<small class="text-muted">v2.03</small>
 		</span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -38,25 +36,19 @@
 			<div class="navbar-nav nav-fill">
 				<ul class="nav nav-pills" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" data-toggle="pill" href="#generator" role="tab"><i
-								class="fa fa-wrench" aria-hidden="true"></i> Generate</a>
+						<a class="nav-link active" data-toggle="pill" href="#generator" role="tab"><i class="fa fa-wrench" aria-hidden="true"></i> Generate</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#settingstab" role="tab"><i class="fa fa-cog"
-								aria-hidden="true"></i> Settings</a>
+						<a class="nav-link" data-toggle="pill" href="#settingstab" id="settingsnav" role="tab"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#faqtab" role="tab"><i class="fa fa-book"
-								aria-hidden="true"></i> Help/Resources</a>
+						<a class="nav-link" data-toggle="pill" href="#faqtab" role="tab"><i class="fa fa-book" aria-hidden="true"></i> Help/Resources</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#about" role="tab"><i class="fa fa-info-circle"
-								aria-hidden="true"></i> About</a>
+						<a class="nav-link" data-toggle="pill" href="#about" role="tab"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-							href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/"><i
-								class="fa fa-commenting" aria-hidden="true"></i> Feedback</a>
+						<a class="nav-link" href="https://steamcommunity.com/groups/attackyourbacklog/discussions/1/3211505894143010183/"><i class="fa fa-commenting" aria-hidden="true"></i> Feedback</a>
 					</li>
 				</ul>
 			</div>
@@ -85,8 +77,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal"
-							id="savemodalbtn">Save</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="savemodalbtn">Save</button>
 					</div>
 				</div>
 			</div>
@@ -105,8 +96,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal"
-							id="loadmodalbtn">Load</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="loadmodalbtn">Load</button>
 					</div>
 				</div>
 			</div>
@@ -125,74 +115,59 @@
 						<a class="nav-link btn-lg" data-toggle="pill" href="#boxgenerator" role="tab">Box</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link btn-lg" data-toggle="pill" href="#progressbargenerator"
-							role="tab">Progress</a>
+						<a class="nav-link btn-lg" data-toggle="pill" href="#progressbargenerator" role="tab">Progress</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link btn-lg" data-toggle="pill" href="#herogenerator" role="tab">Hero</a>
 					</li>
 				</ul>
-				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firstvisitmsg"
-					style="display: none">
-					Welcome to BLAEO Generators! Make sure to visit the Settings tab to set up
+				<div class="alert alert-info alert-dismissible fade show" role="alert" id="firstvisitmsg" style="display: none">
+					Welcome to BLAEO Generators! Make sure to visit the <a class="cursor-pointer" id="firstvisitmsg-settingslink">Settings tab</a> to set up
 					library sync and enable game search.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="firstvisitmsgbtn">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="tab-content">
+				<div class="tab-content" id="generator-tabs">
 					<!--Bar generator-->
 					<div class="tab-pane fade show active" id="bargenerator" role="tabpanel">
 						<!--Game data fields-->
 						<fieldset class="border rounded form-group">
 							<div class="dropdowndiv">
 								<span class="dropdown loaddropdown" id="barload">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="barloadbtn" data-placement="top" data-content="Loaded!"
-										data-toggle="dropdown">Load</button>
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="barloadbtn" data-placement="top" data-content="Loaded!" data-toggle="dropdown">Load</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 1 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 2 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 3 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Exitsave -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Exitsave -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Loadsave
 										</button>
 									</div>
 								</span>
 								<span class="dropdown savedropdown" id="barsave">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="barsavebtn" data-placement="top" data-content="Saved!"
-										data-toggle="dropdown">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="barsavebtn" data-placement="top" data-content="Saved!" data-toggle="dropdown">
 										Save
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 1 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 2 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 3 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Loadsave
 										</button>
 									</div>
 								</span>
@@ -205,19 +180,16 @@
 										<label for="bargamesearch">Search game:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><i class="fa fa-search"
-														aria-hidden="true"></i></span>
+												<span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
 											</div>
-											<input class="form-control" id="bargamesearch" type="text"
-												placeholder="Type a game's name..." disabled>
+											<input class="form-control" id="bargamesearch" type="text" placeholder="Type a game's name..." disabled>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-8">
 										<label for="bargamesearch">Game title:</label>
-										<input class="form-control" id="bargametitle" type="text"
-											placeholder="Half-Life 2">
+										<input class="form-control" id="bargametitle" type="text" placeholder="Half-Life 2">
 									</div>
 									<div class="col-4">
 										<label for="barappid">AppID:</label>
@@ -227,20 +199,17 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="barplaytime">Playtime:</label>
-										<input class="form-control" id="barplaytime" type="number" step="0.1"
-											placeholder="0">
+										<input class="form-control" id="barplaytime" type="number" step="0.1" placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
 										<label for="barachearned">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control" id="barachearned" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="barachearned" min="0" placeholder="0">
 											<div class="input-group-append">
 												<span class="input-group-text">of</span>
 											</div>
-											<input type="number" class="form-control" id="barachtotal" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="barachtotal" min="0" placeholder="0">
 										</div>
 										<small class="form-text text-muted">Use 0 if the game has no
 											achievements.</small>
@@ -249,8 +218,7 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="barcustomtext">Custom text:</label>
-										<input class="form-control" type="text" id="barcustomtext"
-											placeholder="You can put anything here">
+										<input class="form-control" type="text" id="barcustomtext" placeholder="You can put anything here">
 										<small class="form-text text-muted">Custom text is displayed under playtime and
 											achievements. HTML tags are supported.</small>
 									</div>
@@ -279,14 +247,12 @@
 										</select>
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Show screenshot icon:</label>
+										<label class="blocklabel">Show screenshot icon:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst" id="barscreenshoton"
-												for="barscreenshoton">Yes
+											<label class="btn btn-outline-primary buttonfirst" id="barscreenshoton" for="barscreenshoton">Yes
 												<input type="radio" id="barscreenshotoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary active" id="barscreenshotoff"
-												for="barscreenshotoff">No
+											<label class="btn btn-outline-primary active" id="barscreenshotoff" for="barscreenshotoff">No
 												<input type="radio" id="barscreenshotoffinput" value="false">
 											</label>
 										</div>
@@ -315,30 +281,25 @@
 										<label for="reviewtrigger">Button color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="barbuttoncolorpick"
-													value="#AAAAAA">
+												<input class="form-control" type="color" id="barbuttoncolorpick" value="#AAAAAA">
 											</div>
-											<input class="form-control" type="text" id="barbuttoncolor" maxlength="7"
-												value="#AAAAAA">
+											<input class="form-control" type="text" id="barbuttoncolor" maxlength="7" value="#AAAAAA">
 										</div>
 									</div>
 									<div class="col">
 										<label for="reviewtrigger">Button text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="barbuttontextcolorpick"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="barbuttontextcolorpick" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="barbuttontextcolor"
-												maxlength="7" value="#FFFFFF">
+											<input class="form-control" type="text" id="barbuttontextcolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="review">Review:</label>
-										<textarea class="form-control review" type="text" id="barreviewfield"
-											placeholder="You can pet dogs 10/10" rows="4"></textarea>
+										<textarea class="form-control review" type="text" id="barreviewfield" placeholder="You can pet dogs 10/10" rows="4"></textarea>
 										<small class="form-text text-muted">Leave blank to disable the review. Markdown
 											and HTML tags are supported.
 											Reviews are autosaved after refreshing/leaving the page to prevent
@@ -371,8 +332,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="barbgcolor1">
 											</div>
-											<input class="form-control" type="text" id="barbgcolor1text" maxlength="7"
-												value="#000000">
+											<input class="form-control" type="text" id="barbgcolor1text" maxlength="7" value="#000000">
 										</div>
 									</div>
 								</div>
@@ -383,8 +343,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="barbgcolor2" disabled>
 											</div>
-											<input class="form-control" type="text" id="barbgcolor2text" maxlength="7"
-												value="#000000" disabled>
+											<input class="form-control" type="text" id="barbgcolor2text" maxlength="7" value="#000000" disabled>
 										</div>
 									</div>
 									<div class="col">
@@ -393,8 +352,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="barbgcolor3" disabled>
 											</div>
-											<input class="form-control" type="text" id="barbgcolor3text" maxlength="7"
-												value="#000000" disabled>
+											<input class="form-control" type="text" id="barbgcolor3text" maxlength="7" value="#000000" disabled>
 										</div>
 									</div>
 								</div>
@@ -420,13 +378,11 @@
 								<div class="form-row collapse" id="barcustomimagerow">
 									<div class="col">
 										<label for="barcustomimage">Custom image URL:</label>
-										<input class="form-control" type="text" id="barcustomimage"
-											placeholder="https://example.com/image.png">
+										<input class="form-control" type="text" id="barcustomimage" placeholder="https://example.com/image.png">
 									</div>
 									<div class="col">
 										<label for="barcustomimagelink">Custom image link:</label>
-										<input class="form-control" type="text" id="barcustomimagelink"
-											placeholder="https://example.com">
+										<input class="form-control" type="text" id="barcustomimagelink" placeholder="https://example.com">
 										<small class="form-text text-muted">If left empty, the image will link to the
 											game's Steam store page.</small>
 									</div>
@@ -456,11 +412,9 @@
 										<label for="bartitlecolor">Title color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="bartitlecolorpick"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="bartitlecolorpick" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="bartitlecolor" maxlength="7"
-												value="#FFFFFF">
+											<input class="form-control" type="text" id="bartitlecolor" maxlength="7" value="#FFFFFF">
 										</div>
 										<small class="form-text text-muted">Also affects platform icons.</small>
 									</div>
@@ -468,11 +422,9 @@
 										<label for="bartextcolor">Text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="bartextcolorpick"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="bartextcolorpick" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="bartextcolor" maxlength="7"
-												value="#FFFFFF">
+											<input class="form-control" type="text" id="bartextcolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 								</div>
@@ -488,14 +440,12 @@
 											achievements or custom text.</small>
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Text shadows:</label>
+										<label class="blocklabel">Text shadows:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active"
-												id="bartextshadowson" for="bartextshadowson">Enable
+											<label class="btn btn-outline-primary buttonfirst active" id="bartextshadowson" for="bartextshadowson">Enable
 												<input type="radio" id="bartextshadowsoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="bartextshadowsoff"
-												for="bartextshadowsoff">Disable
+											<label class="btn btn-outline-primary" id="bartextshadowsoff" for="bartextshadowsoff">Disable
 												<input type="radio" id="bartextshadowsoffinput" value="false">
 											</label>
 										</div>
@@ -503,14 +453,12 @@
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label class="screenshotlabel">Show playtime and achievements:</label>
+										<label class="blocklabel">Show playtime and achievements:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active" id="barshowinfoon"
-												for="barshowinfoon">Show
+											<label class="btn btn-outline-primary buttonfirst active" id="barshowinfoon" for="barshowinfoon">Show
 												<input type="radio" id="barshowinfooninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="barshowinfooff"
-												for="barshowinfooff">Hide
+											<label class="btn btn-outline-primary" id="barshowinfooff" for="barshowinfooff">Hide
 												<input type="radio" id="barshowinfooffinput" value="false">
 											</label>
 										</div>
@@ -523,8 +471,7 @@
 						<div id="barpreview">
 						</div>
 						<h3 style="margin-top: 8px;">Code:
-							<button class="copybutton btn btn-outline-primary" id="barcopycode"
-								data-content="Copied!">Copy to clipboard</button>
+							<button class="copybutton btn btn-outline-primary" id="barcopycode" data-content="Copied!">Copy to clipboard</button>
 						</h3>
 						<textarea id="bargenerated" class="form-control" readonly rows="6"></textarea>
 					</div>
@@ -534,52 +481,39 @@
 						<fieldset class="border rounded form-group">
 							<div class="dropdowndiv">
 								<span class="dropdown loaddropdown" id="panelload">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="panelloadbtn" data-placement="top" data-content="Loaded!"
-										data-toggle="dropdown">Load</button>
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="panelloadbtn" data-placement="top" data-content="Loaded!" data-toggle="dropdown">Load</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 1 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 2 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 3 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Exitsave -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Exitsave -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Loadsave
 										</button>
 									</div>
 								</span>
 								<span class="dropdown savedropdown" id="panelsave">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="panelsavebtn" data-placement="top" data-content="Saved!"
-										data-toggle="dropdown">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="panelsavebtn" data-placement="top" data-content="Saved!" data-toggle="dropdown">
 										Save
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 1 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 2 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 3 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Loadsave
 										</button>
 									</div>
 								</span>
@@ -594,16 +528,14 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="fa fa-search"></i></span>
 											</div>
-											<input class="form-control" id="panelgamesearch" type="text"
-												placeholder="Type a game's name..." disabled>
+											<input class="form-control" id="panelgamesearch" type="text" placeholder="Type a game's name..." disabled>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-8">
 										<label for="panelgametitle">Game title:</label>
-										<input class="form-control" id="panelgametitle" type="text"
-											placeholder="Half-Life 2">
+										<input class="form-control" id="panelgametitle" type="text" placeholder="Half-Life 2">
 									</div>
 									<div class="col-4">
 										<label for="panelappid">AppID:</label>
@@ -613,20 +545,17 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="panelplaytime">Playtime:</label>
-										<input class="form-control" id="panelplaytime" type="number" step="0.1"
-											placeholder="0">
+										<input class="form-control" id="panelplaytime" type="number" step="0.1" placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
 										<label for="panelachearned">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control" id="panelachearned" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="panelachearned" min="0" placeholder="0">
 											<div class="input-group-append">
 												<span class="input-group-text">of</span>
 											</div>
-											<input type="number" class="form-control" id="panelachtotal" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="panelachtotal" min="0" placeholder="0">
 										</div>
 										<small class="form-text text-muted">Use 0 if the game has no
 											achievements.</small>
@@ -639,8 +568,7 @@
 									</div>
 									<div class="col">
 										<label for="panelcustomtext">Custom text:</label>
-										<input class="form-control" type="text" id="panelcustomtext"
-											placeholder="You can put anything here">
+										<input class="form-control" type="text" id="panelcustomtext" placeholder="You can put anything here">
 										<small class="form-text text-muted">Custom text is displayed to the right of the
 											game title. HTML tags are supported.</small>
 									</div>
@@ -669,14 +597,12 @@
 										</select>
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Show screenshot icon:</label>
+										<label class="blocklabel">Show screenshot icon:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst" id="panelscreenshoton"
-												for="panelscreenshoton">Yes
+											<label class="btn btn-outline-primary buttonfirst" id="panelscreenshoton" for="panelscreenshoton">Yes
 												<input type="radio" id="panelscreenshotoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary active" id="panelscreenshotoff"
-												for="panelscreenshotoff">No
+											<label class="btn btn-outline-primary active" id="panelscreenshotoff" for="panelscreenshotoff">No
 												<input type="radio" id="panelscreenshotoffinput" value="false">
 											</label>
 										</div>
@@ -702,8 +628,7 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="panelreviewfield">Review:</label>
-										<textarea class="form-control review" type="text" id="panelreviewfield"
-											placeholder="This game is awesome and stuff" rows="4"></textarea>
+										<textarea class="form-control review" type="text" id="panelreviewfield" placeholder="This game is awesome and stuff" rows="4"></textarea>
 										<small class="form-text text-muted">Leave blank to disable. Markdown and HTML
 											tags are supported. Reviews are saved automatically after refreshing/leaving
 											the page.
@@ -747,8 +672,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="panelbgcolor1">
 											</div>
-											<input class="form-control" type="text" id="panelbgcolor1text" maxlength="7"
-												value="#000000">
+											<input class="form-control" type="text" id="panelbgcolor1text" maxlength="7" value="#000000">
 										</div>
 									</div>
 								</div>
@@ -759,8 +683,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="panelbgcolor2" disabled>
 											</div>
-											<input class="form-control" type="text" id="panelbgcolor2text" maxlength="7"
-												value="#000000" disabled>
+											<input class="form-control" type="text" id="panelbgcolor2text" maxlength="7" value="#000000" disabled>
 										</div>
 									</div>
 									<div class="col">
@@ -769,8 +692,7 @@
 											<div class="input-group-prepend">
 												<input class="form-control" type="color" id="panelbgcolor3" disabled>
 											</div>
-											<input class="form-control" type="text" id="panelbgcolor3text" maxlength="7"
-												value="#000000" disabled>
+											<input class="form-control" type="text" id="panelbgcolor3text" maxlength="7" value="#000000" disabled>
 										</div>
 									</div>
 								</div>
@@ -779,35 +701,29 @@
 										<label for="paneltextcolor">Text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="paneltextcolorpick"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="paneltextcolorpick" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="paneltextcolor" maxlength="7"
-												value="#FFFFFF">
+											<input class="form-control" type="text" id="paneltextcolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 									<div class="col">
 										<label for="paneliconcolor">Icon color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="paneliconcolorpick"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="paneliconcolorpick" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="paneliconcolor" maxlength="7"
-												value="#FFFFFF">
+											<input class="form-control" type="text" id="paneliconcolor" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label class="screenshotlabel">Game image type:</label>
+										<label class="blocklabel">Game image type:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active"
-												id="panelheaderimage" for="panelheaderimage">Header
+											<label class="btn btn-outline-primary buttonfirst active" id="panelheaderimage" for="panelheaderimage">Header
 												<input id="panelheaderimageinput" type="radio" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="panelcustomimage"
-												for="panelcustomimage">Custom
+											<label class="btn btn-outline-primary" id="panelcustomimage" for="panelcustomimage">Custom
 												<input id="panelcustomimageinput" type="radio" value="false">
 											</label>
 										</div>
@@ -827,25 +743,21 @@
 								<div class="form-row collapse" id="panelcustomimagerow">
 									<div class="col">
 										<label for="panelcustomimageurl">Custom image URL:</label>
-										<input class="form-control" type="text" id="panelcustomimageurl"
-											placeholder="https://example.com/image.png">
+										<input class="form-control" type="text" id="panelcustomimageurl" placeholder="https://example.com/image.png">
 									</div>
 									<div class="col">
 										<label for="panelcustomimagelink">Custom image link:</label>
-										<input class="form-control" type="text" id="panelcustomimagelink"
-											placeholder="https://example.com">
+										<input class="form-control" type="text" id="panelcustomimagelink" placeholder="https://example.com">
 										<small class="form-text text-muted">If left empty, the image will link to the
 											game's Steam store page.</small>
 									</div>
 								</div>
 							</div>
 						</fieldset>
-						<div id="panelpreview"
-							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						<div id="panelpreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
 						</div>
 						<h3 style="margin-top: 8px;">Code:
-							<button class="copybutton btn btn-outline-primary" id="panelcopycode" data-toggle="popover"
-								data-placement="right" data-content="Copied!">Copy to
+							<button class="copybutton btn btn-outline-primary" id="panelcopycode" data-toggle="popover" data-placement="right" data-content="Copied!">Copy to
 								clipboard</button>
 						</h3>
 						<textarea id="panelcode" class="form-control" readonly="readonly" rows="6" ;></textarea>
@@ -855,52 +767,39 @@
 						<fieldset class="border rounded form-group">
 							<div class="dropdowndiv">
 								<span class="dropdown loaddropdown" id="boxload">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="boxloadbtn" data-placement="top" data-content="Loaded!"
-										data-toggle="dropdown">Load</button>
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="boxloadbtn" data-placement="top" data-content="Loaded!" data-toggle="dropdown">Load</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 1 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 2 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 3 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Exitsave -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Exitsave -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Loadsave
 										</button>
 									</div>
 								</span>
 								<span class="dropdown savedropdown" id="boxsave">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="boxsavebtn" data-placement="top" data-content="Saved!"
-										data-toggle="dropdown">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="boxsavebtn" data-placement="top" data-content="Saved!" data-toggle="dropdown">
 										Save
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 1 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 2 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 3 -
 											<span class="saveName"></span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Loadsave
 										</button>
 									</div>
 								</span>
@@ -915,16 +814,14 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="fa fa-search"></i></span>
 											</div>
-											<input class="form-control" id="boxgamesearch" type="text"
-												placeholder="Type a game's name..." disabled>
+											<input class="form-control" id="boxgamesearch" type="text" placeholder="Type a game's name..." disabled>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-8">
 										<label for="boxgametitle">Game title:</label>
-										<input class="form-control" id="boxgametitle" type="text"
-											placeholder="Half-Life 2">
+										<input class="form-control" id="boxgametitle" type="text" placeholder="Half-Life 2">
 									</div>
 									<div class="col-4">
 										<label for="boxappid">AppID:</label>
@@ -934,25 +831,23 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="boxplaytime">Playtime:</label>
-										<input class="form-control" id="boxplaytime" type="number" step="0.1"
-											placeholder="0">
+										<input class="form-control" id="boxplaytime" type="number" step="0.1" placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
 										<label for="boxachearned">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control" id="boxachearned" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="boxachearned" min="0" placeholder="0">
 											<div class="input-group-append">
 												<span class="input-group-text">of</span>
 											</div>
-											<input type="number" class="form-control" id="boxachtotal" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="boxachtotal" min="0" placeholder="0">
 										</div>
 										<small class="form-text text-muted">Use 0 if the game has no
 											achievements.</small>
 									</div>
 								</div>
+
 								<div class="form-row">
 									<div class="col">
 										<label for="boxplatform">Platform icon:</label>
@@ -977,14 +872,12 @@
 										</select>
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Show screenshot icon:</label>
+										<label class="blocklabel">Show screenshot icon:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst" id="boxscreenshoton"
-												for="panelscreenshoton">Yes
+											<label class="btn btn-outline-primary buttonfirst" id="boxscreenshoton">Yes
 												<input type="radio" id="boxscreenshotoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary active" id="boxscreenshotoff"
-												for="panelscreenshotoff">No
+											<label class="btn btn-outline-primary active" id="boxscreenshotoff">No
 												<input type="radio" id="boxscreenshotoffinput" value="false">
 											</label>
 										</div>
@@ -1028,11 +921,9 @@
 										<label for="boxbgcolor1text">Background color 1:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="boxbgcolor1"
-													value="#FFFFFF">
+												<input class="form-control" type="color" id="boxbgcolor1" value="#FFFFFF">
 											</div>
-											<input class="form-control" type="text" id="boxbgcolor1text" value="#FFFFFF"
-												maxlength="7" value="#FFFFFF">
+											<input class="form-control" type="text" id="boxbgcolor1text" value="#FFFFFF" maxlength="7" value="#FFFFFF">
 										</div>
 									</div>
 								</div>
@@ -1041,22 +932,18 @@
 										<label for="boxbgcolor2text">Background color 2:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="boxbgcolor2"
-													value="#FFFFFF" disabled>
+												<input class="form-control" type="color" id="boxbgcolor2" value="#FFFFFF" disabled>
 											</div>
-											<input class="form-control" type="text" id="boxbgcolor2text" maxlength="7"
-												value="#FFFFFF" disabled>
+											<input class="form-control" type="text" id="boxbgcolor2text" maxlength="7" value="#FFFFFF" disabled>
 										</div>
 									</div>
 									<div class="col">
 										<label for="boxbgcolor2text">Background color 3:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="boxbgcolor3"
-													value="#FFFFFF" disabled>
+												<input class="form-control" type="color" id="boxbgcolor3" value="#FFFFFF" disabled>
 											</div>
-											<input class="form-control" type="text" id="boxbgcolor3text" maxlength="7"
-												value="#FFFFFF" disabled>
+											<input class="form-control" type="text" id="boxbgcolor3text" maxlength="7" value="#FFFFFF" disabled>
 										</div>
 									</div>
 								</div>
@@ -1065,11 +952,9 @@
 										<label for="boxtextcolor">Text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="boxtextcolorpick"
-													value="#000000">
+												<input class="form-control" type="color" id="boxtextcolorpick" value="#000000">
 											</div>
-											<input class="form-control" type="text" id="boxtextcolor" maxlength="7"
-												value="#000000">
+											<input class="form-control" type="text" id="boxtextcolor" maxlength="7" value="#000000">
 										</div>
 									</div>
 								</div>
@@ -1090,21 +975,34 @@
 											<option value="unfinished">Unfinished (orange) - #F0AD4E</option>
 											<option value="wont play">Won't play (red) - #D9534F</option>
 											<option value="never played">Never played (white) - #EEEEEE</option>
+											<option value="hidden">Hidden</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-row collapse" id="boxcustomimagerow">
 									<div class="col">
 										<label for="boxcustomimageurl">Custom image URL:</label>
-										<input class="form-control" type="text" id="boxcustomimageurl"
-											placeholder="https://example.com/image.png">
+										<input class="form-control" type="text" id="boxcustomimageurl" placeholder="https://example.com/image.png">
 									</div>
 									<div class="col">
 										<label for="boxcustomimagelink">Custom image link:</label>
-										<input class="form-control" type="text" id="boxcustomimagelink"
-											placeholder="https://example.com">
+										<input class="form-control" type="text" id="boxcustomimagelink" placeholder="https://example.com">
 										<small class="form-text text-muted">If left empty, the image will link to the
 											game's Steam store page.</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label class="blocklabel">Minimal mode:</label>
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-primary buttonfirst" id="boxminimalon">On
+												<input type="radio" id="boxminimaloninput" value="true">
+											</label>
+											<label class="btn btn-outline-primary active" id="boxminimaloff">Off
+												<input type="radio" id="boxminimaloffinput" value="false">
+											</label>
+										</div>
+										<small class="form-text text-muted">Hides all text under the game image, including playtime, achievements and platform/screenshot icons.</small>
 									</div>
 								</div>
 							</div>
@@ -1121,13 +1019,11 @@
 						</div>
 						<h3 style="margin-top: 8px;">
 							Code:
-							<button class="copybutton btn btn-outline-primary" id="boxcopycode" data-toggle="popover"
-								data-placement="right" data-content="Copied!">
+							<button class="copybutton btn btn-outline-primary" id="boxcopycode" data-toggle="popover" data-placement="right" data-content="Copied!">
 								Copy to clipboard
 							</button>
 						</h3>
-						<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxcode"
-							class="form-control" readonly rows="6"></textarea>
+						<textarea style="width: calc(100% - 200px); float: left; margin-right: 8px;" id="boxcode" class="form-control" readonly rows="6"></textarea>
 						<div style="width: 192px; float: left;">
 							<ul class="games" id="boxpreview"></ul>
 						</div>
@@ -1141,11 +1037,9 @@
 								<div class="form-row">
 									<div class="col">
 										<div class="input-group">
-											<button type="button" id="pbauto" class="btn btn-outline-primary"
-												disabled>Autofill using your stats</button>
+											<button type="button" id="pbauto" class="btn btn-outline-primary" disabled>Autofill using your stats</button>
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Set decoration to all</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Set decoration to all</button>
 												<div class="dropdown-menu" id="pbbardecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon">
@@ -1164,11 +1058,9 @@
 									<div class="col">
 										<label for="pbcompleted">Completed:</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="pbcompleted" min="0"
-												placeholder="0">
+											<input class="form-control" type="number" id="pbcompleted" min="0" placeholder="0">
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Decoration</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Decoration</button>
 												<div class="dropdown-menu" id="pbcompleteddecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon"><i class="fa fa-check-circle"></i></span>
@@ -1187,11 +1079,9 @@
 									<div class="col">
 										<label for="pbbeaten">Beaten:</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="pbbeaten" min="0"
-												placeholder="0">
+											<input class="form-control" type="number" id="pbbeaten" min="0" placeholder="0">
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Decoration</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Decoration</button>
 												<div class="dropdown-menu" id="pbbeatendecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon">
@@ -1210,11 +1100,9 @@
 									<div class="col">
 										<label for="pbunfinished">Unfinished:</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="pbunfinished" min="0"
-												placeholder="0">
+											<input class="form-control" type="number" id="pbunfinished" min="0" placeholder="0">
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Decoration</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Decoration</button>
 												<div class="dropdown-menu" id="pbunfinisheddecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon">
@@ -1234,11 +1122,9 @@
 									<div class="col">
 										<label for="pbneverplayed">Never played:</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="pbneverplayed" min="0"
-												placeholder="0">
+											<input class="form-control" type="number" id="pbneverplayed" min="0" placeholder="0">
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Decoration</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Decoration</button>
 												<div class="dropdown-menu" id="pbneverplayeddecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon">
@@ -1258,11 +1144,9 @@
 									<div class="col">
 										<label for="pbwontplay">Won't play:</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="pbwontplay" min="0"
-												placeholder="0">
+											<input class="form-control" type="number" id="pbwontplay" min="0" placeholder="0">
 											<div class="input-group-append">
-												<button class="btn btn-outline-primary dropdown-toggle" type="button"
-													data-toggle="dropdown">Decoration</button>
+												<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Decoration</button>
 												<div class="dropdown-menu" id="pbwontplaydecor">
 													<button class="dropdown-item pbdropdown" value="none">
 														<span class="pbicon">
@@ -1291,12 +1175,10 @@
 								</div>
 							</div>
 						</fieldset>
-						<div id="pbpreview"
-							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						<div id="pbpreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
 						</div>
 						<h3 style="margin-top: 8px;">Code:
-							<button class="copybutton btn btn-outline-primary" id="pbcopycode" data-toggle="popover"
-								data-placement="right" data-content="Copied!">Copy to
+							<button class="copybutton btn btn-outline-primary" id="pbcopycode" data-toggle="popover" data-placement="right" data-content="Copied!">Copy to
 								clipboard</button>
 						</h3>
 						<textarea id="pbcode" class="form-control" readonly="readonly" rows="6"></textarea>
@@ -1311,52 +1193,39 @@
 						<fieldset class="border rounded form-group">
 							<div class="dropdowndiv">
 								<span class="dropdown loaddropdown" id="heroload">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="heroloadbtn" data-placement="top" data-content="Loaded!"
-										data-toggle="dropdown">Load</button>
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="heroloadbtn" data-placement="top" data-content="Loaded!" data-toggle="dropdown">Load</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 1 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 2 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Save 3 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Exitsave -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Exitsave -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#loadmodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#loadmodal">Loadsave
 										</button>
 									</div>
 								</span>
 								<span class="dropdown savedropdown" id="herosave">
-									<button class="btn btn-outline-primary dropdown-toggle" type="button"
-										id="herosavebtn" data-placement="top" data-content="Saved!"
-										data-toggle="dropdown">
+									<button class="btn btn-outline-primary dropdown-toggle" type="button" id="herosavebtn" data-placement="top" data-content="Saved!" data-toggle="dropdown">
 										Save
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 1 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 1 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 2 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 2 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Save 3 -
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Save 3 -
 											<span class="saveName">empty</span>
 										</button>
-										<button class="dropdown-item" type="button" data-toggle="modal"
-											data-target="#savemodal">Loadsave
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#savemodal">Loadsave
 										</button>
 									</div>
 								</span>
@@ -1369,43 +1238,36 @@
 										<label for="herogamesearch">Search game:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><i class="fa fa-search"
-														aria-hidden="true"></i></span>
+												<span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
 											</div>
-											<input class="form-control" id="herogamesearch" type="text"
-												placeholder="Type a game's name..." disabled>
+											<input class="form-control" id="herogamesearch" type="text" placeholder="Type a game's name..." disabled>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-8">
 										<label for="herogamesearch">Game title:</label>
-										<input class="form-control" id="herogametitle" type="text"
-											placeholder="Half-Life 2">
+										<input class="form-control" id="herogametitle" type="text" placeholder="Half-Life 2">
 									</div>
 									<div class="col-4">
 										<label for="heroappid">AppID:</label>
-										<input class="form-control appid" id="heroappid" type="number"
-											placeholder="220">
+										<input class="form-control appid" id="heroappid" type="number" placeholder="220">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="heroplaytime">Playtime:</label>
-										<input class="form-control" id="heroplaytime" type="number" step="0.1"
-											placeholder="0">
+										<input class="form-control" id="heroplaytime" type="number" step="0.1" placeholder="0">
 										<small class="form-text text-muted">Specified in hours.</small>
 									</div>
 									<div class="col">
 										<label for="heroachearned">Achievements:</label>
 										<div class="input-group">
-											<input type="number" class="form-control" id="heroachearned" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="heroachearned" min="0" placeholder="0">
 											<div class="input-group-append">
 												<span class="input-group-text">of</span>
 											</div>
-											<input type="number" class="form-control" id="heroachtotal" min="0"
-												placeholder="0">
+											<input type="number" class="form-control" id="heroachtotal" min="0" placeholder="0">
 										</div>
 										<small class="form-text text-muted">Use 0 if the game has no
 											achievements.</small>
@@ -1414,8 +1276,7 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="herocustomtext">Custom text:</label>
-										<input class="form-control" type="text" id="herocustomtext"
-											placeholder="You can put anything here">
+										<input class="form-control" type="text" id="herocustomtext" placeholder="You can put anything here">
 										<small class="form-text text-muted">Custom text is displayed under playtime and
 											achievements. HTML tags are supported.</small>
 									</div>
@@ -1444,14 +1305,12 @@
 										</select>
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Show screenshot icon:</label>
+										<label class="blocklabel">Show screenshot icon:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst" id="heroscreenshoton"
-												for="heroscreenshoton">Yes
+											<label class="btn btn-outline-primary buttonfirst" id="heroscreenshoton" for="heroscreenshoton">Yes
 												<input type="radio" id="heroscreenshotoninput" value="true">
 											</label>
-											<label class="btn btn-outline-primary active" id="heroscreenshotoff"
-												for="barscreenshotoff">No
+											<label class="btn btn-outline-primary active" id="heroscreenshotoff" for="barscreenshotoff">No
 												<input type="radio" id="heroscreenshotoffinput" value="false">
 											</label>
 										</div>
@@ -1477,8 +1336,7 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="review">Review:</label>
-										<textarea class="form-control review" type="text" id="heroreviewfield"
-											placeholder="You can pet dogs 10/10" rows="4"></textarea>
+										<textarea class="form-control review" type="text" id="heroreviewfield" placeholder="You can pet dogs 10/10" rows="4"></textarea>
 										<small class="form-text text-muted">Leave blank to disable the review. Markdown
 											and HTML tags are supported.
 											Reviews are autosaved after refreshing/leaving the page to prevent
@@ -1508,11 +1366,9 @@
 										<label for="herobordercolor">Border color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="herobordercolor"
-													value="#FFFFFF" disabled>
+												<input class="form-control" type="color" id="herobordercolor" value="#FFFFFF" disabled>
 											</div>
-											<input class="form-control" type="text" id="herobordercolortext"
-												value="#FFFFFF" maxlength="7" disabled>
+											<input class="form-control" type="text" id="herobordercolortext" value="#FFFFFF" maxlength="7" disabled>
 										</div>
 									</div>
 								</div>
@@ -1521,35 +1377,29 @@
 										<label for="herotilebgcolor">Tile background color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="herotilebgcolor"
-													value="#FFFFFF" disabled>
+												<input class="form-control" type="color" id="herotilebgcolor" value="#FFFFFF" disabled>
 											</div>
-											<input class="form-control" type="text" id="herotilebgcolortext"
-												value="#FFFFFF" maxlength="7" disabled>
+											<input class="form-control" type="text" id="herotilebgcolortext" value="#FFFFFF" maxlength="7" disabled>
 										</div>
 									</div>
 									<div class="col">
 										<label for="herotilecontentcolor">Tile text color:</label>
 										<div class="input-group">
 											<div class="input-group-prepend">
-												<input class="form-control" type="color" id="herotilecontentcolor"
-													value="#000000" disabled>
+												<input class="form-control" type="color" id="herotilecontentcolor" value="#000000" disabled>
 											</div>
-											<input class="form-control" type="text" id="herotilecontentcolortext"
-												value="#000000" maxlength="7" disabled>
+											<input class="form-control" type="text" id="herotilecontentcolortext" value="#000000" maxlength="7" disabled>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
-										<label class="screenshotlabel">Image type:</label>
+										<label class="blocklabel">Image type:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active" id="heroheroimage"
-												for="heroheroimage">Hero
+											<label class="btn btn-outline-primary buttonfirst active" id="heroheroimage" for="heroheroimage">Hero
 												<input id="heroheroimageinput" type="radio" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="herocustomimage"
-												for="herocustomimage">Custom
+											<label class="btn btn-outline-primary" id="herocustomimage" for="herocustomimage">Custom
 												<input id="herocustomimageinput" type="radio" value="false">
 											</label>
 										</div>
@@ -1557,13 +1407,11 @@
 									<div class="col">
 										<label for="heroimageminheight">Image min/max height (px):</label>
 										<div class="input-group">
-											<input class="form-control" type="number" id="heroimageminheight"
-												value="160" min="0">
+											<input class="form-control" type="number" id="heroimageminheight" value="160" min="0">
 											<div class="input-group-append">
 												<span class="input-group-text">/</span>
 											</div>
-											<input class="form-control" type="number" id="heroimagemaxheight"
-												value="240" min="0">
+											<input class="form-control" type="number" id="heroimagemaxheight" value="240" min="0">
 										</div>
 									</div>
 								</div>
@@ -1571,13 +1419,11 @@
 							<div class="form-row collapse" id="herocustomimagerow">
 								<div class="col">
 									<label for="herocustomimageurl">Custom image URL:</label>
-									<input class="form-control" type="text" id="herocustomimageurl"
-										placeholder="https://example.com/image.png">
+									<input class="form-control" type="text" id="herocustomimageurl" placeholder="https://example.com/image.png">
 								</div>
 								<div class="col">
 									<label for="herocustomimagelink">Custom image link:</label>
-									<input class="form-control" type="text" id="herocustomimagelink"
-										placeholder="https://example.com">
+									<input class="form-control" type="text" id="herocustomimagelink" placeholder="https://example.com">
 									<small class="form-text text-muted">If left empty, the image will link to the
 										game's Steam store page.</small>
 								</div>
@@ -1605,25 +1451,21 @@
 									</div>
 									<div class="col">
 										<label for="herologosize">Logo size (%):</label>
-										<input class="form-control" type="number" id="herologosize" placeholder="1"
-											value="20" min="1" max="200">
+										<input class="form-control" type="number" id="herologosize" placeholder="1" value="20" min="1" max="200">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="herocustomlogourl">Custom logo URL:</label>
-										<input class="form-control" type="text" id="herocustomlogourl"
-											placeholder="https://example.com/image.png">
+										<input class="form-control" type="text" id="herocustomlogourl" placeholder="https://example.com/image.png">
 									</div>
 									<div class="col">
-										<label class="screenshotlabel">Calculate logo size using hero's:</label>
+										<label class="blocklabel">Calculate logo size using hero's:</label>
 										<div class="btn-group btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary buttonfirst active"
-												id="herologocalcheight" for="herologocalcheight">Height
+											<label class="btn btn-outline-primary buttonfirst active" id="herologocalcheight" for="herologocalcheight">Height
 												<input id="herologocalcheightinput" type="radio" value="true">
 											</label>
-											<label class="btn btn-outline-primary" id="herologocalcwidth"
-												for="herologocalcwidth">Width
+											<label class="btn btn-outline-primary" id="herologocalcwidth" for="herologocalcwidth">Width
 												<input id="herologocalcwidthinput" type="radio" value="false">
 											</label>
 										</div>
@@ -1632,16 +1474,14 @@
 								<div class="form-row">
 									<div class="col">
 										<label for="heroxoffset">Logo horizontal offset (%):</label>
-										<input class="form-control" type="number" id="heroxoffset" placeholder="0"
-											value="0">
+										<input class="form-control" type="number" id="heroxoffset" placeholder="0" value="0">
 										<small class="form-text text-muted">Positive values move logo away from the
 											border.<br>
 											Negative values move logo towards the border.</small>
 									</div>
 									<div class="col">
 										<label for="heroyoffset">Logo vertical offset (%):</label>
-										<input class="form-control" type="number" id="heroyoffset" placeholder="0"
-											value="0">
+										<input class="form-control" type="number" id="heroyoffset" placeholder="0" value="0">
 										<small class="form-text text-muted">Positive values move logo away from the
 											border.<br>
 											Negative values move logo towards the border.</small>
@@ -1649,12 +1489,10 @@
 								</div>
 							</div>
 						</fieldset>
-						<div id="heropreview"
-							style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
+						<div id="heropreview" style="position: initial; padding-left: 0; bottom: 0; left: 0; width: 100%; z-index: 1000;">
 						</div>
 						<h3 style="margin-top: 8px;">Code:
-							<button class="copybutton btn btn-outline-primary" id="herocopycode" data-toggle="popover"
-								data-placement="right" data-content="Copied!">Copy to
+							<button class="copybutton btn btn-outline-primary" id="herocopycode" data-toggle="popover" data-placement="right" data-content="Copied!">Copy to
 								clipboard</button>
 						</h3>
 						<textarea id="herocode" class="form-control" readonly="readonly" rows="6"></textarea>
@@ -1677,8 +1515,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-primary" data-dismiss="modal"
-									id="loadsaveresetmodalbtn">Reset</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal" id="loadsaveresetmodalbtn">Reset</button>
 							</div>
 						</div>
 					</div>
@@ -1699,8 +1536,7 @@
 							<div class="input-group">
 								<input class="form-control" type="number" id="steamid">
 								<div class="input-group-prepend">
-									<button class="btn btn-outline-primary" id="syncbutton" type="button"><i
-											class="fa fa-refresh" aria-hidden="true"></i> Sync</button>
+									<button class="btn btn-outline-primary" id="syncbutton" type="button"><i class="fa fa-refresh" aria-hidden="true"></i> Sync</button>
 								</div>
 							</div>
 							<small class="form-text text-muted">
@@ -1708,10 +1544,9 @@
 								SteamID64.</small>
 						</div>
 						<div class="col-12 col-md-6">
-							<label class="screenshotlabel">Automatic sync:</label>
+							<label class="blocklabel">Automatic sync:</label>
 							<div class="btn-group btn-group-toggle" data-toggle="buttons">
-								<label class="btn btn-outline-primary buttonfirst active" id="autosyncon"
-									for="autosyncon">Enabled
+								<label class="btn btn-outline-primary buttonfirst active" id="autosyncon" for="autosyncon">Enabled
 									<input type="radio" value="true">
 								</label>
 								<label class="btn btn-outline-primary" id="autosyncoff" for="autosyncoff">Disabled
@@ -1736,14 +1571,10 @@
 					<legend class="border rounded" data-toggle="collapse" data-target="#loadsavereset">Reset loadsaves
 					</legend>
 					<div class="show" id="loadsavereset">
-						<button class="btn btn-outline-primary" id="barloadsaveresetbtn" type="button"
-							data-toggle="modal" data-target="#resetmodal">Reset bar loadsave</button>
-						<button class="btn btn-outline-primary" id="panelloadsaveresetbtn" type="button"
-							data-toggle="modal" data-target="#resetmodal">Reset panel loadsave</button>
-						<button class="btn btn-outline-primary" id="boxloadsaveresetbtn" type="button"
-							data-toggle="modal" data-target="#resetmodal">Reset box loadsave</button>
-						<button class="btn btn-outline-primary" id="heroloadsaveresetbtn" type="button"
-							data-toggle="modal" data-target="#resetmodal">Reset hero loadsave</button>
+						<button class="btn btn-outline-primary" id="barloadsaveresetbtn" type="button" data-toggle="modal" data-target="#resetmodal">Reset bar loadsave</button>
+						<button class="btn btn-outline-primary" id="panelloadsaveresetbtn" type="button" data-toggle="modal" data-target="#resetmodal">Reset panel loadsave</button>
+						<button class="btn btn-outline-primary" id="boxloadsaveresetbtn" type="button" data-toggle="modal" data-target="#resetmodal">Reset box loadsave</button>
+						<button class="btn btn-outline-primary" id="heroloadsaveresetbtn" type="button" data-toggle="modal" data-target="#resetmodal">Reset hero loadsave</button>
 					</div>
 				</fieldset>
 			</div>
@@ -1758,8 +1589,7 @@
 				<p>If your box looks like this...</p>
 				<li class="game-thumbnail game game-completed" style="font-size: 14px">
 					<div class="title" style="height: 69px;">Half-Life 2</div>
-					<a href="https://store.steampowered.com/app/220/" target="_blank"><img alt="Half-Life 2"
-							src="https://steamcdn-a.akamaihd.net/steam/apps/220/capsule_184x69.jpg"></a>
+					<a href="https://store.steampowered.com/app/220/" target="_blank"><img alt="Half-Life 2" src="https://steamcdn-a.akamaihd.net/steam/apps/220/capsule_184x69.jpg"></a>
 					<div class="caption" style="height: auto; padding-bottom: 9px;">
 						<p>0 hours playtime</p>
 						<p>no achievements</p>
@@ -1769,8 +1599,7 @@
 					<code>&lt;/ul></code>.</p>
 				<h3>Resources</h3>
 				<p><a href="https://www.w3schools.com/html/">W3Schools HTML tutorials/reference</a></p>
-				<p><a href="https://getbootstrap.com/docs/3.3/css/">Bootstrap 3.3 docs</a> + <a
-						href="https://getbootstrap.com/docs/3.3/components/">components</a></p>
+				<p><a href="https://getbootstrap.com/docs/3.3/css/">Bootstrap 3.3 docs</a> + <a href="https://getbootstrap.com/docs/3.3/components/">components</a></p>
 				<p><a href="https://fontawesome.com/v4.7.0/icons/">Font Awesome v4.7.0 icons</a> (v5 icons will not work
 					on BLAEO!)</p>
 				<p><a href="https://icons8.com/icons">Icons8 icons</a></p>
@@ -1783,7 +1612,7 @@
 			<!--About tab-->
 			<div class="tab-pane fade" id="about" role="tabpanel">
 				<h2>BLAEO Generators
-					<small class="text-muted">v2.02</small>
+					<small class="text-muted">v2.03</small>
 				</h2>
 				<p>A post snippet generator for use with BLAEO posts.</p>
 				<p>
@@ -1801,9 +1630,18 @@
 					</strong>
 				</p>
 				<p>Thanks to mandrill for help with the autofilling feature!</p>
-				<p>Icons: <a href="https://fontawesome.com/v4.7.0/">Font Awesome v4.7.0</a>, <a
-						href="https://icons8.com">Icons8</a></p>
+				<p>Icons: <a href="https://fontawesome.com/v4.7.0/">Font Awesome v4.7.0</a>, <a href="https://icons8.com">Icons8</a></p>
 				<h2>Changelog:</h2>
+				<h4>v2.03 - August 28, 2021</h4>
+				<ul>
+					<li>Bar: Mouse cursor now changes to a pointer when hovering over a bar that has review trigger method set to "bar"</li>
+					<li>Box: Completion bar can now be hidden</li>
+					<li>Box: Added minimal mode, which hides all text under the game image</li>
+					<li>Hero: The logo now shrinks instead of stretching if it doesn't fit on the image</li>
+					<li>Fixed save/load buttons being in wrong positions</li>
+					<li>Fixed game images not updating when inputting an unowned AppID</li>
+					<li>Fixed "Copied!" tooltip color</li>
+				</ul>
 				<h4>v2.02 - September 22, 2020</h4>
 				<ul>
 					<li>Bar: Slightly increased top padding in reviews when using button review trigger</li>
@@ -1903,22 +1741,20 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	<script defer src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 	</script>
-	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" crossorigin="anonymous">
+	<script defer src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" crossorigin="anonymous">
 	</script>
+	<script defer src="https://use.fontawesome.com/fba1eae16c.js"></script>
+	<script defer src="./js/awesomplete.js"></script>
+	<script defer src="./js/notify.js"></script>
+	<script defer src="./js/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/elements.css">
 	<link rel="stylesheet" href="./css/awesomplete.css" />
-	<script src="./js/awesomplete.js"></script>
-	<script src="./js/notify.js"></script>
-	<script src="./js/script.js"></script>
 </body>
 
 </html>

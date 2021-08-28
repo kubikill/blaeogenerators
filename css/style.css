@@ -48,6 +48,16 @@ select,
     border-right-color: #28A745 !important;
 }
 
+.copyarrow::after {
+    border-left-color: #28A745 !important;
+    border-right-color: #28A745 !important;
+}
+
+.popover-body {
+    background-color: #28A745;
+    color: #fff;
+}
+
 a.nav-link {
     color: #566391;
 }
@@ -64,14 +74,6 @@ a.nav-link {
 .btn-outline-primary {
     border-color: #566391 !important;
     color: #566391;
-}
-
-.copyarrow::before {
-    border-right-color: transparent !important;
-}
-
-.copyarrow::after {
-    border-right-color: #5CB85C !important;
 }
 
 .navbar-brand a:hover {
@@ -96,7 +98,7 @@ a.nav-link {
     animation: progress-bar-anim 2s linear infinite;
 }
 
-.screenshotlabel {
+.blocklabel {
     display: block;
 }
 
@@ -190,9 +192,6 @@ input {
 #boxpreview, li.game-thumbnail {
     margin-top: 0 !important;
 }
-fieldset {
-    position: relative;
-}
 @keyframes progress-bar-stripes { /* Animation fix */
     from {
       background-position: 2.5rem 0;
@@ -229,6 +228,15 @@ label.btn:hover {
 }
 #heropreview {
     font-size: 14px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+#generator-tabs > div {
+    position: relative;
+}
+#heropreview img {
+    max-width: 100%;
 }
 span.spoiler:not(:hover) {
     background-color: #ddd;
