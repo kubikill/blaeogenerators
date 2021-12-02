@@ -590,7 +590,7 @@ ${bar.review.code}<br>`;
     if (enabled != (undefined || null)) bar.info.enabled = enabled;
     if (bar.info.achievementsTotal == 0) {
       bar.info.achievementsCode = "no achievements";
-    } else if (steamId && gameIDArray.includes(bar.gameInfo.id)) {
+    } else if (steamId && bar.gameInfo.arrayPos != "") {
       bar.info.achievementsCode = `<a style="color: ${bar.info.color}; text-decoration: underline;" href="https://steamcommunity.com/profiles/${steamId}/stats/${bar.gameInfo.id}/?tab=achievements">${bar.info.achievements} of ${bar.info.achievementsTotal} achievements</a>`;
     } else {
       bar.info.achievementsCode = `${bar.info.achievements} of ${bar.info.achievementsTotal} achievements`;
@@ -986,7 +986,7 @@ ${panel.info.code}${panel.review.triggerCode2}
     if (iconColor != (undefined || null)) panel.info.iconColor = iconColor;
     if (panel.info.achievementsTotal == 0) {
       panel.info.achievementsCode = "no achievements";
-    } else if (steamId && gameIDArray.includes(panel.gameInfo.id)) {
+    } else if (steamId && panel.gameInfo.arrayPos != "") {
       panel.info.achievementsCode = `<a href="https://steamcommunity.com/profiles/${steamId}/stats/${panel.gameInfo.id}/?tab=achievements">${panel.info.achievements} of ${panel.info.achievementsTotal} achievements</a>`;
     } else {
       panel.info.achievementsCode = `${panel.info.achievements} of ${panel.info.achievementsTotal} achievements`;
@@ -1270,7 +1270,7 @@ ${box.caption.code}</li>`;
     if (minimalMode != (undefined || null)) box.caption.minimalMode = minimalMode;
     if (box.caption.achievementsTotal == 0) {
       box.caption.achievementsCode = "no achievements";
-    } else if (steamId && gameIDArray.includes(box.gameInfo.id)) {
+    } else if (steamId && box.gameInfo.arrayPos != "") {
       box.caption.achievementsCode = `<a href="https://steamcommunity.com/profiles/${steamId}/stats/${box.gameInfo.id}/?tab=achievements">${box.caption.achievements} of ${box.caption.achievementsTotal} achievements</a>`;
     } else {
       box.caption.achievementsCode = `${box.caption.achievements} of ${box.caption.achievementsTotal} achievements`;
@@ -1805,7 +1805,7 @@ ${hero.review.code}<br>`;
     }
     if (hero.tiles.achievementsTotal == 0) {
       hero.tiles.achievementsCode = `<div class="${size}" style="padding: 10px 15px; border: 1px solid ${hero.colors.border};"><i class="fa fa-trophy"></i> None</div>`;
-    } else if (steamId && gameIDArray.includes(hero.gameInfo.id)) {
+    } else if (steamId && hero.gameInfo.arrayPos != "") {
       hero.tiles.achievementsCode = `<div class="${size}" style="padding: 10px 15px; border: 1px solid ${hero.colors.border};"><a href="https://steamcommunity.com/profiles/${steamId}/stats/${hero.gameInfo.id}/?tab=achievements"><i class="fa fa-trophy"></i> ${hero.tiles.achievements}/${hero.tiles.achievementsTotal}</a></div>`;
     } else {
       hero.tiles.achievementsCode = `<div class="${size}" style="padding: 10px 15px; border: 1px solid ${hero.colors.border};"><i class="fa fa-trophy"></i> ${hero.tiles.achievements}/${hero.tiles.achievementsTotal}</div>`;
@@ -2079,7 +2079,9 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(bar.gameInfo.id) != -1) {
       bar.gameInfo.arrayPos = gameIDArray.indexOf(bar.gameInfo.id);
     } else {
+      bar.gameInfo.arrayPos = "";
       bar.updImage();
+      bar.updInfo();
       bar.update();
       return 0;
     }
@@ -2442,7 +2444,9 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(panel.gameInfo.id) != -1) {
       panel.gameInfo.arrayPos = gameIDArray.indexOf(panel.gameInfo.id);
     } else {
+      panel.gameInfo.arrayPos = "";
       panel.updImage();
+      panel.updInfo();
       panel.update();
       return 0;
     }
@@ -2703,7 +2707,9 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(box.gameInfo.id) != -1) {
       box.gameInfo.arrayPos = gameIDArray.indexOf(box.gameInfo.id);
     } else {
+      box.gameInfo.arrayPos = "";
       box.updImage();
+      box.updCaption();
       box.update();
       return 0;
     }
@@ -3084,7 +3090,9 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     if (gameIDArray.indexOf(hero.gameInfo.id) != -1) {
       hero.gameInfo.arrayPos = gameIDArray.indexOf(hero.gameInfo.id);
     } else {
+      hero.gameInfo.arrayPos = "";
       hero.updImage();
+      hero.updAchievementTile();
       hero.update();
       return 0;
     }
