@@ -189,6 +189,9 @@ input {
 .dropdown:first-child {
     margin-right: 8px;
 }
+#barpreview, #panelpreview, #boxpreview, #heropreview {
+    font-family: Arimo, Arial, sans-serif;
+}
 #boxpreview, li.game-thumbnail {
     margin-top: 0 !important;
 }

@@ -513,8 +513,8 @@ ${bar.review.code}<br>`;
       case "itchio":
         bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/ios-glyphs/21/${bar.title.color.slice(1)}/itch-io.png" title="Played on itch.io">`;
         break;
-      case "twitch":
-        bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/ios-glyphs/21/${bar.title.color.slice(1)}/twitch.png" title="Played on Twitch">`;
+      case "amazon":
+        bar.title.platformCode = `<i class="fa fa-amazon" title="Played on Amazon"></i>`;
         break;
       case "drmfree":
         bar.title.platformCode = '<i class="fa fa-unlock-alt" title="DRM-free"></i>';
@@ -525,11 +525,14 @@ ${bar.review.code}<br>`;
       case "ios":
         bar.title.platformCode = `<i class="fa fa-apple" title="Played on iOS"></i>`;
         break;
-      case "playstation":
-        bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/metro/21/${bar.title.color.slice(1)}/play-station.png" title="Played on PlayStation">`;
-        break;
       case "xbox":
         bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/metro/21/${bar.title.color.slice(1)}/xbox.png" title="Played on Xbox">`;
+        break;
+      case "xgp":
+        bar.title.platformCode = `<span style="font-weight: bold; margin-left: 4px" title="Played on Xbox Game Pass"><img style="opacity: 1; height: 21px; width: 21px; vertical-align: baseline;" src="https://img.icons8.com/metro/21/${bar.title.color.slice(1)}/xbox.png"><span style="display: inline-block; line-height: 12px; margin: 0 3px 0 2px; text-align: left; font-size: 12px;">GAME<br>PASS</span></span>`
+        break;
+      case "playstation":
+        bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/metro/21/${bar.title.color.slice(1)}/play-station.png" title="Played on PlayStation">`;
         break;
       case "switch":
         bar.title.platformCode = `<img style="vertical-align: baseline;" src="https://img.icons8.com/ios-filled/21/${bar.title.color.slice(1)}/nintendo-switch.png" title="Played on Switch">`;
@@ -902,8 +905,8 @@ ${panel.info.code}${panel.review.triggerCode2}
       case "itchio":
         panel.title.platformCode = `<img style="vertical-align: -3px;" src="https://img.icons8.com/ios-glyphs/21/${panel.bgAndText.platformColor.slice(1)}/itch-io.png" title="Played on itch.io">`;
         break;
-      case "twitch":
-        panel.title.platformCode = `<img style="vertical-align: -3px;" src="https://img.icons8.com/ios-glyphs/21/${panel.bgAndText.platformColor.slice(1)}/twitch.png" title="Played on Twitch">`;
+      case "amazon":
+        panel.title.platformCode = `<i class="fa fa-amazon" title="Played on Amazon"></i>`;
         break;
       case "drmfree":
         panel.title.platformCode = `<i class="fa fa-unlock-alt" title="DRM-free"></i>`;
@@ -919,6 +922,9 @@ ${panel.info.code}${panel.review.triggerCode2}
         break;
       case "xbox":
         panel.title.platformCode = `<img style="vertical-align: -3px" src="https://img.icons8.com/metro/21/${panel.bgAndText.platformColor.slice(1)}/xbox.png" title="Played on Xbox">`;
+        break;
+      case "xgp":
+        panel.title.platformCode = `<span style="font-weight: bold; vertical-align: -4px; margin-left: 4px; display: inline-block; height: 24px;" title="Played on Xbox Game Pass"><img style="opacity: 1; height: 21px; width: 21px; vertical-align: baseline;" src="https://img.icons8.com/metro/21/${panel.bgAndText.platformColor.slice(1)}/xbox.png"><span style="display: inline-block; line-height: 12px; margin: 0 3px 0 2px; text-align: left; font-size: 12px;">GAME<br>PASS</span></span>`
         break;
       case "switch":
         panel.title.platformCode = `<img style="vertical-align: -3px" src="https://img.icons8.com/ios-filled/21/${panel.bgAndText.platformColor.slice(1)}/nintendo-switch.png" title="Played on Switch">`;
@@ -1308,8 +1314,8 @@ ${box.caption.code}</li>`;
       case "itchio":
         box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/ios-glyphs/24/${box.caption.color.slice(1)}/itch-io.png" title="Played on itch.io">`;
         break;
-      case "twitch":
-        box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/ios-glyphs/21/${box.caption.color.slice(1)}/twitch.png" title="Played on Twitch">`;
+      case "amazon":
+        box.caption.platformCode = `<i style="font-size: 24px; vertical-align: middle;" class="fa fa-amazon" title="Played on Amazon"></i>`;
         break;
       case "drmfree":
         box.caption.platformCode = `<i style="font-size: 24px; vertical-align: middle;" class="fa fa-unlock-alt" title="DRM-free"></i>`;
@@ -1325,6 +1331,9 @@ ${box.caption.code}</li>`;
         break;
       case "xbox":
         box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/metro/24/${box.caption.color.slice(1)}/xbox.png" title="Played on Xbox">`;
+        break;
+      case "xgp":
+        box.caption.platformCode = `<span style="font-weight: bold;" title="Played on Xbox Game Pass"><img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/metro/24/${box.caption.color.slice(1)}/xbox.png"><span style="display: inline-block; line-height: 12px; margin: 0 3px 0 2px; vertical-align: middle; text-align: left; font-size: 12px;">GAME<br>PASS</span></span>`
         break;
       case "switch":
         box.caption.platformCode = `<img style="opacity: 1; height: 24px; width: 24px; position: initial;" src="https://img.icons8.com/ios-filled/24/${box.caption.color.slice(1)}/nintendo-switch.png" title="Played on Switch">`;
@@ -1885,8 +1894,8 @@ ${hero.review.code}<br>`;
       case "itchio":
         platformContent = `<img src="https://img.icons8.com/ios-glyphs/21/${hero.colors.tileText.slice(1)}/itch-io.png" title="Played on itch.io"> Played on itch.io`;
         break;
-      case "twitch":
-        platformContent = `<img src="https://img.icons8.com/ios-glyphs/21/${hero.colors.tileText.slice(1)}/twitch.png" title="Played on Twitch"> Played on Twitch`;
+      case "amazon":
+        platformContent = `<i class="fa fa-amazon" title="Played on Amazon"></i> Played on Amazon`;
         break;
       case "drmfree":
         platformContent = `<i class="fa fa-unlock-alt" title="DRM-free"></i> DRM-free`;
@@ -1902,6 +1911,9 @@ ${hero.review.code}<br>`;
         break;
       case "xbox":
         platformContent = `<img src="https://img.icons8.com/metro/21/${hero.colors.tileText.slice(1)}/xbox.png" title="Played on Xbox"> Played on Xbox`;
+        break;
+      case "xgp":
+        platformContent = `<span style="font-weight: bold;" title="Played on Xbox Game Pass"><img style="opacity: 1; height: 21px; width: 21px; position: initial;" src="https://img.icons8.com/metro/21/${hero.colors.tileText.slice(1)}/xbox.png"><span style="display: inline-block; line-height: 11px; margin: 0 3px 0 2px; vertical-align: middle; text-align: left; font-size: 11px;">GAME<br>PASS</span></span> Played on XGP`
         break;
       case "switch":
         platformContent = `<img src="https://img.icons8.com/ios-filled/21/${hero.colors.tileText.slice(1)}/nintendo-switch.png" title="Played on Switch"> Played on Switch`;
@@ -2762,7 +2774,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     eIds.box.platform.disabled = true;
     eIds.box.screenshotOn.disabled = true;
     eIds.box.screenshotOff.disabled = true;
-    box.updCaption(...[, , , , , ,], true);
+    box.updCaption(...[, , , , , , ], true);
     box.update();
   };
   eIds.box.minimalOff.onclick = function (el) {
@@ -2772,7 +2784,7 @@ let heroGameSearchAutocomplete = new Awesomplete(eIds.hero.search, {
     eIds.box.platform.disabled = false;
     eIds.box.screenshotOn.disabled = false;
     eIds.box.screenshotOff.disabled = false;
-    box.updCaption(...[, , , , , ,], false);
+    box.updCaption(...[, , , , , , ], false);
     box.update();
   };
   eIds.box.preset.onchange = function (el) {
