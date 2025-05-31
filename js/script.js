@@ -433,8 +433,15 @@ ${bar.review.code}<br>`;
         bar.update();
       };
       tempImg.src = tempURL;
-      tempImg.onerror = function () {
+      tempImg.onerror = async function () {
         console.log("Failed to load image!");
+        if (bar.image.type === "capsule") {
+          let altImg = await getAltCapsule(bar.gameInfo.id);
+          console.log(altImg);
+          if (altImg && tempURL !== altImg) {
+            tempURL = tempImg.src = altImg;
+          }
+        }
       };
     }
   },
@@ -641,19 +648,19 @@ ${bar.review.code}<br>`;
         bar.review.triggerCodeBar = `data-target="#${bar.review.id}" data-toggle="collapse" `;
         bar.review.triggerCodeButton = "";
         bar.review.cursor = "cursor: pointer;";
-        bar.review.code = `<div style="padding: 10px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
+        bar.review.code = `<div style="padding: 0px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse"><div style="height: 10px"></div>${reviewConv}</div>`;
       } else if (bar.review.trigger == "button") {
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
         bar.review.triggerCodeButton = `<div data-target="#${bar.review.id}" data-toggle="collapse" style="cursor: pointer; position: absolute; width: 150px; height: 22px; left: 0; right: 0;bottom: -15px; background-color: ${bar.review.buttonColor}; border-radius: 8px; text-align: center; margin: 0 auto; color: ${bar.review.buttonTextColor}; z-index: 1;" class="collapsed"><p style="padding-top: 2px;">More <i class="fa fa-level-down"></i></p></div>`;
         bar.review.cursor = "";
-        bar.review.code = `<div style="padding: 16px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse">${reviewConv}</div>`;
+        bar.review.code = `<div style="padding: 0px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}" class="collapse"><div style="height: 16px"></div>${reviewConv}</div>`;
       } else {
         bar.review.triggerCodeBar = "";
         bar.review.triggerCodeBar2 = "";
         bar.review.triggerCodeButton = "";
         bar.review.cursor = "";
-        bar.review.code = `<div style="padding: 10px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}">${reviewConv}</div>`;
+        bar.review.code = `<div style="padding: 0px 20px 0px 20px; border: 1px solid #dee2e6; border-top: 0px; border-radius: .25rem;" id="${bar.review.id}"><div style="height: 10px"></div>${reviewConv}</div>`;
       }
     } else {
       bar.review.triggerCodeBar = "";
@@ -1029,7 +1036,7 @@ ${panel.info.code}${panel.review.triggerCode2}
       panel.review.id = `panelreview_${panel.gameInfo.id}_${steamId}_${random}`;
       if (panel.review.trigger === "panel") {
         panel.review.triggerCode1 = `data-target="#${panel.review.id}" data-toggle="collapse" `;
-        panel.review.code = `<div style="padding: 10px 20px 0px 20px;" id="${panel.review.id}" class="collapse">${reviewConv}</div>`;
+        panel.review.code = `<div style="padding: 0px 20px 0px 20px; border-bottom: 1px solid transparent;" id="${panel.review.id}" class="collapse"><div style="height: 10px"></div>${reviewConv}</div>`;
         if (panel.info.rating === "") {
           panel.review.triggerCode2 = `<div></div><div style="float: right; padding-right:10px;" class="collapsed" aria-expanded="false">More <i class="fa fa-level-down"></i></div>`;
         } else {
@@ -1038,7 +1045,7 @@ ${panel.info.code}${panel.review.triggerCode2}
       } else {
         panel.review.triggerCode1 = ``;
         panel.review.triggerCode2 = ``;
-        panel.review.code = `<div style="padding: 10px 20px 0px 20px;" id="${panel.review.id}">${reviewConv}</div>`;
+        panel.review.code = `<div style="padding: 0px 20px 0px 20px; border-bottom: 1px solid transparent;" id="${panel.review.id}"><div style="height: 10px"></div>${reviewConv}</div>`;
       }
     } else {
       panel.review.triggerCode1 = "";
@@ -1506,7 +1513,7 @@ ${progressBar.completedCode}${progressBar.beatenCode}${progressBar.unfinishedCod
 const hero = {
   code: "",
   update() {
-    eIds.hero.code.value = eIds.hero.preview.innerHTML = hero.code = `<div style="position: relative;">
+    eIds.hero.code.value = eIds.hero.preview.innerHTML = hero.code = `<div style="position: relative; z-index: 10;">
 <div style="border: 3px solid ${hero.colors.border}; border-radius: 30px; overflow: hidden">
 <div style="position: relative; border: 3px solid ${hero.colors.border}; margin: -3px; overflow: hidden;">
 ${hero.image.code}
@@ -1710,10 +1717,10 @@ ${hero.review.code}<br>`;
       hero.review.id = `heroreview_${hero.gameInfo.id}_${steamId}_${random}`;
       if (hero.review.trigger == "button") {
         hero.review.triggerCode = `<div data-target="#${hero.review.id}" data-toggle="collapse" style="cursor: pointer;position: absolute;width: 150px;height: 22px;left: 0;right: 0;bottom: -10px;background-color: ${hero.colors.border};border-radius: 8px;text-align: center;margin: 0 auto;color: #FFF;z-index: 1;text-shadow: 1px 1px 0px black;" class="collapsed"><p style="margin: 0;padding-top: 2px;line-height: 20px;">More <i class="fa fa-level-down"></i></p></div>`;
-        hero.review.code = `<div style="padding: 40px 20px 0px 20px; border: 3px solid ${hero.colors.border}; border-top: 0; border-radius: 0 0 30px 30px; margin-top: -40px;" id="${hero.review.id}" class="collapse"><p style="padding-top: 10px">${reviewConv}</p></div>`;
+        hero.review.code = `<div style="padding: 38px 20px 0px 20px; border: 3px solid ${hero.colors.border}; border-top: 0; border-radius: 0 0 30px 30px; margin-top: -41px;" id="${hero.review.id}" class="collapse"><p style="padding-top: 10px">${reviewConv}</p></div>`;
       } else {
         hero.review.triggerCode = "";
-        hero.review.code = `<div style="padding: 40px 20px 0px 20px; border: 3px solid ${hero.colors.border}; border-top: 0; border-radius: 0 0 30px 30px; margin-top: -40px;" id="${hero.review.id}"><p style="padding-top: 10px">${reviewConv}</p></div>`;
+        hero.review.code = `<div style="padding: 38px 20px 0px 20px; border: 3px solid ${hero.colors.border}; border-top: 0; border-radius: 0 0 30px 30px; margin-top: -41px;" id="${hero.review.id}"><p style="padding-top: 10px">${reviewConv}</p></div>`;
       }
     } else {
       hero.review.triggerCode = "";
@@ -1986,7 +1993,7 @@ async function fetchStats() { // Fetch user stats from BLAEO
     .catch(() => {
       $("#fetcherror").html("stats");
       $("#fetcherroralert").show();
-      return reject();
+      return false;
     });
 }
 
@@ -2007,7 +2014,7 @@ async function fetchLibrary() { // Fetch user library from BLAEO
     .catch(() => {
       $("#fetcherror").html("library");
       $("#fetcherroralert").show();
-      return reject();
+      return false;
     });
 }
 let awesompleteItem = function (t, e, n) {
@@ -4208,3 +4215,18 @@ if (localStorage.getItem("firstvisit") === null) {
 /* if (navigator.userAgent.toLowerCase().indexOf('gecko/') > -1) { // Detect Firefox-like browsers
   document.body.classList.add("firefox")
 } */
+
+  async function getAltCapsule(steamId) {
+      return fetch(`https://blaeoplus.kubikill.dev/hltb/game-capsule-image?steamid=${steamId}`, {
+          headers: {
+            Accept: "application/json"
+          }
+        })
+        .then(res => res.json())
+        .then(resjson => {
+          return resjson.capsuleImage;
+        })
+        .catch(() => {
+          return false;
+        });
+  }
