@@ -1164,6 +1164,12 @@ ${box.caption.code}</li>`;
         };
         tempImg.onerror = function () {
           console.log("Failed to load image!");
+          if (box.image.type === "capsule") {
+            let altImg = await getAltCapsule(box.gameInfo.id);
+            if (altImg && tempURL !== altImg) {
+              tempURL = tempImg.src = altImg;
+            }
+          }
         };
         break;
     }
