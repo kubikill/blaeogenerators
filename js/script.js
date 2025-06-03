@@ -1162,7 +1162,7 @@ ${box.caption.code}</li>`;
           box.image.height = `style="height: ${res}px;"`;
           box.update();
         };
-        tempImg.onerror = function () {
+        tempImg.onerror = async function () {
           console.log("Failed to load image!");
           if (box.image.type === "capsule") {
             let altImg = await getAltCapsule(box.gameInfo.id);
