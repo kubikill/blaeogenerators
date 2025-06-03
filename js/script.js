@@ -1160,6 +1160,7 @@ ${box.caption.code}</li>`;
           let aspectRatio = tempImg.width / tempImg.height;
           let res = Math.ceil(184 / aspectRatio);
           box.image.height = `style="height: ${res}px;"`;
+          box.image.code = `<a href="${imgLink}" target="_blank"><img src="${tempURL}"></a>`;
           box.update();
         };
         tempImg.onerror = async function () {
